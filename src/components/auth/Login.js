@@ -1,24 +1,37 @@
-import React, {useState, useRef} from 'react';
+import React, {useRef, useState} from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
+import Grid from '@material-ui/core/Grid';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
-import {useHistory} from "react-router-dom";
-import Input from "react-validation/build/input";
-import CheckButton from "react-validation/build/button";
 import Form from "react-validation/build/form";
+import Input from "react-validation/build/input";
+import {required, validPassword, validUsername} from "../../util/Validations";
+import CheckButton from "react-validation/build/button";
+import {useHistory} from "react-router-dom";
 import AuthService from "../../service/AuthService";
-import {required, nameValidation, validEmail, validUsername, validPassword} from "../../util/Validations"
-import {Grid} from "@material-ui/core";
 import {useStyles} from "./AuthStyles";
 
-const Register = () => {
+const Login = () => {
     const classes = useStyles();
-    const history = useHistory();
     const form = useRef();
     const checkBtn = useRef();
+    const history = useHistory();
+
+    const [successful, setSuccessful] = useState(false);
+    const [message, setMessage] = useState("");
+    const [password, setPassword] = useState();
+    const [username, setUsername] = useState();
+
+    const onChangeUsername = event => {
+        setUsername(event.target.value)
+    }
+
+    const onChangePassword = event => {
+        setPassword(event.target.value)
+    }
 
     const submitForm = e => {
         e.preventDefault();
@@ -29,49 +42,20 @@ const Register = () => {
         form.current.validateAll();
 
         if (checkBtn.current.context._errors.length === 0) {
-            AuthService.register(firstName, lastName, username, password, email).then(
+            AuthService.login(username, password).then(
                 res => {
-                    setMessage(res.data.message);
-                    setSuccessful(true);
+                    setMessage("You have signed in. Redirecting to home page...")
+                    setSuccessful(true)
                     setTimeout(() => {
-                        history.push("/login");
-                    }, 3000);
+                        history.push("/")
+                    }, 2500)
                 },
                 error => {
-                    setMessage(error.response.data.message);
+                    setMessage("User doesn't exist or credentials don't match.");
                     setSuccessful(false);
                 }
             )
         }
-    }
-
-    const [firstName, setFirstName] = useState();
-    const [lastName, setLastName] = useState();
-    const [email, setEmail] = useState();
-    const [password, setPassword] = useState();
-    const [username, setUsername] = useState();
-
-    const [successful, setSuccessful] = useState(false);
-    const [message, setMessage] = useState("");
-
-    const onChangeFirstName = event => {
-        setFirstName(event.target.value)
-    }
-
-    const onChangeLastName = event => {
-        setLastName(event.target.value)
-    }
-
-    const onChangeEmail = event => {
-        setEmail(event.target.value)
-    }
-
-    const onChangeUsername = event => {
-        setUsername(event.target.value)
-    }
-
-    const onChangePassword = event => {
-        setPassword(event.target.value)
     }
 
     return (
@@ -99,32 +83,6 @@ const Register = () => {
                 <br/>
                 <Form onSubmit={submitForm} ref={form}>
                     <Grid container spacing={2}>
-                        <Grid xs={12} sm={6} >
-                            <div className="form-group" style={{marginRight: "5px"}}>
-                                <label htmlFor="firstName">First name</label>
-                                <Input
-                                    type="text"
-                                    className="form-control"
-                                    name="firstName"
-                                    value={firstName}
-                                    onChange={onChangeFirstName}
-                                    validations={[required, nameValidation]}
-                                />
-                            </div>
-                        </Grid>
-                        <Grid xs={12} sm={6}>
-                            <div className="form-group" style={{marginLeft: "5px"}}>
-                                <label htmlFor="username">Last name</label>
-                                <Input
-                                    type="text"
-                                    className="form-control"
-                                    name="lastName"
-                                    value={lastName}
-                                    onChange={onChangeLastName}
-                                    validations={[required, nameValidation]}
-                                />
-                            </div>
-                        </Grid>
                         <Grid item xs={12}>
                             <div className="form-group">
                                 <label htmlFor="username">Username</label>
@@ -135,19 +93,6 @@ const Register = () => {
                                     value={username}
                                     onChange={onChangeUsername}
                                     validations={[required, validUsername]}
-                                />
-                            </div>
-                        </Grid>
-                        <Grid item xs={12}>
-                            <div className="form-group">
-                                <label htmlFor="email">Email</label>
-                                <Input
-                                    type="text"
-                                    className="form-control"
-                                    name="email"
-                                    value={email}
-                                    onChange={onChangeEmail}
-                                    validations={[required, validEmail]}
                                 />
                             </div>
                         </Grid>
@@ -168,8 +113,7 @@ const Register = () => {
                         <br/>
                         <Grid xs={12}>
                             <div className="form-group" style={{marginTop: "20px", marginBottom: "20px"}}>
-                                <Button type="submit" variant="contained" color="primary" block style={{margin: "10px"}}>Sign Up</Button>
-                                <Button variant="contained" color="success" block href="/login">Back to login</Button>
+                                <Button type="submit" variant="contained" color="primary" block style={{margin: "10px"}}>Sign in</Button>
                             </div>
                         </Grid>
                     </Grid>
@@ -180,4 +124,4 @@ const Register = () => {
     );
 }
 
-export default Register;
+export default Login;
