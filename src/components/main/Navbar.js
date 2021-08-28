@@ -30,16 +30,16 @@ const Navbar = () => {
                         {currentUser ? (
                             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
 
-                                <li className="nav-item">
-                                    <a className="nav-link active" aria-current="page" href="/profile">Profile</a>
-                                </li>
-                                <li className="nav-item">
-                                    <div className={classes.root}>
-                                        <Badge badgeContent={4} color="primary">
-                                            <MailIcon style={{backgroundColor: "white"}}/>
-                                        </Badge>
-                                    </div>
-                                </li>
+                                {/*<li className="nav-item">*/}
+                                {/*    <a className="nav-link active" aria-current="page" href="/profile">Profile</a>*/}
+                                {/*</li>*/}
+                                {/*<li className="nav-item">*/}
+                                {/*    <div className={classes.root}>*/}
+                                {/*        <Badge badgeContent={4} color="primary">*/}
+                                {/*            <MailIcon style={{backgroundColor: "white"}}/>*/}
+                                {/*        </Badge>*/}
+                                {/*    </div>*/}
+                                {/*</li>*/}
                             </ul>
                         ) : (
                             <ul className="navbar-nav me-auto mb-2 mb-lg-0">

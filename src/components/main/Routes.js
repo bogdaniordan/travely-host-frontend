@@ -3,6 +3,7 @@ import {BrowserRouter as Router, Redirect, Route, Switch} from "react-router-dom
 import Register from "../auth/Register";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Login from "../auth/Login";
+import HomePage from "./HomePage";
 
 
 const Routes = () => {
@@ -12,6 +13,7 @@ const Routes = () => {
                 <Switch>
                     <Route path="/register" exact component={Register}/>
                     <Route path="/login" exact component={Login}/>
+                    <Route path="/" exact component={HomePage} />
                 </Switch>
             </Router>
         </div>
