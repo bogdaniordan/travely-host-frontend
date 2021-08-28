@@ -3,6 +3,7 @@ import Navbar from "./Navbar";
 import AccommodationService from "../../service/AccommodationService";
 import AuthService from "../../service/AuthService";
 import AccommodationCard from "../accommodations/AccommodationCard";
+import ProfileCard from "../host/ProfileCard";
 
 const HomePage = () => {
     const [accommodations, setAccommodations] = useState([]);
@@ -15,6 +16,7 @@ const HomePage = () => {
         <div>
             <Navbar />
             <section>
+                <ProfileCard />
                 <div className="container py-2">
                     {
                         accommodations ? (
@@ -23,7 +25,6 @@ const HomePage = () => {
                             <div className="h1 text-center text-dark" id="pageHeaderTitle">You don't have any accommodations.</div>
                         )
                     }
-
                     {
                         accommodations.map(
                             accommodation => <AccommodationCard key={accommodation.id} accommodation={accommodation} />
