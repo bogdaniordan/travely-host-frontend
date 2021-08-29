@@ -62,3 +62,13 @@ export const validLength = (value) => {
         )
     }
 }
+
+export const validPrice = value => {
+    if (!(/^\d+$/.test(value))) {
+        return (
+            <div className="alert alert-danger" role="alert">
+                Price input can contain only digits.
+            </div>
+        );
+    }
+}

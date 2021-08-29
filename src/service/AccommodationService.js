@@ -11,6 +11,18 @@ class AccommodationService {
     getAllFacilities() {
         return axios.get(`${ACCOMMODATION_SERVICE_API_URL}/all-facilities`, { headers: AuthHeader() });
     }
+
+    addAccommodation(title, address, location, pricePerNight, facilities, placeType, hostId) {
+        return axios.post(`${ACCOMMODATION_SERVICE_API_URL}/add/${hostId}`, {
+            title: title,
+            address: address,
+            location: location,
+            pricePerNight: pricePerNight,
+            status: "Free",
+            facilities: facilities,
+            placeType: placeType
+        },{headers: AuthHeader()});
+    }
 }
 
 export default new AccommodationService;

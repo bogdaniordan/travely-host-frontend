@@ -8,7 +8,7 @@ import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import Select from "react-validation/build/select";
 import CheckButton from "react-validation/build/button";
-import {required, validLength} from "../../util/Validations";
+import {required, validLength, validPrice} from "../../util/Validations";
 import AccommodationService from "../../service/AccommodationService";
 
 const AddAccommodation = () => {
@@ -16,9 +16,13 @@ const AddAccommodation = () => {
     const form = useRef();
     const checkBtn = useRef();
     const [facilities, setFacilities] = useState([]);
+    const [checkedFacilities, setCheckedFacilities] = useState([]);
 
     useEffect(() => {
-        AccommodationService.getAllFacilities().then(res => setFacilities(res.data))
+        AccommodationService.getAllFacilities().then(res => {
+            setFacilities(res.data);
+            setCheckedFacilities(new Array(res.data.length).fill(false));
+        })
     }, [])
 
     const [title, setTitle] = useState();
@@ -26,13 +30,52 @@ const AddAccommodation = () => {
     const [location, setLocation] = useState();
     const [price, setPrice] = useState();
     const [type, setType] = useState();
+    const [firstImage, setFirstImage] = useState();
+    const [secondImage, setSecondImage] = useState();
+    const [thirdImage, setThirdImage] = useState();
 
-    const getProfilePicture = () => {
+    const [successful, setSuccessful] = useState(false);
+    const [message, setMessage] = useState("");
 
+    const handleCheckboxChange = (position) => {
+        const updatedCheckedState = checkedFacilities.map((item, index) =>
+            index === position ? !item : item
+        );
+        setCheckedFacilities(updatedCheckedState);
+    }
+
+    const getFacilitiesNames = () => {
+        let lst = [];
+        checkedFacilities.map((facil, index) => {
+            if(facil) {
+                lst.push(facilities[index]);
+            }
+        })
+        return lst;
     }
 
     const submitForm = e => {
-
+        e.preventDefault();
+        setMessage("");
+        setSuccessful(false);
+        form.current.validateAll();
+        console.log(getFacilitiesNames())
+        if (checkBtn.current.context._errors.length === 0) {
+            console.log("DAIIII")
+            AccommodationService.addAccommodation(title, address, location ,price, getFacilitiesNames(), type, AuthService.getCurrentUser().id).then(
+                res => {
+                    setMessage("Accommodation successfully added.")
+                    setSuccessful(true);
+                    setTimeout(() => {
+                        history.push("/");
+                    }, 1700)
+                },
+                error => {
+                    setMessage("Something went wrong!");
+                    setSuccessful(false);
+                }
+            )
+        }
     }
 
     return (
@@ -51,11 +94,21 @@ const AddAccommodation = () => {
                 >
                     <h1>Add accommodation</h1>
                     <Form
-                        className="form-signin"
-                        method="post"
                         onSubmit={submitForm}
                         ref={form}
                     >
+                        {message && (
+                            <div className="form-group">
+                                <div
+                                    className={
+                                        successful ? "alert alert-success" : "alert alert-danger"
+                                    }
+                                    role="alert"
+                                >
+                                    {message}
+                                </div>
+                            </div>
+                        )}
                         <div className="mb-3">
                             <label htmlFor="title" className="form-label">
                                 Title
@@ -66,7 +119,7 @@ const AddAccommodation = () => {
                                 name="title"
                                 onChange={e => setTitle(e.target.value)}
                                 value={title}
-                                validation = {[required, validLength]}
+                                validations = {[required, validLength]}
                             />
                         </div>
                         <div className="mb-3">
@@ -79,7 +132,7 @@ const AddAccommodation = () => {
                                 name="address"
                                 onChange={e => setAddress(e.target.value)}
                                 value={address}
-                                validation = {[required, validLength]}
+                                validations = {[required, validLength]}
                             />
                         </div>
                         <div className="mb-3">
@@ -92,7 +145,7 @@ const AddAccommodation = () => {
                                 name="location"
                                 onChange={e => setLocation(e.target.value)}
                                 value={location}
-                                validation={[required, validLength]}
+                                validations = {[required, validLength]}
                             />
                         </div>
                         <div className="mb-3">
@@ -105,12 +158,12 @@ const AddAccommodation = () => {
                                 aria-label=".form-select-sm example"
                                 onChange={e => setType(e.target.value)}
                                 value={type}
-                                validation={[required]}
+                                validations = {[required]}
                             >
                                 <option value="" selected disabled hidden>Choose type</option>
-                                <option value="shared">Shared</option>
-                                <option value="private">Private</option>
-                                <option value="hotel">Hotel</option>
+                                <option value="Shared">Shared</option>
+                                <option value="Private">Private</option>
+                                <option value="Hotel">Hotel</option>
                             </Select>
                         </div>
                         <div className="mb-3">
@@ -123,47 +176,26 @@ const AddAccommodation = () => {
                                 name="email"
                                 onChange={e => setPrice(e.target.value)}
                                 value={price}
-                                validation={[required]}
+                                validations = {[required, validPrice]}
                             />
                         </div>
-                        <div className="mb-3">
-                            Select the facilities this accommodation has to offer
-                            <div className="topping">
-                                <input type="checkbox" id="topping" name="topping" value="Paneer" />Paneer
+                        <div className="mb-3" >
+                            <label>Facilities: </label>
+                            <div style={{display: "flex", alignItems: "center"}}>
+                                {facilities.map(
+                                    (facility, index) =>
+                                        <div key={index}>
+                                            <label style={{margin: "10px"}}>{facility.replace("_", " ")}</label>
+                                            <input
+                                                type="checkbox"
+                                                checked={checkedFacilities[index]}
+                                                name={facility}
+                                                value={facility}
+                                                onChange={() => handleCheckboxChange(index)}
+                                            />
+                                        </div>
+                                )}
                             </div>
-                        </div>
-                        <div className="mb-3">
-                            <label htmlFor="firstImage" className="form-label">
-                                First image
-                            </label>
-                            <Input
-                                type="file"
-                                className="form-control"
-                                name="firstImage"
-                                onChange={(e) => console.log(e.target.name)}
-                            />
-                        </div>
-                        <div className="mb-3">
-                            <label htmlFor="secondImage" className="form-label">
-                                First image
-                            </label>
-                            <Input
-                                type="file"
-                                className="form-control"
-                                name="secondImage"
-                                onChange={(e) => console.log(e.target.name)}
-                            />
-                        </div>
-                        <div className="mb-3">
-                            <label htmlFor="thirdImage" className="form-label">
-                                First image
-                            </label>
-                            <Input
-                                type="file"
-                                className="form-control"
-                                name="thirdImage"
-                                onChange={(e) => console.log(e.target.name)}
-                            />
                         </div>
                         <Button type="submit" variant="contained" color="primary">
                             Submit
