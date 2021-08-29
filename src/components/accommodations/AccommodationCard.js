@@ -3,15 +3,11 @@ import "./AccommodationCardStyling.scss";
 
 const AccommodationCard = ({accommodation}) => {
 
-    React.useEffect(() => {
-        console.log(accommodation);
-    })
-
     return (
         <div>
             <article className="postcard light blue">
                 <a className="postcard__img_link" href="#">
-                    <img className="postcard__img" src={accommodation.imageUrls.allImages[0]} alt="Image Title"/>
+                    <img className="postcard__img" src={`http://localhost:8080/accommodations/image/${accommodation.id}/firstImage/download`} alt="Image Title"/>
                 </a>
                 <div className="postcard__text t-dark">
                     <h1 className="postcard__title blue"><a href="#">{accommodation.title}</a></h1>

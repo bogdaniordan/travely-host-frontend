@@ -10,6 +10,7 @@ import Select from "react-validation/build/select";
 import CheckButton from "react-validation/build/button";
 import {required, validLength, validPrice} from "../../util/Validations";
 import AccommodationService from "../../service/AccommodationService";
+import AddAccommodationForm from "./AddAccommodationForm";
 
 const AddAccommodation = () => {
     const history = useHistory();
@@ -46,8 +47,8 @@ const AddAccommodation = () => {
 
     const getFacilitiesNames = () => {
         let lst = [];
-        checkedFacilities.map((facil, index) => {
-            if(facil) {
+        checkedFacilities.map((facility, index) => {
+            if (facility) {
                 lst.push(facilities[index]);
             }
         })
@@ -59,13 +60,12 @@ const AddAccommodation = () => {
         setMessage("");
         setSuccessful(false);
         form.current.validateAll();
-        console.log(getFacilitiesNames())
         if (checkBtn.current.context._errors.length === 0) {
-            console.log("DAIIII")
             AccommodationService.addAccommodation(title, address, location ,price, getFacilitiesNames(), type, AuthService.getCurrentUser().id).then(
                 res => {
                     setMessage("Accommodation successfully added.")
                     setSuccessful(true);
+                    uploadImages()
                     setTimeout(() => {
                         history.push("/");
                     }, 1700)
@@ -78,131 +78,49 @@ const AddAccommodation = () => {
         }
     }
 
+    const uploadImages = () => {
+        AccommodationService.findByTitle(title).then(res => {
+            AccommodationService.addImages(res.data.id, firstImage, secondImage, thirdImage)
+        })
+    }
+
     return (
         <div>
             <Navbar/>
             <div className="light">
-                <Container
-                    style={{
-                        border: "white",
-                        height: "100%",
-                        width: "50%",
-                        margin: "auto",
-                        marginTop: "5%",
-                        textAlign: "center"
-                    }}
-                >
-                    <h1>Add accommodation</h1>
-                    <Form
-                        onSubmit={submitForm}
-                        ref={form}
-                    >
-                        {message && (
-                            <div className="form-group">
-                                <div
-                                    className={
-                                        successful ? "alert alert-success" : "alert alert-danger"
-                                    }
-                                    role="alert"
-                                >
-                                    {message}
-                                </div>
-                            </div>
-                        )}
-                        <div className="mb-3">
-                            <label htmlFor="title" className="form-label">
-                                Title
-                            </label>
-                            <Input
-                                type="text"
-                                className="form-control"
-                                name="title"
-                                onChange={e => setTitle(e.target.value)}
-                                value={title}
-                                validations = {[required, validLength]}
-                            />
+                {message && (
+                    <div className="form-group">
+                        <div
+                            className={
+                                successful ? "alert alert-success" : "alert alert-danger"
+                            }
+                            role="alert"
+                        >
+                            {message}
                         </div>
-                        <div className="mb-3">
-                            <label htmlFor="address" className="form-label">
-                                Address
-                            </label>
-                            <Input
-                                type="text"
-                                className="form-control"
-                                name="address"
-                                onChange={e => setAddress(e.target.value)}
-                                value={address}
-                                validations = {[required, validLength]}
-                            />
-                        </div>
-                        <div className="mb-3">
-                            <label htmlFor="location" className="form-label">
-                                Location
-                            </label>
-                            <Input
-                                type="text"
-                                className="form-control"
-                                name="location"
-                                onChange={e => setLocation(e.target.value)}
-                                value={location}
-                                validations = {[required, validLength]}
-                            />
-                        </div>
-                        <div className="mb-3">
-                            <label htmlFor="type" className="form-label">
-                                Accommodation type
-                            </label>
-                            <Select
-                                name="type"
-                                className="form-select form-select-sm mb-3"
-                                aria-label=".form-select-sm example"
-                                onChange={e => setType(e.target.value)}
-                                value={type}
-                                validations = {[required]}
-                            >
-                                <option value="" selected disabled hidden>Choose type</option>
-                                <option value="Shared">Shared</option>
-                                <option value="Private">Private</option>
-                                <option value="Hotel">Hotel</option>
-                            </Select>
-                        </div>
-                        <div className="mb-3">
-                            <label htmlFor="price" className="form-label">
-                                Price per night
-                            </label>
-                            <Input
-                                type="price"
-                                className="form-control"
-                                name="email"
-                                onChange={e => setPrice(e.target.value)}
-                                value={price}
-                                validations = {[required, validPrice]}
-                            />
-                        </div>
-                        <div className="mb-3" >
-                            <label>Facilities: </label>
-                            <div style={{display: "flex", alignItems: "center"}}>
-                                {facilities.map(
-                                    (facility, index) =>
-                                        <div key={index}>
-                                            <label style={{margin: "10px"}}>{facility.replace("_", " ")}</label>
-                                            <input
-                                                type="checkbox"
-                                                checked={checkedFacilities[index]}
-                                                name={facility}
-                                                value={facility}
-                                                onChange={() => handleCheckboxChange(index)}
-                                            />
-                                        </div>
-                                )}
-                            </div>
-                        </div>
-                        <Button type="submit" variant="contained" color="primary">
-                            Submit
-                        </Button>
-                        <CheckButton style={{ display: "none" }} ref={checkBtn} />
-                    </Form>
-                </Container>
+                    </div>
+                )}
+                <AddAccommodationForm
+                    form={form}
+                    submitForm={submitForm}
+                    setTitle = {setTitle}
+                    title = {title}
+                    address = {address}
+                    setAddress={setAddress}
+                    location = {location}
+                    setLocation={setLocation}
+                    type = {type}
+                    setType={setType}
+                    price={price}
+                    setPrice={setPrice}
+                    facilities={facilities}
+                    checkedFacilities={checkedFacilities}
+                    handleCheckboxChange={handleCheckboxChange}
+                    checkBtn={checkBtn}
+                    setFirstImage={setFirstImage}
+                    setSecondImage={setSecondImage}
+                    setThirdImage={setThirdImage}
+                />
             </div>
         </div>
     );
