@@ -51,3 +51,14 @@ export const validPassword = (value) => {
         );
     }
 };
+
+export const validLength = (value) => {
+    if (value.length < 3 || value.length > 20) {
+        return (
+            <div className="alert alert-danger" role="alert">
+                Input length must not be lowed than 3 or higher than 20.
+            </div>
+
+        )
+    }
+}

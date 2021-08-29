@@ -28,6 +28,7 @@ const ProfileCard = () => {
                                             <h6 className="f-w-600">{host.firstName} {host.lastName}</h6>
                                             {/*className=" mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16"></i>*/}
                                             <p><Button variant="contained" color="secondary" onClick={() => history.push(`/update-profile`)}>Update</Button></p>
+                                            {/*<p><Button variant="contained" color="primary">Add accommodation</Button></p>*/}
                                         </div>
                                     </div>
                                     <div className="col-sm-8">

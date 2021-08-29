@@ -19,7 +19,7 @@ const Navbar = () => {
     return (
         <div>
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="Eighth navbar example">
-                <div className="container" >
+                <div className="container">
                     <a className="navbar-brand" href="/">Travely</a>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
                             data-bs-target="#navbarsExample07" aria-controls="navbarsExample07" aria-expanded="false"

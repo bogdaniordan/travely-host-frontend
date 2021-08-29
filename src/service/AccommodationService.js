@@ -7,6 +7,10 @@ class AccommodationService {
     getAllByHostId(id) {
         return axios.get(`${ACCOMMODATION_SERVICE_API_URL}/all-for-host/${id}`, { headers: AuthHeader() });
     }
+
+    getAllFacilities() {
+        return axios.get(`${ACCOMMODATION_SERVICE_API_URL}/all-facilities`, { headers: AuthHeader() });
+    }
 }
 
 export default new AccommodationService;
