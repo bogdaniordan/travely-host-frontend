@@ -5,7 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="54af3455-6289-4698-bfb0-824572c3fe26" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/components/main/Routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/main/Routes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/accommodations/AddAccommodation.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/accommodations/AddAccommodation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/main/Navbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/main/Navbar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/service/AccommodationService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/AccommodationService.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,7 +37,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/components/accommodations" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -63,6 +66,8 @@
       <updated>1630082068643</updated>
       <workItem from="1630082070100" duration="3458000" />
       <workItem from="1630146586660" duration="1505000" />
+      <workItem from="1630305994559" duration="402000" />
+      <workItem from="1630306554859" duration="1637000" />
     </task>
     <servers />
   </component>

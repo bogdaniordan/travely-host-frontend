@@ -1,14 +1,7 @@
 import React, {useState, useEffect, useRef} from 'react';
-import { Container } from "@material-ui/core";
-import Button from "@material-ui/core/Button";
 import AuthService from "../../service/AuthService";
 import {useHistory} from "react-router-dom";
 import Navbar from "../main/Navbar";
-import Form from "react-validation/build/form";
-import Input from "react-validation/build/input";
-import Select from "react-validation/build/select";
-import CheckButton from "react-validation/build/button";
-import {required, validLength, validPrice} from "../../util/Validations";
 import AccommodationService from "../../service/AccommodationService";
 import AddAccommodationForm from "./AddAccommodationForm";
 

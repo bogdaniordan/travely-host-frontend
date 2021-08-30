@@ -1,7 +1,17 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import "./AccommodationCardStyling.scss";
+import {useHistory} from "react-router-dom";
+import BookingService from "../../service/BookingService";
 
 const AccommodationCard = ({accommodation}) => {
+    const history = useHistory();
+    const [booking, setBooking] = useState({});
+
+    useEffect(() => {
+        if (accommodation.status === "Booked") {
+            BookingService.getByAccommodationId(accommodation.id).then(res => setBooking(res.data))
+        }
+    }, [])
 
     return (
         <div>
@@ -28,7 +38,7 @@ const AccommodationCard = ({accommodation}) => {
                     {/*    <li className="tag__item play blue" onClick={leaveQuestion}><i className="fas fa-tag mr-2"></i>Leave question</li>*/}
                         {
                             accommodation.status === "Booked" && (
-                                <li className="tag__item play blue" ><i className="fas fa-clock mr-2"></i>Questions</li>
+                                <li className="tag__item play blue" onClick={() => history.push(`/questions/${booking.customer.id}`)}><i className="fas fa-clock mr-2"></i>Questions</li>
                             )
                         }
                     {/*    {*/}

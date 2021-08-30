@@ -38,10 +38,6 @@ class AccommodationService {
     findByTitle(title) {
         return axios.get(`${ACCOMMODATION_SERVICE_API_URL}/find-by-title/${title}`, {headers: AuthHeader()});
     }
-
-    // getImage(accommodationId, imageName) {
-    //     return axios.get(`${ACCOMMODATION_SERVICE_API_URL}/image/${accommodationId}/${imageName}/download`, {headers: AuthHeader()})
-    // }
 }
 
 export default new AccommodationService;

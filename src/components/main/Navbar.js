@@ -1,7 +1,5 @@
 import React, {useState} from "react";
 import { makeStyles } from '@material-ui/core/styles';
-import Badge from '@material-ui/core/Badge';
-import MailIcon from '@material-ui/icons/Mail';
 import AuthService from "../../service/AuthService";
 
 const useStyles = makeStyles((theme) => ({
@@ -15,6 +13,10 @@ const useStyles = makeStyles((theme) => ({
 const Navbar = () => {
     const [currentUser, setCurrentUser] = useState(AuthService.getCurrentUser());
     const classes = useStyles();
+
+    const logout = () => {
+        AuthService.logout();
+    }
 
     return (
         <div>
@@ -33,6 +35,9 @@ const Navbar = () => {
                                 {/*<li className="nav-item">*/}
                                 {/*    <a className="nav-link active" aria-current="page" href="/profile">Profile</a>*/}
                                 {/*</li>*/}
+                                <li className="nav-item">
+                                    <a className="nav-link active" aria-current="page" href="/login" onClick={logout}>Logout</a>
+                                </li>
                                 {/*<li className="nav-item">*/}
                                 {/*    <div className={classes.root}>*/}
                                 {/*        <Badge badgeContent={4} color="primary">*/}
