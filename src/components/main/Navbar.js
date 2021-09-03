@@ -62,7 +62,7 @@ const Navbar = ({title, subtitle}) => {
                     </div>
                 </div>
             </nav>
-            <div id="masthead" style={{marginBottom: "100px"}}>
+            <div id="masthead" style={{marginBottom: "100px", minHeight: "235px"}}>
                 <div className="container">
                     <div className="row">
                         <div className="col-md-7">

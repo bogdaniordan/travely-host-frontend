@@ -203,3 +203,7 @@ h6 {
     font-size: 100px;
   }
 }
+
+.question-box {
+  text-align: center;
+}
