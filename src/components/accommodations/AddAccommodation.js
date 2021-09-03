@@ -79,8 +79,8 @@ const AddAccommodation = () => {
 
     return (
         <div>
-            <Navbar/>
-            <div className="light">
+            <Navbar title={"Host a new accommodation"}/>
+            {/*<div className="light">*/}
                 {message && (
                     <div className="form-group">
                         <div
@@ -114,7 +114,7 @@ const AddAccommodation = () => {
                     setSecondImage={setSecondImage}
                     setThirdImage={setThirdImage}
                 />
-            </div>
+            {/*</div>*/}
         </div>
     );
 };

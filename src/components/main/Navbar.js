@@ -1,6 +1,8 @@
 import React, {useState} from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import AuthService from "../../service/AuthService";
+import {Badge} from "@material-ui/core";
+import MailIcon from '@material-ui/icons/Mail';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -10,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const Navbar = () => {
+const Navbar = ({title, subtitle}) => {
     const [currentUser, setCurrentUser] = useState(AuthService.getCurrentUser());
     const classes = useStyles();
 
@@ -38,13 +40,13 @@ const Navbar = () => {
                                 <li className="nav-item">
                                     <a className="nav-link active" aria-current="page" href="/login" onClick={logout}>Logout</a>
                                 </li>
-                                {/*<li className="nav-item">*/}
-                                {/*    <div className={classes.root}>*/}
-                                {/*        <Badge badgeContent={4} color="primary">*/}
-                                {/*            <MailIcon style={{backgroundColor: "white"}}/>*/}
-                                {/*        </Badge>*/}
-                                {/*    </div>*/}
-                                {/*</li>*/}
+                                <li className="nav-item">
+                                    <div className={classes.root}>
+                                        <Badge badgeContent={4} color="primary">
+                                            <MailIcon style={{backgroundColor: "white"}}/>
+                                        </Badge>
+                                    </div>
+                                </li>
                             </ul>
                         ) : (
                             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
@@ -60,6 +62,22 @@ const Navbar = () => {
                     </div>
                 </div>
             </nav>
+            <div id="masthead" style={{marginBottom: "100px"}}>
+                <div className="container">
+                    <div className="row">
+                        <div className="col-md-7">
+                            <h1 style={{marginLeft: "100px"}}>{title}
+                                {
+                                    subtitle && (
+                                        <p className="lead">{subtitle}</p>
+                                    )
+                                }
+                            </h1>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
         </div>
     );
 };

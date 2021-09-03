@@ -21,9 +21,9 @@ const HomePage = () => {
 
     return (
         <div>
-            <Navbar />
+            <Navbar title={"Host profile"} subtitle={"Update your profile, add accommodations, manage your bookings."} />
             <section>
-                <ProfileCard />
+                <ProfileCard/>
                 <div className="container py-2">
                     {
                         accommodations ? (

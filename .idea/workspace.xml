@@ -6,9 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="54af3455-6289-4698-bfb0-824572c3fe26" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/accommodations/AddAccommodation.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/accommodations/AddAccommodation.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/main/Navbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/main/Navbar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/service/AccommodationService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/AccommodationService.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,9 +44,9 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/service" />
       <recent name="$PROJECT_DIR$/src/components/accommodations" />
       <recent name="$PROJECT_DIR$/src/components/auth" />
-      <recent name="$PROJECT_DIR$/src/service" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/util" />
@@ -68,6 +65,9 @@
       <workItem from="1630146586660" duration="1505000" />
       <workItem from="1630305994559" duration="402000" />
       <workItem from="1630306554859" duration="1637000" />
+      <workItem from="1630341048126" duration="2059000" />
+      <workItem from="1630426299258" duration="667000" />
+      <workItem from="1630475420382" duration="139000" />
     </task>
     <servers />
   </component>

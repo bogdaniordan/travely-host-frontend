@@ -12,7 +12,7 @@ const AddAccommodationForm = ({form, submitForm, setTitle, title, address, setAd
     return (
         <div>
             <Container
-                style={{border: "white", height: "100%", width: "50%", margin: "auto", marginTop: "5%", textAlign: "center"}}
+                style={{border: "white", height: "100%", width: "50%", margin: "auto", textAlign: "center"}}
             >
                 <h1>Add accommodation</h1>
                 <Form

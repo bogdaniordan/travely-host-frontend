@@ -173,3 +173,33 @@ h6 {
   transition: all 0.3s ease-in-out
 }
 
+/*navbar*/
+
+
+
+#masthead {
+  min-height:270px;
+  background-color:#212529;
+  color:#aaaacc;
+}
+
+#masthead h1 {
+  font-size: 55px;
+  line-height: 1;
+}
+
+#masthead .well {
+  margin-top:13%;
+  background-color:#111155 ;
+  border-color:#000033;
+}
+
+.icon-bar {
+  background-color:#fff;
+}
+
+@media screen and (min-width: 768px) {
+  #masthead h1 {
+    font-size: 100px;
+  }
+}
