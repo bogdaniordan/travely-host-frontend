@@ -31,7 +31,7 @@ const QuestionPage = (props) => {
     }
 
     const deleteQuestion = () => {
-        QuestionService.deleteQuestion(questionId).then(res => history.push(`/questions/${question.customer.id}`));
+        QuestionService.deleteQuestion(questionId).then(res => history.push(`/questions`));
     }
 
     useEffect(() => {
@@ -49,7 +49,7 @@ const QuestionPage = (props) => {
 
     const submitForm = e => {
         e.preventDefault();
-        QuestionService.setResponse(questionId, {response: response}).then(res => history.push(`/questions/${question.customer.id}`))
+        QuestionService.setResponse(questionId, {response: response}).then(res => window.location.reload())
     }
 
     return (
