@@ -7,7 +7,7 @@ import HomePage from "./HomePage";
 import AddAccommodation from "../accommodations/AddAccommodation";
 import AuthService from "../../service/AuthService";
 import QuestionsPage from "../question/QuestionsPage";
-import Question from "../question/Question";
+import QuestionPage from "../question/QuestionPage";
 
 
 const Routes = () => {
@@ -20,7 +20,7 @@ const Routes = () => {
                     <Route path="/" exact render={() => AuthService.getCurrentUser() ? <HomePage /> : <Redirect to="/login"/>} />
                     <Route path="/add-accommodation" exact component={AddAccommodation}/>
                     <Route path="/questions/:customerId" exact component={QuestionsPage} />
-                    <Route path="/question/:questionId" exact component={Question} />
+                    <Route path="/question/:questionId" exact component={QuestionPage} />
                 </Switch>
             </Router>
         </div>
