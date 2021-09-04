@@ -10,16 +10,12 @@ import Paper from '@material-ui/core/Paper';
 import AuthService from "../../service/AuthService";
 import Navbar from "../main/Navbar";
 import QuestionService from "../../service/QuestionService";
-
-// const useStyles = makeStyles({
-//     table: {
-//         minWidth: 650,
-//     },
-// });
+import Button from "@material-ui/core/Button";
+import {useHistory} from "react-router-dom";
 
 const QuestionsPage = (props) => {
+    const history = useHistory();
     const customerId = props.match.params.customerId;
-    // const classes = useStyles();
     const [questions, setQuestions] = useState([]);
 
     useEffect(() => {
@@ -47,6 +43,7 @@ const QuestionsPage = (props) => {
                                         <TableCell align="right" style={{backgroundColor: "black", color: "white"}}>Seen</TableCell>
                                         <TableCell align="right" style={{backgroundColor: "black", color: "white"}}>Status</TableCell>
                                         <TableCell align="right" style={{backgroundColor: "black", color: "white"}}>Response</TableCell>
+                                        <TableCell align="right" style={{backgroundColor: "black", color: "white"}}></TableCell>
                                     </TableRow>
                                 </TableHead>
                                 <TableBody>
@@ -59,6 +56,7 @@ const QuestionsPage = (props) => {
                                             <TableCell align="right">{question.seen ? "seen" : "not seen"}</TableCell>
                                             <TableCell align="right">{question.solved ? "solved" : "pending"}</TableCell>
                                             <TableCell align="right">{question.response}</TableCell>
+                                            <TableCell align="right"><Button variant="contained" color="primary" onClick={() => history.push(`/question/${question.id}`)}>View</Button></TableCell>
                                         </TableRow>
                                     ))}
                                 </TableBody>

@@ -15,8 +15,8 @@ const Routes = () => {
         <div>
             <Router>
                 <Switch>
-                    <Route path="/register" exact component={Register}/>
-                    <Route path="/login" exact component={Login}/>
+                    <Route path="/register" exact render={() => !AuthService.getCurrentUser() ? <Register /> : <Redirect to="/"/>} />
+                    <Route path="/login" exact render={() => !AuthService.getCurrentUser() ? <Login /> : <Redirect to="/"/>} />
                     <Route path="/" exact render={() => AuthService.getCurrentUser() ? <HomePage /> : <Redirect to="/login"/>} />
                     <Route path="/add-accommodation" exact component={AddAccommodation}/>
                     <Route path="/questions/:customerId" exact component={QuestionsPage} />
