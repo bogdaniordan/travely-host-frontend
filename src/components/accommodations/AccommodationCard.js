@@ -36,11 +36,11 @@ const AccommodationCard = ({accommodation}) => {
                     <ul className="postcard__tagbox">
                     {/*    <li className="tag__item play green" onClick={goToAllQuestions}><i className="fas fa-tag mr-2"></i>All questions</li>*/}
                     {/*    <li className="tag__item play blue" onClick={leaveQuestion}><i className="fas fa-tag mr-2"></i>Leave question</li>*/}
-                        {
-                            accommodation.status === "Booked" && (
-                                <li className="tag__item play blue" onClick={() => history.push(`/questions/${booking.customer.id}`)}><i className="fas fa-clock mr-2"></i>Questions</li>
-                            )
-                        }
+                    {/*    {*/}
+                    {/*        accommodation.status === "Booked" && (*/}
+                    {/*            <li className="tag__item play blue" onClick={() => history.push(`/questions/${booking.customer.id}`)}><i className="fas fa-clock mr-2"></i>Questions</li>*/}
+                    {/*        )*/}
+                    {/*    }*/}
                     {/*    {*/}
                     {/*        new Date(getFormattedDate(booking.checkInDate)) > new Date() && (*/}
                     {/*            <li className="tag__item play red" onClick={openModal}>Cancel booking</li>*/}

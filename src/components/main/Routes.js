@@ -19,7 +19,7 @@ const Routes = () => {
                     <Route path="/login" exact render={() => !AuthService.getCurrentUser() ? <Login /> : <Redirect to="/"/>} />
                     <Route path="/" exact render={() => AuthService.getCurrentUser() ? <HomePage /> : <Redirect to="/login"/>} />
                     <Route path="/add-accommodation" exact component={AddAccommodation}/>
-                    <Route path="/questions/:customerId" exact component={QuestionsPage} />
+                    <Route path="/questions" exact component={QuestionsPage} />
                     <Route path="/question/:questionId" exact component={QuestionPage} />
                 </Switch>
             </Router>

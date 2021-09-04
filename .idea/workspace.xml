@@ -7,9 +7,10 @@
     <list default="true" id="54af3455-6289-4698-bfb0-824572c3fe26" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/accommodations/AccommodationCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/accommodations/AccommodationCard.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/main/Routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/main/Routes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/question/DeleteQuestionModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/question/DeleteQuestionModal.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/question/Question.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/question/QuestionPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/question/QuestionPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/question/QuestionPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/question/QuestionsPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/question/QuestionsPage.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/service/QuestionService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/QuestionService.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -79,7 +80,7 @@
       <workItem from="1630679190112" duration="5780000" />
       <workItem from="1630751378062" duration="615000" />
       <workItem from="1630754399139" duration="5789000" />
-      <workItem from="1630761383196" duration="2610000" />
+      <workItem from="1630761383196" duration="8814000" />
     </task>
     <servers />
   </component>
