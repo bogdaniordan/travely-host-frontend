@@ -26,7 +26,7 @@ const QuestionsPage = () => {
     const [questions, setQuestions] = useState([]);
 
     useEffect(() => {
-        QuestionService.getAllQuestion().then(res => setQuestions(res.data))
+        QuestionService.getAllQuestions().then(res => setQuestions(res.data))
     }, []);
 
         const showQuestions = () => {
@@ -85,7 +85,7 @@ const QuestionsPage = () => {
                         <div
                             style={{ margin: "0 auto", textAlign: "center", marginTop: "15%" }}
                         >
-                            <h3 className="title">There are no questions from your customers at the moment.</h3>
+                            <h3 className="title">There are no unresolved questions from your customers at the moment.</h3>
                         </div>
                     )}
                 </div>

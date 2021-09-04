@@ -1,24 +1,29 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import AuthService from "../../service/AuthService";
-import {Badge} from "@material-ui/core";
+import {Badge, Popover} from "@material-ui/core";
 import MailIcon from '@material-ui/icons/Mail';
+import NotificationsNoneIcon from '@material-ui/icons/NotificationsNone';
+import NotificationsActiveIcon from '@material-ui/icons/NotificationsActive';
+import Button from "@material-ui/core/Button";
+import Typography from "@material-ui/core/Typography";
+import QuestionService from "../../service/QuestionService";
+import Link from 'react-router-dom/Link';
+import Notifications from "./Notifications";
 
-const useStyles = makeStyles((theme) => ({
-    root: {
-        '& > *': {
-            margin: theme.spacing(1),
-        },
-    },
-}));
+
+
 
 const Navbar = ({title, subtitle}) => {
     const [currentUser, setCurrentUser] = useState(AuthService.getCurrentUser());
-    const classes = useStyles();
+
+
 
     const logout = () => {
         AuthService.logout();
     }
+
+
 
     return (
         <div>
@@ -41,11 +46,7 @@ const Navbar = ({title, subtitle}) => {
                                     <a className="nav-link active" aria-current="page" href="/login" onClick={logout}>Logout</a>
                                 </li>
                                 <li className="nav-item">
-                                    <div className={classes.root}>
-                                        <Badge badgeContent={4} color="primary">
-                                            <MailIcon style={{backgroundColor: "white"}}/>
-                                        </Badge>
-                                    </div>
+                                    <Notifications />
                                 </li>
                             </ul>
                         ) : (
@@ -75,7 +76,6 @@ const Navbar = ({title, subtitle}) => {
                             </h1>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>

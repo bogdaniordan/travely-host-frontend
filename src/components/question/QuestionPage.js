@@ -35,12 +35,7 @@ const QuestionPage = (props) => {
     }
 
     useEffect(() => {
-        QuestionService.getQuestion(questionId).then(res => {
-            setQuestion(res.data);
-            if (!res.data.seen) {
-                QuestionService.markAsSeen(questionId);
-            }
-        });
+        QuestionService.getQuestion(questionId).then(res => setQuestion(res.data))
     }, [])
 
     const handleChange = e => {

@@ -28,7 +28,7 @@ class QuestionService {
         return axios.get(`${QUESTION_SERVICE_API_URL}/${id}`, {headers: AuthHeader()})
    }
 
-   getAllQuestion() {
+   getAllQuestions() {
         return axios.get(`${QUESTION_SERVICE_API_URL}/all`, {headers: AuthHeader()});
    }
 }

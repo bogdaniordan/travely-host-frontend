@@ -10,14 +10,15 @@ import {Container} from "@material-ui/core";
 const AddAccommodationForm = ({form, submitForm, setTitle, title, address, setAddress, location, setLocation, type, setType, price, setPrice, facilities, checkedFacilities, handleCheckboxChange,
                               checkBtn, setFirstImage, setSecondImage, setThirdImage}) => {
     return (
-        <div>
+        // <div>
             <Container
-                style={{border: "white", height: "100%", width: "50%", margin: "auto", textAlign: "center"}}
+                style={{height: "100%", width: "50%", margin: "auto", textAlign: "center"}}
             >
-                <h1>Add accommodation</h1>
+                {/*<h1>Add accommodation</h1>*/}
                 <Form
                     onSubmit={submitForm}
                     ref={form}
+                    style={{width: "50%", margin: "auto"}}
                 >
                     <div className="mb-3">
                         <label htmlFor="title" className="form-label">
@@ -149,7 +150,7 @@ const AddAccommodationForm = ({form, submitForm, setTitle, title, address, setAd
                     <CheckButton style={{ display: "none" }} ref={checkBtn} />
                 </Form>
             </Container>
-        </div>
+        // </div>
     );
 };
 
