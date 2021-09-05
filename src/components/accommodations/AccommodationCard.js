@@ -1,14 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import Modal from "react-modal";
 import "./AccommodationCardStyling.scss";
-import {useHistory} from "react-router-dom";
 import BookingService from "../../service/BookingService";
 import {customStyles} from "../../styling/ModalStyling";
-import DeleteQuestionModal from "../question/DeleteQuestionModal";
 import DeclineBookingModal from "./DeclineBookingModal";
 
 const AccommodationCard = ({accommodation}) => {
-    const history = useHistory();
     const [booking, setBooking] = useState({});
     const [modalIsOpen, setIsOpen] = useState(false)
 
@@ -27,7 +24,9 @@ const AccommodationCard = ({accommodation}) => {
     }
 
     const declineBooking = () => {
-        BookingService.declineBooking(booking.id).then(res => history.push("/"))
+        BookingService.declineBooking(booking.id);
+        closeModal();
+        window.location.reload();
     }
 
     return (

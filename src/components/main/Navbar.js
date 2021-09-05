@@ -26,6 +26,9 @@ const Navbar = ({title, subtitle}) => {
                                 <li className="nav-item">
                                     <a className="nav-link active" aria-current="page" href="/questions">Questions</a>
                                 </li>
+                                <li className="nav-item">>
+                                    <a className="nav-link active" aria-current="page" href="/cleaners">Cleaners</a>
+                                </li>
                                 <li className="nav-item">
                                     <Notifications />
                                 </li>

@@ -8,6 +8,7 @@ import AddAccommodation from "../accommodations/AddAccommodation";
 import AuthService from "../../service/AuthService";
 import QuestionsPage from "../question/QuestionsPage";
 import QuestionPage from "../question/QuestionPage";
+import CleanersPage from "../cleaner/CleanersPage";
 
 
 const Routes = () => {
@@ -21,6 +22,7 @@ const Routes = () => {
                     <Route path="/add-accommodation" exact component={AddAccommodation}/>
                     <Route path="/questions" exact component={QuestionsPage} />
                     <Route path="/question/:questionId" exact component={QuestionPage} />
+                    <Route path="/cleaners" exact component={CleanersPage} />
                 </Switch>
             </Router>
         </div>

@@ -9,7 +9,7 @@ class BookingService {
     }
 
     declineBooking(id) {
-        return axios.delete(`${BOOKING_SERVICE_API_URL}/decline-booking/${id}`, {headers: AuthHeader()});
+        return axios.delete(`${BOOKING_SERVICE_API_URL}/${id}`, {headers: AuthHeader()});
     }
 }
 
