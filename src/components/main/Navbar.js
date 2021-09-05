@@ -1,29 +1,13 @@
 import React, {useState, useEffect} from "react";
-import { makeStyles } from '@material-ui/core/styles';
 import AuthService from "../../service/AuthService";
-import {Badge, Popover} from "@material-ui/core";
-import MailIcon from '@material-ui/icons/Mail';
-import NotificationsNoneIcon from '@material-ui/icons/NotificationsNone';
-import NotificationsActiveIcon from '@material-ui/icons/NotificationsActive';
-import Button from "@material-ui/core/Button";
-import Typography from "@material-ui/core/Typography";
-import QuestionService from "../../service/QuestionService";
-import Link from 'react-router-dom/Link';
 import Notifications from "./Notifications";
-
-
-
 
 const Navbar = ({title, subtitle}) => {
     const [currentUser, setCurrentUser] = useState(AuthService.getCurrentUser());
 
-
-
     const logout = () => {
         AuthService.logout();
     }
-
-
 
     return (
         <div>
@@ -39,15 +23,16 @@ const Navbar = ({title, subtitle}) => {
                         {currentUser ? (
                             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
 
-                                {/*<li className="nav-item">*/}
-                                {/*    <a className="nav-link active" aria-current="page" href="/profile">Profile</a>*/}
-                                {/*</li>*/}
                                 <li className="nav-item">
-                                    <a className="nav-link active" aria-current="page" href="/login" onClick={logout}>Logout</a>
+                                    <a className="nav-link active" aria-current="page" href="/questions">Questions</a>
                                 </li>
                                 <li className="nav-item">
                                     <Notifications />
                                 </li>
+                                <li className="nav-item" style={{marginLeft: "900px"}}>
+                                    <a className="nav-link active" aria-current="page" href="/login" onClick={logout}>Logout</a>
+                                </li>
+
                             </ul>
                         ) : (
                             <ul className="navbar-nav me-auto mb-2 mb-lg-0">

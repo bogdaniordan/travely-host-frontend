@@ -15,6 +15,7 @@ import AuthService from "../../service/AuthService";
 import {useStyles} from "./AuthStyles";
 import Navbar from "../main/Navbar";
 import Footer from "../main/Footer";
+import {Paper} from "@material-ui/core";
 
 const Login = () => {
     const classes = useStyles();
@@ -61,8 +62,9 @@ const Login = () => {
     }
 
     return (
-        <>
+        <div style={{textAlign: "center"}}>
             <Navbar title={"Login as host"} subtitle={"Please fill in your credentials."}/>
+            <Paper style={{width: "600px", height: "400px", margin: "auto"}} elevation={3}>
             <Container maxWidth="xs" className="sign-up-container">
                 <CssBaseline />
                 <div className={classes.paper}>
@@ -125,7 +127,8 @@ const Login = () => {
                     </Form>
                 </div>
             </Container>
-        </>
+            </Paper>
+        </div>
     );
 }
 

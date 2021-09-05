@@ -8,6 +8,9 @@ class BookingService {
         return axios.get(`${BOOKING_SERVICE_API_URL}/by-accommodation/${id}`, {headers: AuthHeader()})
     }
 
+    declineBooking(id) {
+        return axios.delete(`${BOOKING_SERVICE_API_URL}/decline-booking/${id}`, {headers: AuthHeader()});
+    }
 }
 
 export default new BookingService;

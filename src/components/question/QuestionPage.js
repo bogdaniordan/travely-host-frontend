@@ -50,7 +50,6 @@ const QuestionPage = (props) => {
     return (
         <div>
             <Navbar title={"QuestionPage"} subtitle={"Answer, delete or mark this questions as solved."}/>
-            {/*<Paper elevation={2}>*/}
                 <Container style={{maxWidth: "70%", textAlign: "center"}}>
                     <Link to="/questions/">Back to questions</Link>
                     <br/>
@@ -122,7 +121,6 @@ const QuestionPage = (props) => {
                         </div>
                     </div>
                 </Container>
-            {/*</Paper>*/}
         </div>
     );
 };
