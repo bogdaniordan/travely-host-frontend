@@ -25,15 +25,27 @@ const CleanersPage = () => {
         CleanerService.findAllCleaners().then(res => setCleaners(res.data))
     }, [])
 
+    const setCleanersFilter = e => {
+        CleanerService.filterByStatus(e.target.value).then(res => setCleaners(res.data))
+    }
+
     return (
         <div>
-            <Navbar />
-            <div className="container" >
+            <Navbar title="Cleaners" subtitle="Hire cleaners to keep your accommodations spotless." />
+            <div className="container">
+                <div style={{width: "300px", marginTop: "30px", marginLeft: "45%"}}>
+                    <p>Filter by hiring status</p>
+                    <select className="form-select" aria-label="Default select example" style={{width: "200px"}} onChange={setCleanersFilter}>
+                        <option value="Any status">Any status</option>
+                        <option value="Hired">Hired</option>
+                        <option value="Free">Free</option>
+                    </select>
+                </div>
                 <List style={{display: "flex"}}>
                     {
                         cleaners.map(
                             cleaner => (
-                                <Paper elevation={2} style={{margin: "45px", width: "300px"}}>
+                                <Paper elevation={2} style={{margin: "30px", width: "350px"}}>
                                 <ListItem alignItems="flex-start">
                                     <ListItemAvatar>
                                         <Avatar alt="Remy Sharp" src="http://cdn.onlinewebfonts.com/svg/img_507212.png" />
@@ -45,8 +57,14 @@ const CleanersPage = () => {
                                             key={cleaner.id}
                                             primary={
                                                 <>
-                                                    <p>cleaner.name</p>
-                                                    {/*<small><Button variant="contained" color="primary">HIRE</Button></small>*/}
+                                                    <p>{cleaner.name}</p>
+                                                    <small>
+                                                        {
+                                                            !cleaner.hired && (
+                                                                <Button style={{height: "20px", width: "40px"}} variant="contained" color="primary">HIRE</Button>
+                                                            )
+                                                        }
+                                                    </small>
                                                 </>
                                             }
                                             secondary={
@@ -58,12 +76,7 @@ const CleanersPage = () => {
                                                         color="textPrimary"
                                                     >
                                                         <small key={cleaner.id}>
-                                                            {/*<Link*/}
-                                                            {/*    to={`/customers/${cleaner.id}`}*/}
-                                                            {/*    key={cleaner.id}*/}
-                                                            {/*>*/}
                                                                 {cleaner.experience}
-                                                            {/*</Link>*/}
                                                         </small>
                                                     </Typography>
                                                     {" - "}

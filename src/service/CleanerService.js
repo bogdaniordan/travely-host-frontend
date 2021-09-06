@@ -7,6 +7,22 @@ class CleanerService {
     findAllCleaners() {
         return axios.get(`${CLEANER_SERVICE_API_URL}/all`, {headers: AuthHeader()})
     }
+
+    hireCleaner(cleanerId, hostId) {
+        return axios.get(`${CLEANER_SERVICE_API_URL}/hire-cleaner/${cleanerId}/${hostId}`, {headers: AuthHeader()});
+    }
+
+    fireCleaner(id) {
+        return axios.get(`${CLEANER_SERVICE_API_URL}/fire-cleaner/${id}`, {headers: AuthHeader()})
+    }
+
+    setCleanToCleanAccommodation(cleanerId, accommodationId) {
+        return axios.get(`${CLEANER_SERVICE_API_URL}/clean-accommodation/${cleanerId}/${accommodationId}`, {headers: AuthHeader()});
+    }
+
+    filterByStatus(status) {
+        return axios.get(`${CLEANER_SERVICE_API_URL}/filter-by-status/${status}`, {headers: AuthHeader()});
+    }
 }
 
 export default new CleanerService;
