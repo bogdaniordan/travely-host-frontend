@@ -8,6 +8,7 @@ import Button from "@material-ui/core/Button";
 import CleanerService from "../../service/CleanerService";
 import AuthService from "../../service/AuthService";
 import {Paper} from "@material-ui/core";
+import Avatar from "@material-ui/core/Avatar";
 
 const AccommodationCard = ({accommodation}) => {
     const [booking, setBooking] = useState({});
@@ -15,17 +16,23 @@ const AccommodationCard = ({accommodation}) => {
     const [employedCleaners, setEmployedCleaners] = useState([]);
     const [accommodationCanBeCleaned, setAccommodationCanBeCleaned] = useState(false);
     const [currentCleaner, setCurrentCleaner] = useState(0);
+    const [cleanersCurrentlyCleaningThis, setCleanersCurrentlyCleaningThis] = useState([]);
 
     useEffect(() => {
-        CleanerService.accommodationCanBeCleaned(accommodation.id).then(res => {
-            console.log(res.data)
-            setAccommodationCanBeCleaned(res.data)
-        })
+        getCurrentCleanersOfThisAccommodations();
+        CleanerService.accommodationCanBeCleaned(accommodation.id).then(res => setAccommodationCanBeCleaned(res.data))
         CleanerService.getAllForHost(AuthService.getCurrentUser().id).then(res => setEmployedCleaners(res.data));
         if (accommodation.status === "Booked") {
             BookingService.getByAccommodationId(accommodation.id).then(res => setBooking(res.data))
         }
     }, [])
+
+    const getCurrentCleanersOfThisAccommodations = () => {
+        CleanerService.accommodationIsCleanedBy(accommodation.id).then(res => {
+            setCleanersCurrentlyCleaningThis(res.data)
+            console.log(res.data)
+        })
+    }
 
     const openModal = () => {
         setIsOpen(true);
@@ -46,7 +53,10 @@ const AccommodationCard = ({accommodation}) => {
     }
 
     const setCleanerToCleanAccommodation = () => {
-        CleanerService.setCleanToCleanAccommodation(currentCleaner, accommodation.id).then(res => setAccommodationCanBeCleaned(false));
+        CleanerService.setToCleanAccommodation(currentCleaner, accommodation.id).then(res => {
+            setAccommodationCanBeCleaned(false)
+            getCurrentCleanersOfThisAccommodations();
+        });
     }
 
     return (
@@ -58,31 +68,40 @@ const AccommodationCard = ({accommodation}) => {
                 <div className="postcard__text t-dark">
                     <h1 className="postcard__title blue"><a href="#">{accommodation.title}</a></h1>
                     {
-                        accommodationCanBeCleaned && (
+                        accommodationCanBeCleaned ? (
+                                    <div className="select-cleaner-container" >
+                                        {
+                                            employedCleaners.filter(cleaner => !cleaner.currentCleaningJob).length > 0 ? (
+                                                <Paper elevation={2} style={{backgroundColor: "#212529", color: "white"}}>
+                                                    <small className="small-cleaner-text">Select cleaner</small>
+                                                    <br/>
+                                                    <select style={{backgroundColor: "#212529", color: "white"}} className="form-select" aria-label="Default select example" onChange={setCleaner}>
+                                                        <option value="" selected disabled hidden>Choose type</option>
+                                                        {
+                                                            employedCleaners.filter(cleaner => !cleaner.currentCleaningJob).map(
+                                                                cleaner => <option value={cleaner.id}>{cleaner.name}</option>
+                                                            )
+                                                        }
+                                                    </select>
+                                                    <Button onClick={setCleanerToCleanAccommodation} variant="contained" color="primary" style={{height: "20px", width: "30px"}}>Set</Button>
+                                                </Paper>
+                                            ) : (
+                                                <Paper elevation={2} style={{backgroundColor: "#212529", color: "white"}}>
+                                                    <small className="small-cleaner-text">No cleaners available.</small>
+                                                </Paper>
+                                            )
+                                        }
+                                    </div>
+                        ) : (
+                            cleanersCurrentlyCleaningThis.length === 1 && (
                                 <div className="select-cleaner-container">
-                                    {
-                                        employedCleaners.filter(cleaner => !cleaner.currentCleaningJob).length > 0 ? (
-                                            <Paper elevation={2}>
-                                                <small className="small-cleaner-text">Select cleaner</small>
-                                                <br/>
-                                                <select className="form-select" aria-label="Default select example" onChange={setCleaner}>
-                                                    <option value="" selected disabled hidden>Choose type</option>
-                                                    {
-                                                        employedCleaners.filter(cleaner => !cleaner.currentCleaningJob).map(
-                                                            cleaner => <option value={cleaner.id}>{cleaner.name}</option>
-                                                        )
-                                                    }
-                                                </select>
-                                                <Button onClick={setCleanerToCleanAccommodation} variant="contained" color="primary" style={{height: "20px", width: "30px"}}>Set</Button>
-                                            </Paper>
-                                        ) : (
-                                            <Paper elevation={2}>
-                                                <small className="small-cleaner-text">No cleaners available.</small>
-                                            </Paper>
-                                        )
-                                    }
+                                    <Avatar style={{margin: "10px"}} alt="Remy Sharp" src="http://cdn.onlinewebfonts.com/svg/img_507212.png" />
+                                    <Paper elevation={2} style={{backgroundColor: "#212529", color: "white"}}>
+                                        <small className="small-cleaner-text">Currently being cleaned by {cleanersCurrentlyCleaningThis[0].name}</small>
+                                    </Paper>
                                 </div>
-                        )
+
+                            ))
                     }
 
                     {/*<div className="postcard__subtitle small">*/}

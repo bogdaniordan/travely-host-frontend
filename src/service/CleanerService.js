@@ -16,10 +16,6 @@ class CleanerService {
         return axios.get(`${CLEANER_SERVICE_API_URL}/fire-cleaner/${id}`, {headers: AuthHeader()})
     }
 
-    setCleanToCleanAccommodation(cleanerId, accommodationId) {
-        return axios.get(`${CLEANER_SERVICE_API_URL}/clean-accommodation/${cleanerId}/${accommodationId}`, {headers: AuthHeader()});
-    }
-
     filterByStatus(status) {
         return axios.get(`${CLEANER_SERVICE_API_URL}/filter-by-status/${status}`, {headers: AuthHeader()});
     }
@@ -34,6 +30,10 @@ class CleanerService {
 
     setToCleanAccommodation(cleanerId, accommodationId) {
         return axios.get(`${CLEANER_SERVICE_API_URL}/set-clean/${cleanerId}/${accommodationId}`, {headers: AuthHeader()})
+    }
+
+    accommodationIsCleanedBy(accommodationId) {
+        return axios.get(`${CLEANER_SERVICE_API_URL}/accommodation-is-cleaned-by/${accommodationId}`, {headers: AuthHeader()});
     }
 }
 
