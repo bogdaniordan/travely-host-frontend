@@ -300,3 +300,11 @@ h6 {
 .close-modal-btn-container {
   text-align: right;
 }
+
+.select-cleaner-container {
+  border-radius: 30px;
+  width: 200px;
+  position: absolute;
+  margin: 20px 20px 70px 700px;
+  text-align: center;
+}
