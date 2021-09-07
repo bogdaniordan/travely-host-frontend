@@ -9,15 +9,15 @@ import CleanerService from "../../service/CleanerService";
 import AuthService from "../../service/AuthService";
 import {Paper} from "@material-ui/core";
 
-
 const AccommodationCard = ({accommodation}) => {
     const [booking, setBooking] = useState({});
     const [modalIsOpen, setIsOpen] = useState(false)
     const [employedCleaners, setEmployedCleaners] = useState([]);
     const [accommodationCanBeCleaned, setAccommodationCanBeCleaned] = useState(false);
+    const [currentCleaner, setCurrentCleaner] = useState(0);
 
     useEffect(() => {
-        CleanerService.accommodationCanBeCleaned(accommodation.id, AuthService.getCurrentUser().id).then(res => {
+        CleanerService.accommodationCanBeCleaned(accommodation.id).then(res => {
             console.log(res.data)
             setAccommodationCanBeCleaned(res.data)
         })
@@ -41,6 +41,14 @@ const AccommodationCard = ({accommodation}) => {
         window.location.reload();
     }
 
+    const setCleaner= e => {
+        setCurrentCleaner(e.target.value)
+    }
+
+    const setCleanerToCleanAccommodation = () => {
+        CleanerService.setCleanToCleanAccommodation(currentCleaner, accommodation.id).then(res => setAccommodationCanBeCleaned(false));
+    }
+
     return (
         <div>
             <article className="postcard light blue">
@@ -52,21 +60,27 @@ const AccommodationCard = ({accommodation}) => {
                     {
                         accommodationCanBeCleaned && (
                                 <div className="select-cleaner-container">
-                                    <Paper elevation={2}>
-
-                                        <small style={{margin: "10px"}}>Select cleaner</small>
-                                        <br/>
-                                        <select className="form-select" aria-label="Default select example">
-                                            <option value="" selected disabled hidden>Choose type</option>
-                                            {
-                                                employedCleaners.filter(cleaner => !cleaner.currentCleaningJob).map(
-                                                    cleaner => <option value={cleaner.id}>{cleaner.name}</option>
-                                                )
-                                            }
-                                        </select>
-                                        <Button variant="contained" color="primary" style={{height: "20px", width: "30px"}}>Set</Button>
-                                    </Paper>
-
+                                    {
+                                        employedCleaners.filter(cleaner => !cleaner.currentCleaningJob).length > 0 ? (
+                                            <Paper elevation={2}>
+                                                <small className="small-cleaner-text">Select cleaner</small>
+                                                <br/>
+                                                <select className="form-select" aria-label="Default select example" onChange={setCleaner}>
+                                                    <option value="" selected disabled hidden>Choose type</option>
+                                                    {
+                                                        employedCleaners.filter(cleaner => !cleaner.currentCleaningJob).map(
+                                                            cleaner => <option value={cleaner.id}>{cleaner.name}</option>
+                                                        )
+                                                    }
+                                                </select>
+                                                <Button onClick={setCleanerToCleanAccommodation} variant="contained" color="primary" style={{height: "20px", width: "30px"}}>Set</Button>
+                                            </Paper>
+                                        ) : (
+                                            <Paper elevation={2}>
+                                                <small className="small-cleaner-text">No cleaners available.</small>
+                                            </Paper>
+                                        )
+                                    }
                                 </div>
                         )
                     }

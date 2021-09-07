@@ -52,52 +52,55 @@ const CleanersPage = () => {
                 </div>
                 <List style={{display: "flex"}}>
                     {
-                        cleaners.map(
-                            cleaner => (
-                                <Paper elevation={2} style={{margin: "30px", width: "350px"}}>
-                                <ListItem alignItems="flex-start">
-                                    <ListItemAvatar>
-                                        <Avatar alt="Remy Sharp" src="http://cdn.onlinewebfonts.com/svg/img_507212.png" />
-                                    </ListItemAvatar>
-                                    {/*<Link*/}
-                                    {/*    // to={`/customers/${question.customer.id}/questions/${question.id}`}*/}
-                                    {/*>*/}
-                                        <ListItemText
-                                            key={cleaner.id}
-                                            primary={
-                                                <>
-                                                    <p>{cleaner.name}</p>
-                                                    <small>
-                                                        {
-                                                            !cleaner.hired && (
-                                                                <Button style={{height: "20px", width: "40px"}} onClick={() => hireCleaner(cleaner.id)} variant="contained" color="primary">HIRE</Button>
-                                                            )
-                                                        }
-                                                    </small>
-                                                </>
-                                            }
-                                            secondary={
-                                                <React.Fragment>
-                                                    <Typography
-                                                        component="span"
-                                                        variant="body2"
-                                                        className={classes.inline}
-                                                        color="textPrimary"
-                                                    >
-                                                        <small key={cleaner.id}>
-                                                                {cleaner.experience}
+                        cleaners.length > 0 ? (
+                            cleaners.map(
+                                cleaner => (
+                                    <Paper elevation={2} style={{margin: "30px", width: "350px"}}>
+                                        <ListItem alignItems="flex-start">
+                                            <ListItemAvatar>
+                                                <Avatar alt="Remy Sharp" src="http://cdn.onlinewebfonts.com/svg/img_507212.png" />
+                                            </ListItemAvatar>
+                                            {/*<Link*/}
+                                            {/*    // to={`/customers/${question.customer.id}/questions/${question.id}`}*/}
+                                            {/*>*/}
+                                            <ListItemText
+                                                key={cleaner.id}
+                                                primary={
+                                                    <>
+                                                        <p>{cleaner.name}</p>
+                                                        <small>
+                                                            {
+                                                                !cleaner.hired && (
+                                                                    <Button style={{height: "20px", width: "40px"}} onClick={() => hireCleaner(cleaner.id)} variant="contained" color="primary">HIRE</Button>
+                                                                )
+                                                            }
                                                         </small>
-                                                    </Typography>
-                                                    {" - "}
-                                                    {cleaner.hired ? "hired" : "free"}
-                                                </React.Fragment>
-                                            }
-                                        />
-                                    {/*</Link>*/}
-                                </ListItem>
-                                </Paper>
+                                                    </>
+                                                }
+                                                secondary={
+                                                    <React.Fragment>
+                                                        <Typography
+                                                            component="span"
+                                                            variant="body2"
+                                                            className={classes.inline}
+                                                            color="textPrimary"
+                                                        >
+                                                            <small key={cleaner.id}>
+                                                                {cleaner.experience}
+                                                            </small>
+                                                        </Typography>
+                                                        {" - "}
+                                                        {cleaner.hired ? "hired" : "free"}
+                                                    </React.Fragment>
+                                                }
+                                            />
+                                            {/*</Link>*/}
+                                        </ListItem>
+                                    </Paper>
+                                )
                             )
-                        )
+
+                        ) : (<h5>No results for your search.</h5>)
                     }
 
                 </List>

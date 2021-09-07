@@ -28,8 +28,12 @@ class CleanerService {
         return axios.get(`${CLEANER_SERVICE_API_URL}/all-for-host/${id}`, {headers: AuthHeader()});
     }
 
-    accommodationCanBeCleaned(accommodationId, hostId) {
-        return axios.get(`${CLEANER_SERVICE_API_URL}/can-be-cleaned/${accommodationId}/${hostId}`, {headers: AuthHeader()})
+    accommodationCanBeCleaned(accommodationId) {
+        return axios.get(`${CLEANER_SERVICE_API_URL}/can-be-cleaned/${accommodationId}`, {headers: AuthHeader()})
+    }
+
+    setToCleanAccommodation(cleanerId, accommodationId) {
+        return axios.get(`${CLEANER_SERVICE_API_URL}/set-clean/${cleanerId}/${accommodationId}`, {headers: AuthHeader()})
     }
 }
 
