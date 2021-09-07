@@ -2,15 +2,38 @@ import React, {useEffect, useState} from 'react';
 import HostService from "../../service/HostService";
 import AuthService from "../../service/AuthService";
 import {useHistory} from "react-router-dom";
-import Button from "@material-ui/core/Button";
+import Avatar from "@material-ui/core/Avatar";
+import CleanerService from "../../service/CleanerService";
+import Link from 'react-router-dom/Link';
+import Modal from "react-modal";
+import {customStyles} from "../../styling/ModalStyling";
+import CleanersModal from "../cleaner/CleanersModal";
 
 const ProfileCard = () => {
-    const history = useHistory();
     const [host, setHost] = useState({});
+    const [employedCleaners, setEmployedCleaners] = useState([])
+    const [modalIsOpen, setIsOpen] = useState(false)
+
+    const openModal = () => {
+        setIsOpen(true);
+    }
+
+    const closeModal = () => {
+        setIsOpen(false);
+    }
+
+    const getCleaners = () => {
+        CleanerService.getAllForHost(AuthService.getCurrentUser().id).then(res => setEmployedCleaners(res.data))
+    }
 
     useEffect(() => {
         HostService.getById(AuthService.getCurrentUser().id).then(res => setHost(res.data))
+        getCleaners();
     }, [])
+
+    const fireCleaner = (id) => {
+        CleanerService.fireCleaner(id).then(res => getCleaners())
+    }
 
     return (
         <>
@@ -39,10 +62,16 @@ const ProfileCard = () => {
                                                     <p className="m-b-10 f-w-600">Email</p>
                                                     <h6 className="text-muted f-w-400">{host.email}</h6>
                                                 </div>
-                                                {/*<div className="col-sm-6">*/}
-                                                {/*    <p className="m-b-10 f-w-600">Phone</p>*/}
-                                                {/*    <h6 className="text-muted f-w-400">{customer.phoneNumber}</h6>*/}
-                                                {/*</div>*/}
+                                                <div className="col-sm-6">
+                                                    <p className="m-b-10 f-w-600">Hired cleaners</p>
+                                                    {
+                                                        employedCleaners.length > 0 ? (
+                                                            <h6 className="text-muted f-w-400">{employedCleaners.length} x <Link onClick={openModal}><Avatar style={{marginLeft: "30px"}} src="http://cdn.onlinewebfonts.com/svg/img_507212.png"/></Link></h6>
+                                                        ) : (
+                                                            <h6 className="text-muted f-w-400">No employed cleaners</h6>
+                                                        )
+                                                    }
+                                                </div>
                                             </div>
                                             {/*<h6 className="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Projects</h6>*/}
                                             <br/>
@@ -65,6 +94,17 @@ const ProfileCard = () => {
                                             {/*</div>*/}
                                         </div>
                                     </div>
+                                    <Modal
+                                        isOpen={modalIsOpen}
+                                        onRequestClose={closeModal}
+                                        style={customStyles}
+                                    >
+                                        <CleanersModal
+                                            closeModal={closeModal}
+                                            fireCleaner={fireCleaner}
+                                            employedCleaners={employedCleaners}
+                                        />
+                                    </Modal>
                                 </div>
                             </div>
                         </div>

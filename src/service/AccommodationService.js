@@ -20,7 +20,8 @@ class AccommodationService {
             pricePerNight: pricePerNight,
             status: "Free",
             facilities: facilities,
-            placeType: placeType
+            placeType: placeType,
+            cleaningStatus: "SUPER_CLEAN"
         },{headers: AuthHeader()});
     }
 

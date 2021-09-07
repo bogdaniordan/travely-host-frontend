@@ -6,6 +6,7 @@ import Typography from "@material-ui/core/Typography"
 import {makeStyles} from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import Navbar from "../main/Navbar";
+import AuthService from "../../service/AuthService";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -22,18 +23,26 @@ const CleanersPage = () => {
     const [cleaners, setCleaners] = useState([]);
 
     useEffect(() => {
-        CleanerService.findAllCleaners().then(res => setCleaners(res.data))
+        findAllCleaners();
     }, [])
+
+    const findAllCleaners = () => {
+        CleanerService.findAllCleaners().then(res => setCleaners(res.data))
+    }
 
     const setCleanersFilter = e => {
         CleanerService.filterByStatus(e.target.value).then(res => setCleaners(res.data))
+    }
+
+    const hireCleaner = (id) => {
+        CleanerService.hireCleaner(id, AuthService.getCurrentUser().id).then(res => findAllCleaners());
     }
 
     return (
         <div>
             <Navbar title="Cleaners" subtitle="Hire cleaners to keep your accommodations spotless." />
             <div className="container">
-                <div style={{width: "300px", marginTop: "30px", marginLeft: "45%"}}>
+                <div className="cleaners-container">
                     <p>Filter by hiring status</p>
                     <select className="form-select" aria-label="Default select example" style={{width: "200px"}} onChange={setCleanersFilter}>
                         <option value="Any status">Any status</option>
@@ -61,7 +70,7 @@ const CleanersPage = () => {
                                                     <small>
                                                         {
                                                             !cleaner.hired && (
-                                                                <Button style={{height: "20px", width: "40px"}} variant="contained" color="primary">HIRE</Button>
+                                                                <Button style={{height: "20px", width: "40px"}} onClick={() => hireCleaner(cleaner.id)} variant="contained" color="primary">HIRE</Button>
                                                             )
                                                         }
                                                     </small>

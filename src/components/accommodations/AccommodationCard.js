@@ -4,6 +4,8 @@ import "./AccommodationCardStyling.scss";
 import BookingService from "../../service/BookingService";
 import {customStyles} from "../../styling/ModalStyling";
 import DeclineBookingModal from "./DeclineBookingModal";
+import Button from "@material-ui/core/Button";
+
 
 const AccommodationCard = ({accommodation}) => {
     const [booking, setBooking] = useState({});
@@ -37,6 +39,14 @@ const AccommodationCard = ({accommodation}) => {
                 </a>
                 <div className="postcard__text t-dark">
                     <h1 className="postcard__title blue"><a href="#">{accommodation.title}</a></h1>
+                    <div style={{marginLeft: "auto"}}>
+                        <small>Select cleaner</small>
+                        <br/>
+                        <select>
+                            <option>XD</option>
+                        </select>
+                        <Button variant="contained" color="primary" style={{height: "20px", width: "30px"}}>Set</Button>
+                    </div>
                     {/*<div className="postcard__subtitle small">*/}
                     {/*    <time dateTime="2020-05-25 12:00:00">*/}
                     {/*        <i className="fas fa-calendar-alt mr-2"></i>Check in: {getFormattedDate(booking.checkInDate)}  Check out: {getFormattedDate(booking.checkoutDate)}*/}
@@ -45,8 +55,10 @@ const AccommodationCard = ({accommodation}) => {
                     {/*</div>*/}
                     <div className="postcard__bar"></div>
                     <div className="postcard__preview-txt">Location: {accommodation.location}</div>
+                    <div style={{marginLeft: "auto"}} className="postcard__preview-txt">Cleaning: {accommodation.cleaningStatus.toLocaleLowerCase().replace("_", " ")}</div>
                     <br/>
                     <div className="postcard__preview-txt">Accommodation type: {accommodation.placeType}</div>
+
                     <br/>
                     <div className="postcard__preview-txt">Status: {accommodation.status}</div>
                     <ul className="postcard__tagbox">
@@ -58,11 +70,6 @@ const AccommodationCard = ({accommodation}) => {
 
                             )
                         }
-                    {/*    {*/}
-                    {/*        new Date(getFormattedDate(booking.checkInDate)) > new Date() && (*/}
-                    {/*            <li className="tag__item play red" onClick={openModal}>Cancel booking</li>*/}
-                    {/*        )*/}
-                    {/*    }*/}
                     </ul>
                 </div>
             </article>

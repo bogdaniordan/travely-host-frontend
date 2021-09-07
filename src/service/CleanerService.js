@@ -23,6 +23,10 @@ class CleanerService {
     filterByStatus(status) {
         return axios.get(`${CLEANER_SERVICE_API_URL}/filter-by-status/${status}`, {headers: AuthHeader()});
     }
+
+    getAllForHost(id) {
+        return axios.get(`${CLEANER_SERVICE_API_URL}/all-for-host/${id}`, {headers: AuthHeader()});
+    }
 }
 
 export default new CleanerService;
