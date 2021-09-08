@@ -10,6 +10,7 @@ import QuestionsPage from "../question/QuestionsPage";
 import QuestionPage from "../question/QuestionPage";
 import CleanersPage from "../cleaner/CleanersPage";
 import Footer from "../navigation/Footer";
+import Testimonials from "../testimonials/Testimonials";
 
 
 const Routes = () => {
@@ -24,6 +25,7 @@ const Routes = () => {
                     <Route path="/questions" exact component={QuestionsPage} />
                     <Route path="/question/:questionId" exact component={QuestionPage} />
                     <Route path="/cleaners" exact component={CleanersPage} />
+                    <Route path="/testimonials/:accommodationId" exact component={Testimonials} />
                 </Switch>
             </Router>
             <Footer/>

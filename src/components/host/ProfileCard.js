@@ -8,23 +8,8 @@ import Modal from "react-modal";
 import {customStyles} from "../../styling/ModalStyling";
 import CleanersModal from "../cleaner/CleanersModal";
 import Tooltip from '@material-ui/core/Tooltip';
-import { makeStyles } from '@material-ui/core/styles';
-
-
-const useStyles = makeStyles((theme) => ({
-    fab: {
-        margin: theme.spacing(2),
-    },
-    absolute: {
-        position: 'absolute',
-        bottom: theme.spacing(2),
-        right: theme.spacing(3),
-    },
-}));
-
 
 const ProfileCard = () => {
-    const classes = useStyles();
     const [host, setHost] = useState({});
     const [employedCleaners, setEmployedCleaners] = useState([])
     const [modalIsOpen, setIsOpen] = useState(false);
@@ -54,7 +39,9 @@ const ProfileCard = () => {
     }
 
     const getHostBadges = () => {
-        HostService.getHostBadges(AuthService.getCurrentUser().id).then(res => setBadges(res.data))
+        setTimeout(() => {
+            HostService.getHostBadges(AuthService.getCurrentUser().id).then(res => setBadges(res.data))
+        }, 1500)
     }
 
     return (
@@ -100,15 +87,21 @@ const ProfileCard = () => {
                                             <div className="row">
                                                 <div className="col-sm-6">
                                                     <p className="m-b-10 f-w-600">Badges</p>
+                                                    <div style={{display: "flex"}}>
                                                     {
-                                                        badges.map(badge =>
-                                                            <h6 className="text-muted f-w-400">
-                                                                <small>{badge.name}</small>
-                                                                <Tooltip title={badge.description}>
-                                                                    <Avatar src={`http://localhost:8080/hosts/image/badge/${badge.picture}/download`} />
-                                                                </Tooltip>
-                                                            </h6>)
+                                                        badges.length > 0 ? (
+                                                            badges.map(badge =>
+                                                                <h6 className="text-muted f-w-400" style={{margin: "10px"}}>
+                                                                    <small>{badge.name}</small>
+                                                                    <Tooltip title={badge.description}>
+                                                                        <Avatar style={{margin: "15px", height: "50px", width: "50px"}} src={`http://localhost:8080/hosts/image/badge/${badge.picture}/download`} />
+                                                                    </Tooltip>
+                                                                </h6>)
+                                                        ) : (
+                                                            <h6 className="text-muted f-w-400">No badges earned yet.</h6>
+                                                        )
                                                     }
+                                                    </div>
                                                 </div>
                                             {/*    <div className="col-sm-6">*/}
                                             {/*        <p className="m-b-10 f-w-600">Age</p>*/}

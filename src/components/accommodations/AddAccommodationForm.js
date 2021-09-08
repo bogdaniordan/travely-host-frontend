@@ -46,18 +46,40 @@ const AddAccommodationForm = ({form, submitForm, setTitle, title, address, setAd
                             validations = {[required, validLength]}
                         />
                     </div>
+                    {/*<div className="mb-3">*/}
+                    {/*    <label htmlFor="location" className="form-label">*/}
+                    {/*        Location*/}
+                    {/*    </label>*/}
+                    {/*    <Input*/}
+                    {/*        type="text"*/}
+                    {/*        className="form-control"*/}
+                    {/*        name="location"*/}
+                    {/*        onChange={e => setLocation(e.target.value)}*/}
+                    {/*        value={location}*/}
+                    {/*        validations = {[required, validLength]}*/}
+                    {/*    />*/}
+                    {/*</div>*/}
+
                     <div className="mb-3">
-                        <label htmlFor="location" className="form-label">
+                        <label htmlFor="type" className="form-label">
                             Location
                         </label>
-                        <Input
-                            type="text"
-                            className="form-control"
+                        <Select
                             name="location"
+                            className="form-select form-select-sm mb-3"
+                            aria-label=".form-select-sm example"
                             onChange={e => setLocation(e.target.value)}
                             value={location}
-                            validations = {[required, validLength]}
-                        />
+                            validations = {[required]}
+                        >
+                            <option value="" selected disabled hidden>Choose location</option>
+                            <option value="London">London</option>
+                            <option value="Boston">Boston</option>
+                            <option value="Mumbai">Mumbai</option>
+                            <option value="New York">New York</option>
+                            <option value="Toronto">Toronto</option>
+                            <option value="Paris">Paris</option>
+                        </Select>
                     </div>
                     <div className="mb-3">
                         <label htmlFor="type" className="form-label">

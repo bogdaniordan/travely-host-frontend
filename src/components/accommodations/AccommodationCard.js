@@ -9,8 +9,10 @@ import CleanerService from "../../service/CleanerService";
 import AuthService from "../../service/AuthService";
 import {Paper} from "@material-ui/core";
 import Avatar from "@material-ui/core/Avatar";
+import {useHistory} from "react-router-dom";
 
 const AccommodationCard = ({accommodation}) => {
+    const history = useHistory();
     const [booking, setBooking] = useState({});
     const [modalIsOpen, setIsOpen] = useState(false)
     const [employedCleaners, setEmployedCleaners] = useState([]);
@@ -28,10 +30,7 @@ const AccommodationCard = ({accommodation}) => {
     }, [])
 
     const getCurrentCleanersOfThisAccommodations = () => {
-        CleanerService.accommodationIsCleanedBy(accommodation.id).then(res => {
-            setCleanersCurrentlyCleaningThis(res.data)
-            console.log(res.data)
-        })
+        CleanerService.accommodationIsCleanedBy(accommodation.id).then(res => setCleanersCurrentlyCleaningThis(res.data))
     }
 
     const openModal = () => {
@@ -57,6 +56,10 @@ const AccommodationCard = ({accommodation}) => {
             setAccommodationCanBeCleaned(false)
             getCurrentCleanersOfThisAccommodations();
         });
+    }
+
+    const getFormattedDate = (date) => {
+        return date[0] + "-" + date[1] + "-" + date[2]
     }
 
     return (
@@ -103,13 +106,17 @@ const AccommodationCard = ({accommodation}) => {
 
                             ))
                     }
+                    {
+                        accommodation.status === "Booked" && (
+                            <div className="postcard__subtitle small">
+                                <time dateTime="2020-05-25 12:00:00">
+                                    <i className="fas fa-calendar-alt mr-2"></i>Check in: {booking.checkInDate}  - Check out: {booking.checkoutDate}
+                                    {/*<i className="fas fa-calendar-alt mr-2"></i><strong>{booking.customer.firstName} {booking.customer.lastName}</strong>*/}
+                                </time>
+                            </div>
+                        )
+                    }
 
-                    {/*<div className="postcard__subtitle small">*/}
-                    {/*    <time dateTime="2020-05-25 12:00:00">*/}
-                    {/*        <i className="fas fa-calendar-alt mr-2"></i>Check in: {getFormattedDate(booking.checkInDate)}  Check out: {getFormattedDate(booking.checkoutDate)}*/}
-
-                    {/*    </time>*/}
-                    {/*</div>*/}
                     <div className="postcard__bar"></div>
                     <div className="postcard__preview-txt">Location: {accommodation.location}</div>
                     <br/>
@@ -125,6 +132,8 @@ const AccommodationCard = ({accommodation}) => {
                                 <li className="tag__item play red" onClick={openModal}><i className="fas fa-clock mr-2"></i>Decline booking</li>
                             )
                         }
+                        <li className="tag__item" onClick={() => history.push(`/testimonials/${accommodation.id}`)}><i className="fas fa-clock mr-2"></i>Testimonials</li>
+
                     </ul>
                     <div style={{marginLeft: "auto"}} className="postcard__preview-txt">Cleaning: {accommodation.cleaningStatus.toLocaleLowerCase().replace("_", " ")}</div>
 
