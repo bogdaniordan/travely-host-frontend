@@ -1,18 +1,34 @@
 import React, {useEffect, useState} from 'react';
 import HostService from "../../service/HostService";
 import AuthService from "../../service/AuthService";
-import {useHistory} from "react-router-dom";
 import Avatar from "@material-ui/core/Avatar";
 import CleanerService from "../../service/CleanerService";
 import Link from 'react-router-dom/Link';
 import Modal from "react-modal";
 import {customStyles} from "../../styling/ModalStyling";
 import CleanersModal from "../cleaner/CleanersModal";
+import Tooltip from '@material-ui/core/Tooltip';
+import { makeStyles } from '@material-ui/core/styles';
+
+
+const useStyles = makeStyles((theme) => ({
+    fab: {
+        margin: theme.spacing(2),
+    },
+    absolute: {
+        position: 'absolute',
+        bottom: theme.spacing(2),
+        right: theme.spacing(3),
+    },
+}));
+
 
 const ProfileCard = () => {
+    const classes = useStyles();
     const [host, setHost] = useState({});
     const [employedCleaners, setEmployedCleaners] = useState([])
-    const [modalIsOpen, setIsOpen] = useState(false)
+    const [modalIsOpen, setIsOpen] = useState(false);
+    const [badges, setBadges] = useState([]);
 
     const openModal = () => {
         setIsOpen(true);
@@ -27,12 +43,18 @@ const ProfileCard = () => {
     }
 
     useEffect(() => {
+        HostService.earnBadges(AuthService.getCurrentUser().id);
         HostService.getById(AuthService.getCurrentUser().id).then(res => setHost(res.data))
         getCleaners();
+        getHostBadges();
     }, [])
 
     const fireCleaner = (id) => {
         CleanerService.fireCleaner(id).then(res => getCleaners())
+    }
+
+    const getHostBadges = () => {
+        HostService.getHostBadges(AuthService.getCurrentUser().id).then(res => setBadges(res.data))
     }
 
     return (
@@ -75,16 +97,24 @@ const ProfileCard = () => {
                                             </div>
                                             {/*<h6 className="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Projects</h6>*/}
                                             <br/>
-                                            {/*<div className="row">*/}
-                                            {/*    <div className="col-sm-6">*/}
-                                            {/*        <p className="m-b-10 f-w-600">Address</p>*/}
-                                            {/*        <h6 className="text-muted f-w-400">{customer.address}</h6>*/}
-                                            {/*    </div>*/}
+                                            <div className="row">
+                                                <div className="col-sm-6">
+                                                    <p className="m-b-10 f-w-600">Badges</p>
+                                                    {
+                                                        badges.map(badge =>
+                                                            <h6 className="text-muted f-w-400">
+                                                                <small>{badge.name}</small>
+                                                                <Tooltip title={badge.description}>
+                                                                    <Avatar src={`http://localhost:8080/hosts/image/badge/${badge.picture}/download`} />
+                                                                </Tooltip>
+                                                            </h6>)
+                                                    }
+                                                </div>
                                             {/*    <div className="col-sm-6">*/}
                                             {/*        <p className="m-b-10 f-w-600">Age</p>*/}
                                             {/*        <h6 className="text-muted f-w-400">{customer.age}</h6>*/}
                                             {/*    </div>*/}
-                                            {/*</div>*/}
+                                            </div>
                                             {/*<br/>*/}
                                             {/*<div className="row">*/}
                                             {/*    <div className="col-sm-6">*/}

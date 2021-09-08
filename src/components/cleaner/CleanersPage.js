@@ -5,7 +5,7 @@ import CleanerService from "../../service/CleanerService";
 import Typography from "@material-ui/core/Typography"
 import {makeStyles} from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
-import Navbar from "../main/Navbar";
+import Navbar from "../navigation/Navbar";
 import AuthService from "../../service/AuthService";
 
 const useStyles = makeStyles((theme) => ({

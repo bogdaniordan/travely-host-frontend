@@ -13,7 +13,7 @@ import AuthService from "../../service/AuthService";
 import {required, nameValidation, validEmail, validUsername, validPassword} from "../../util/Validations"
 import {Grid, Paper} from "@material-ui/core";
 import {useStyles} from "./AuthStyles";
-import Navbar from "../main/Navbar";
+import Navbar from "../navigation/Navbar";
 
 const Register = () => {
     const classes = useStyles();

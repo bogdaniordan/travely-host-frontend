@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import Navbar from "../main/Navbar";
+import Navbar from "../navigation/Navbar";
 import Container from "@material-ui/core/Container";
 import {useHistory} from "react-router-dom";
 import Button from "@material-ui/core/Button";

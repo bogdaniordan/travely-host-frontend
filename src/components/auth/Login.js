@@ -13,8 +13,8 @@ import CheckButton from "react-validation/build/button";
 import {useHistory} from "react-router-dom";
 import AuthService from "../../service/AuthService";
 import {useStyles} from "./AuthStyles";
-import Navbar from "../main/Navbar";
-import Footer from "../main/Footer";
+import Navbar from "../navigation/Navbar";
+import Footer from "../navigation/Footer";
 import {Paper} from "@material-ui/core";
 
 const Login = () => {

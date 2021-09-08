@@ -54,7 +54,10 @@ const Notifications = () => {
     return (
         <div className={classes.root}>
             <Badge badgeContent={notificationsNumber} color="primary">
-                <Button variant="contained" style={{backgroundColor: "#212529"}}><NotificationsActiveIcon color="primary" onClick={handleClick}/></Button>
+                {/*<Button variant="contained" style={{backgroundColor: "#212529"}}><NotificationsActiveIcon color="primary" onClick={handleClick}/></Button>*/}
+                <Link>
+                    <NotificationsActiveIcon color="primary" onClick={handleClick}/>
+                </Link>
                 <Popover
                     id={id}
                     open={open}
@@ -69,7 +72,6 @@ const Notifications = () => {
                         horizontal: "center",
                     }}
                 >
-
                     <Typography className={classes.typography}>
                         {questions.filter(question => !question.seen).length > 0
                             ? questions.map((q) =>

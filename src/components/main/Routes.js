@@ -9,6 +9,7 @@ import AuthService from "../../service/AuthService";
 import QuestionsPage from "../question/QuestionsPage";
 import QuestionPage from "../question/QuestionPage";
 import CleanersPage from "../cleaner/CleanersPage";
+import Footer from "../navigation/Footer";
 
 
 const Routes = () => {
@@ -25,6 +26,7 @@ const Routes = () => {
                     <Route path="/cleaners" exact component={CleanersPage} />
                 </Switch>
             </Router>
+            <Footer/>
         </div>
     );
 };

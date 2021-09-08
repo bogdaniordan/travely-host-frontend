@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
-import Navbar from "../main/Navbar";
+import Navbar from "../navigation/Navbar";
 import QuestionService from "../../service/QuestionService";
 import Button from "@material-ui/core/Button";
 import {useHistory} from "react-router-dom";

@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import Navbar from "./Navbar";
+import Navbar from "../navigation/Navbar";
 import AccommodationService from "../../service/AccommodationService";
 import AuthService from "../../service/AuthService";
 import AccommodationCard from "../accommodations/AccommodationCard";

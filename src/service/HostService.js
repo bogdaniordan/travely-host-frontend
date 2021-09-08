@@ -7,6 +7,14 @@ class HostService {
     getById(id) {
         return axios.get(`${HOST_SERVICE_API_URL}/${id}`, {headers: AuthHeader()});
     }
+
+    earnBadges(id) {
+        return axios.get(`${HOST_SERVICE_API_URL}/earn-badges/${id}`, {headers: AuthHeader()})
+    }
+
+    getHostBadges(id) {
+        return axios.get(`${HOST_SERVICE_API_URL}/host-badges/${id}`, {headers: AuthHeader()});
+    }
 }
 
 export default new HostService;
