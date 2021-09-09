@@ -7,6 +7,10 @@ class TestimonialService {
     getAllForAccommodation(id) {
         return axios.get(`${TESTIMONIAL_SERVICE_API_URL}/get-all-for-accommodation/${id}`, {headers: AuthHeader()})
     }
+
+    getAverageRating(accommodationId) {
+        return axios.get(`${TESTIMONIAL_SERVICE_API_URL}/average-rating/${accommodationId}`, {headers: AuthHeader()});
+    }
 }
 
 export default new TestimonialService;

@@ -10,6 +10,8 @@ import AuthService from "../../service/AuthService";
 import {Paper} from "@material-ui/core";
 import Avatar from "@material-ui/core/Avatar";
 import {useHistory} from "react-router-dom";
+import AccommodationRating from "../testimonials/AccommodationRating";
+
 
 const AccommodationCard = ({accommodation}) => {
     const history = useHistory();
@@ -136,7 +138,7 @@ const AccommodationCard = ({accommodation}) => {
 
                     </ul>
                     <div style={{marginLeft: "auto"}} className="postcard__preview-txt">Cleaning: {accommodation.cleaningStatus.toLocaleLowerCase().replace("_", " ")}</div>
-
+                    <AccommodationRating accommodationId={accommodation.id}/>
                 </div>
             </article>
             <Modal
