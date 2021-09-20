@@ -4,8 +4,8 @@ import AuthHeader from "./AuthHeader";
 const BOOKING_SERVICE_API_URL = "http://localhost:8080/bookings";
 
 class BookingService {
-    getByAccommodationId(id) {
-        return axios.get(`${BOOKING_SERVICE_API_URL}/by-accommodation/${id}`, {headers: AuthHeader()})
+    getAllByAccommodation(accommodationId) {
+        return axios.get(`${BOOKING_SERVICE_API_URL}/all-bookings/${accommodationId}`, {headers: AuthHeader()})
     }
 
     declineBooking(id) {
