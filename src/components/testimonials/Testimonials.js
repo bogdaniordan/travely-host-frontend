@@ -14,8 +14,8 @@ const TestimonialCard = (props) => {
     return (
         <>
             <Navbar title={"Testimonials"} subtitle={"View testimonials for this accommodation"}/>
-            <div className="testimonials-clean">
-                <div className="container">
+            {/*<div className="testimonials-clean" >*/}
+                <div className="container" style={{minHeight: "400px"}}>
                     {
                         testimonials.length > 0 && (
                             <div className="intro">
@@ -43,7 +43,7 @@ const TestimonialCard = (props) => {
                             )
                         }
                     </div>
-                </div>
+                {/*</div>*/}
             </div>
         </>
     );

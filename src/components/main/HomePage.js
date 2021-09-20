@@ -13,6 +13,9 @@ const HomePage = () => {
 
     useEffect(() => {
         AccommodationService.getAllByHostId(AuthService.getCurrentUser().id).then(res => setAccommodations(res.data))
+        if (!AuthService.getCurrentUser()) {
+            history.push("/login")
+        }
     }, [])
 
     const addAccommodation = () => {

@@ -60,9 +60,6 @@ const CleanersPage = () => {
                                             <ListItemAvatar>
                                                 <Avatar alt="Remy Sharp" src="http://cdn.onlinewebfonts.com/svg/img_507212.png" />
                                             </ListItemAvatar>
-                                            {/*<Link*/}
-                                            {/*    // to={`/customers/${question.customer.id}/questions/${question.id}`}*/}
-                                            {/*>*/}
                                             <ListItemText
                                                 key={cleaner.id}
                                                 primary={

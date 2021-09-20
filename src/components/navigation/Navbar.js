@@ -13,7 +13,7 @@ const Navbar = ({title, subtitle}) => {
         <div>
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="Eighth navbar example">
                 <div className="container">
-                    <a className="navbar-brand" href="/">Travely</a>
+                    <a className="navbar-brand" href="/" style={{color: "#aaaccc"}}>Travely</a>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
                             data-bs-target="#navbarsExample07" aria-controls="navbarsExample07" aria-expanded="false"
                             aria-label="Toggle navigation">
@@ -22,18 +22,17 @@ const Navbar = ({title, subtitle}) => {
                     <div className="collapse navbar-collapse" id="navbarsExample07">
                         {currentUser ? (
                             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-
                                 <li className="nav-item">
-                                    <a className="nav-link active" aria-current="page" href="/questions">Questions</a>
+                                    <a className="nav-link active" style={{color: "#aaaccc"}} aria-current="page" href="/questions">Questions</a>
                                 </li>
-                                <li className="nav-item">>
-                                    <a className="nav-link active" aria-current="page" href="/cleaners">Cleaners</a>
+                                <li className="nav-item">
+                                    <a className="nav-link active" style={{color: "#aaaccc"}} aria-current="page" href="/cleaners">Cleaners</a>
                                 </li>
                                 <li className="nav-item">
                                     <Notifications />
                                 </li>
                                 <li className="nav-item" style={{marginLeft: "900px"}}>
-                                    <a className="nav-link active" aria-current="page" href="/login" onClick={logout}>Logout</a>
+                                    <a className="nav-link active" style={{color: "#aaaccc"}} aria-current="page" href="/login" onClick={logout}>Logout</a>
                                 </li>
 
                             </ul>
@@ -41,10 +40,10 @@ const Navbar = ({title, subtitle}) => {
                             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
 
                                 <li className="nav-item">
-                                    <a className="nav-link active" aria-current="page" href="/login">Login</a>
+                                    <a className="nav-link active" style={{color: "#aaaccc"}} aria-current="page" href="/login">Login</a>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link active" aria-current="page" href="/register">Register</a>
+                                    <a className="nav-link active" style={{color: "#aaaccc"}} aria-current="page" href="/register">Register</a>
                                 </li>
                             </ul>
                         )}

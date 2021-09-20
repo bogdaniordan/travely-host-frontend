@@ -4,18 +4,16 @@ import "./AccommodationCardStyling.scss";
 import BookingService from "../../service/BookingService";
 import {customStyles} from "../../styling/ModalStyling";
 import DeclineBookingModal from "./DeclineBookingModal";
-import Button from "@material-ui/core/Button";
 import CleanerService from "../../service/CleanerService";
 import AuthService from "../../service/AuthService";
-import {Paper} from "@material-ui/core";
-import Avatar from "@material-ui/core/Avatar";
 import {useHistory} from "react-router-dom";
 import AccommodationRating from "../testimonials/AccommodationRating";
+import CleanAccommodation from "../cleaner/CleanAccommodation";
 
 
 const AccommodationCard = ({accommodation}) => {
     const history = useHistory();
-    const [booking, setBooking] = useState({});
+    // const [booking, setBooking] = useState({});
     const [modalIsOpen, setIsOpen] = useState(false)
     const [employedCleaners, setEmployedCleaners] = useState([]);
     const [accommodationCanBeCleaned, setAccommodationCanBeCleaned] = useState(false);
@@ -26,9 +24,9 @@ const AccommodationCard = ({accommodation}) => {
         getCurrentCleanersOfThisAccommodations();
         CleanerService.accommodationCanBeCleaned(accommodation.id).then(res => setAccommodationCanBeCleaned(res.data))
         CleanerService.getAllForHost(AuthService.getCurrentUser().id).then(res => setEmployedCleaners(res.data));
-        if (accommodation.status === "Booked") {
-            BookingService.getByAccommodationId(accommodation.id).then(res => setBooking(res.data))
-        }
+        // if (accommodation.status === "Booked") {
+        //     BookingService.getByAccommodationId(accommodation.id).then(res => setBooking(res.data))
+        // }
     }, [])
 
     const getCurrentCleanersOfThisAccommodations = () => {
@@ -43,11 +41,11 @@ const AccommodationCard = ({accommodation}) => {
         setIsOpen(false);
     }
 
-    const declineBooking = () => {
-        BookingService.declineBooking(booking.id);
-        closeModal();
-        window.location.reload();
-    }
+    // const declineBooking = () => {
+    //     BookingService.declineBooking(booking.id);
+    //     closeModal();
+    //     window.location.reload();
+    // }
 
     const setCleaner= e => {
         setCurrentCleaner(e.target.value)
@@ -61,7 +59,10 @@ const AccommodationCard = ({accommodation}) => {
     }
 
     const getFormattedDate = (date) => {
-        return date[0] + "-" + date[1] + "-" + date[2]
+        if (date) {
+            return date[0] + "-" + date[1] + "-" + date[2]
+
+        }
     }
 
     return (
@@ -72,72 +73,38 @@ const AccommodationCard = ({accommodation}) => {
                 </a>
                 <div className="postcard__text t-dark">
                     <h1 className="postcard__title blue"><a href="#">{accommodation.title}</a></h1>
-                    {
-                        accommodationCanBeCleaned ? (
-                                    <div className="select-cleaner-container" >
-                                        {
-                                            employedCleaners.filter(cleaner => !cleaner.currentCleaningJob).length > 0 ? (
-                                                <Paper elevation={2} style={{backgroundColor: "#212529", color: "white"}}>
-                                                    <small className="small-cleaner-text">Select cleaner</small>
-                                                    <br/>
-                                                    <select style={{backgroundColor: "#212529", color: "white"}} className="form-select" aria-label="Default select example" onChange={setCleaner}>
-                                                        <option value="" selected disabled hidden>Choose type</option>
-                                                        {
-                                                            employedCleaners.filter(cleaner => !cleaner.currentCleaningJob).map(
-                                                                cleaner => <option value={cleaner.id}>{cleaner.name}</option>
-                                                            )
-                                                        }
-                                                    </select>
-                                                    <Button onClick={setCleanerToCleanAccommodation} variant="contained" color="primary" style={{height: "20px", width: "30px"}}>Set</Button>
-                                                </Paper>
-                                            ) : (
-                                                <Paper elevation={2} style={{backgroundColor: "#212529", color: "white"}}>
-                                                    <small className="small-cleaner-text">No cleaners available.</small>
-                                                </Paper>
-                                            )
-                                        }
-                                    </div>
-                        ) : (
-                            cleanersCurrentlyCleaningThis.length === 1 && (
-                                <div className="select-cleaner-container">
-                                    <Avatar style={{margin: "10px"}} alt="Remy Sharp" src="http://cdn.onlinewebfonts.com/svg/img_507212.png" />
-                                    <Paper elevation={2} style={{backgroundColor: "#212529", color: "white"}}>
-                                        <small className="small-cleaner-text">Currently being cleaned by {cleanersCurrentlyCleaningThis[0].name}</small>
-                                    </Paper>
-                                </div>
-
-                            ))
-                    }
-                    {
-                        accommodation.status === "Booked" && (
-                            <div className="postcard__subtitle small">
-                                <time dateTime="2020-05-25 12:00:00">
-                                    <i className="fas fa-calendar-alt mr-2"></i>Check in: {booking.checkInDate}  - Check out: {booking.checkoutDate}
-                                    {/*<i className="fas fa-calendar-alt mr-2"></i><strong>{booking.customer.firstName} {booking.customer.lastName}</strong>*/}
-                                </time>
-                            </div>
-                        )
-                    }
+                    <CleanAccommodation accommodationCanBeCleaned={accommodationCanBeCleaned} employedCleaners={employedCleaners} setCleanerToCleanAccommodation={setCleanerToCleanAccommodation} cleanersCurrentlyCleaningThis={cleanersCurrentlyCleaningThis} setCleaner={setCleaner}/>
+                    {/*{*/}
+                    {/*    accommodation.status === "Booked" && (*/}
+                    {/*        <div className="postcard__subtitle small">*/}
+                    {/*            <time dateTime="2020-05-25 12:00:00">*/}
+                    {/*                <i className="fas fa-calendar-alt mr-2"></i>Check in: {getFormattedDate(booking.checkInDate)}*/}
+                    {/*                <br/>*/}
+                    {/*                <i className="fas fa-calendar-alt mr-2"></i>Check out: {getFormattedDate(booking.checkoutDate)}*/}
+                    {/*            </time>*/}
+                    {/*        </div>*/}
+                    {/*    )*/}
+                    {/*}*/}
 
                     <div className="postcard__bar"></div>
                     <div className="postcard__preview-txt">Location: {accommodation.location}</div>
                     <br/>
-                    <div className="postcard__preview-txt">Accommodation type: {accommodation.placeType}</div>
+                    <div className="postcard__preview-txt">Type: {accommodation.placeType}</div>
 
                     <br/>
-                    <div className="postcard__preview-txt">Status: {accommodation.status}</div>
+                    <div className="postcard__preview-txt">{accommodation.status === "Booked" ? "Accommodation has one or more bookings" : "No bookings for this accommodation"}</div>
                     <ul className="postcard__tagbox">
                     {/*    <li className="tag__item play green" onClick={goToAllQuestions}><i className="fas fa-tag mr-2"></i>All questions</li>*/}
                     {/*    <li className="tag__item play blue" onClick={leaveQuestion}><i className="fas fa-tag mr-2"></i>Leave question</li>*/}
                         {
                             accommodation.status === "Booked" && (
-                                <li className="tag__item play red" onClick={openModal}><i className="fas fa-clock mr-2"></i>Decline booking</li>
+                                <li className="tag__item play blue" onClick={openModal}><i className="fas fa-clock mr-2"></i>Bookings</li>
                             )
                         }
                         <li className="tag__item" onClick={() => history.push(`/testimonials/${accommodation.id}`)}><i className="fas fa-clock mr-2"></i>Testimonials</li>
 
                     </ul>
-                    <div style={{marginLeft: "auto"}} className="postcard__preview-txt">Cleaning: {accommodation.cleaningStatus.toLocaleLowerCase().replace("_", " ")}</div>
+                    <div style={{marginLeft: "auto"}} className="postcard__preview-txt">{accommodation.cleaningStatus.toLocaleLowerCase().replace("_", " ")}</div>
                     <AccommodationRating accommodationId={accommodation.id}/>
                 </div>
             </article>
@@ -146,7 +113,7 @@ const AccommodationCard = ({accommodation}) => {
                 onRequestClose={closeModal}
                 style={customStyles}
             >
-                <DeclineBookingModal closeModal={closeModal} declineBooking={declineBooking}/>
+                <DeclineBookingModal closeModal={closeModal}/>
             </Modal>
         </div>
     );
