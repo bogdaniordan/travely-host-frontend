@@ -37,7 +37,7 @@ const HomePage = () => {
                     }
                     {
                         accommodations.map(
-                            accommodation => <AccommodationCard key={accommodation.id} accommodation={accommodation} />
+                            accommodation => <AccommodationCard key={accommodation.id} accommodation={accommodation} accommodations={accommodations} setAccommodations={setAccommodations}/>
                         )
                     }
                 </div>

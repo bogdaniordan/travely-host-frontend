@@ -8,9 +8,10 @@ import AccommodationRating from "../testimonials/AccommodationRating";
 import CleanAccommodation from "../cleaner/CleanAccommodation";
 import {Collapse} from "@material-ui/core";
 import BookingCard from "../booking/BookingCard";
+import Button from "@material-ui/core/Button";
+import AccommodationService from "../../service/AccommodationService";
 
-
-const AccommodationCard = ({accommodation}) => {
+const AccommodationCard = ({accommodation, accommodations, setAccommodations}) => {
     const history = useHistory();
     const [bookings, setBookings] = useState([]);
     const [employedCleaners, setEmployedCleaners] = useState([]);
@@ -45,6 +46,10 @@ const AccommodationCard = ({accommodation}) => {
         });
     }
 
+    const removeAccommodation = () => {
+        AccommodationService.deleteAccommodation(accommodation.id).then(res => setAccommodations(accommodations.filter(ac => ac.id !== accommodation.id)))
+    }
+
     return (
         <div>
             <article className="postcard light blue">
@@ -75,6 +80,7 @@ const AccommodationCard = ({accommodation}) => {
                     <div style={{marginLeft: "auto"}} className="postcard__preview-txt">{accommodation.cleaningStatus.toLocaleLowerCase().replace("_", " ")}</div>
                     <AccommodationRating accommodationId={accommodation.id}/>
                 </div>
+                <Button variant="contained" color="secondary" onClick={removeAccommodation}>X</Button>
             </article>
             <Collapse in={showBookings}>
                 <h4 style={{textAlign:"center"}}>Bookings of {accommodation.title}</h4>

@@ -40,6 +40,10 @@ class AccommodationService {
         return axios.get(`${ACCOMMODATION_SERVICE_API_URL}/find-by-title/${title}`, {headers: AuthHeader()});
     }
 
+    deleteAccommodation(id) {
+        return axios.delete(`${ACCOMMODATION_SERVICE_API_URL}/${id}`, {headers: AuthHeader()})
+    }
+
 }
 
 export default new AccommodationService;
