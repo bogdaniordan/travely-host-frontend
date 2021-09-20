@@ -10,6 +10,7 @@ import {Collapse} from "@material-ui/core";
 import BookingCard from "../booking/BookingCard";
 import Button from "@material-ui/core/Button";
 import AccommodationService from "../../service/AccommodationService";
+import Avatar from "@material-ui/core/Avatar";
 
 const AccommodationCard = ({accommodation, accommodations, setAccommodations}) => {
     const history = useHistory();
@@ -77,7 +78,9 @@ const AccommodationCard = ({accommodation, accommodations, setAccommodations}) =
                         <li className="tag__item" onClick={() => history.push(`/testimonials/${accommodation.id}`)}><i className="fas fa-clock mr-2"></i>Testimonials</li>
 
                     </ul>
-                    <div style={{marginLeft: "auto"}} className="postcard__preview-txt">{accommodation.cleaningStatus.toLocaleLowerCase().replace("_", " ")}</div>
+                    <div style={{marginLeft: "auto", padding: "15px"}} className="postcard__preview-txt">
+                        <Avatar src="https://cdn-icons-png.flaticon.com/512/995/995053.png"/>
+                    </div>
                     <AccommodationRating accommodationId={accommodation.id}/>
                 </div>
                 <Button variant="contained" color="secondary" onClick={removeAccommodation}>X</Button>

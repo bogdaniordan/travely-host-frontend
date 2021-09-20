@@ -30,11 +30,12 @@ const HomePage = () => {
                 <div className="container py-2">
                     {
                         accommodations ? (
-                            <div className="h1 text-center text-dark" id="pageHeaderTitle">My accommodations    <Button variant="contained" color="primary" onClick={addAccommodation}>+</Button></div>
+                            <h3 className="center-header">My accommodations    <Button variant="contained" color="primary" onClick={addAccommodation}>+</Button></h3>
                         ) : (
-                            <div className="h1 text-center text-dark" id="pageHeaderTitle">You don't have any accommodations.    <Button variant="contained" color="primary" onClick={addAccommodation}>+</Button></div>
+                            <h3 className="center-header">You don't have any accommodations.    <Button variant="contained" color="primary" onClick={addAccommodation}>+</Button></h3>
                         )
                     }
+                    <br/>
                     {
                         accommodations.map(
                             accommodation => <AccommodationCard key={accommodation.id} accommodation={accommodation} accommodations={accommodations} setAccommodations={setAccommodations}/>

@@ -41,7 +41,7 @@ const CleanersPage = () => {
     return (
         <div>
             <Navbar title="Cleaners" subtitle="Hire cleaners to keep your accommodations spotless." />
-            <div className="container">
+            <div className="container" style={{height: "400px"}}>
                 <div className="cleaners-container">
                     <p>Filter by hiring status</p>
                     <select className="form-select" aria-label="Default select example" style={{width: "200px"}} onChange={setCleanersFilter}>
