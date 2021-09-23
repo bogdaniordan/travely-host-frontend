@@ -56,7 +56,6 @@ const BookingCard = ({booking, setBookings, bookings}) => {
                 </CardContent>
             </CardActionArea>
             <CardActions style={{justifyContent: 'center'}}>
-
             {
                 new Date() > new Date(getFormattedDate(booking.checkoutDate)) ? (
                     <Button size="small" variant="contained" color="secondary" onClick={cancelBooking}>
@@ -64,12 +63,11 @@ const BookingCard = ({booking, setBookings, bookings}) => {
                     </Button>
                 ) : (
                     <Button size="small" variant="contained" disabled color="primary">
-                        Current of future booking
+                        Future booking
                     </Button>
                 )
             }
             </CardActions>
-
         </Card>
     );
 };

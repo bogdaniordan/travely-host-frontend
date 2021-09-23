@@ -1,4 +1,4 @@
-import React, {useState, useRef} from 'react';
+import React, {useRef, useState} from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -10,10 +10,10 @@ import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
 import Form from "react-validation/build/form";
 import AuthService from "../../service/AuthService";
-import {required, nameValidation, validEmail, validUsername, validPassword} from "../../util/Validations"
+import {nameValidation, required, validEmail, validPassword, validUsername} from "../../util/Validations"
 import {Grid, Paper} from "@material-ui/core";
 import {useStyles} from "./AuthStyles";
-import Navbar from "../navigation/Navbar";
+import LandingPageNavbar from "../navigation/LandingPageNavbar";
 
 const Register = () => {
     const classes = useStyles();
@@ -76,112 +76,114 @@ const Register = () => {
     }
 
     return (
-        <div style={{textAlign: "center"}}>
-            <Navbar title={"Register"} subtitle={"Please fill in your credentials in order to register as a host."}/>
-            <Paper style={{width: "600px", height: "500px", margin: "auto"}} elevation={3}>
-                <Container maxWidth="xs" className="sign-up-container">
-                    <CssBaseline />
-                    <div className={classes.paper}>
-                        <Avatar className={classes.avatar}>
-                            <LockOutlinedIcon />
-                        </Avatar>
-                        <Typography component="h1" variant="h5">
-                            Sign up
-                        </Typography>
-                        {message && (
-                            <div className="form-group">
-                                <div
-                                    className={
-                                        successful ? "alert alert-success" : "alert alert-danger"
-                                    }
-                                    role="alert"
-                                >
-                                    {message}
+        <div>
+            <LandingPageNavbar />
+            <div className="login-body-container">
+                <Paper style={{width: "600px", height: "500px", margin: "auto", marginTop: "250px"}} elevation={3}>
+                    <Container maxWidth="xs" className="sign-up-container">
+                        <CssBaseline />
+                        <div className={classes.paper}>
+                            <Avatar className={classes.avatar}>
+                                <LockOutlinedIcon />
+                            </Avatar>
+                            <Typography component="h1" variant="h5">
+                                Sign up
+                            </Typography>
+                            {message && (
+                                <div className="form-group">
+                                    <div
+                                        className={
+                                            successful ? "alert alert-success" : "alert alert-danger"
+                                        }
+                                        role="alert"
+                                    >
+                                        {message}
+                                    </div>
                                 </div>
-                            </div>
-                        )}
-                        <br/>
-                        <Form onSubmit={submitForm} ref={form}>
-                            <Grid container spacing={2}>
-                                <Grid xs={12} sm={6} >
-                                    <div className="form-group" style={{marginRight: "5px"}}>
-                                        <label htmlFor="firstName">First name</label>
-                                        <Input
-                                            type="text"
-                                            className="form-control"
-                                            name="firstName"
-                                            value={firstName}
-                                            onChange={onChangeFirstName}
-                                            validations={[required, nameValidation]}
-                                        />
-                                    </div>
+                            )}
+                            <br/>
+                            <Form onSubmit={submitForm} ref={form}>
+                                <Grid container spacing={2}>
+                                    <Grid xs={12} sm={6} >
+                                        <div className="form-group" style={{marginRight: "5px"}}>
+                                            <label htmlFor="firstName">First name</label>
+                                            <Input
+                                                type="text"
+                                                className="form-control"
+                                                name="firstName"
+                                                value={firstName}
+                                                onChange={onChangeFirstName}
+                                                validations={[required, nameValidation]}
+                                            />
+                                        </div>
+                                    </Grid>
+                                    <Grid xs={12} sm={6}>
+                                        <div className="form-group" style={{marginLeft: "5px"}}>
+                                            <label htmlFor="username">Last name</label>
+                                            <Input
+                                                type="text"
+                                                className="form-control"
+                                                name="lastName"
+                                                value={lastName}
+                                                onChange={onChangeLastName}
+                                                validations={[required, nameValidation]}
+                                            />
+                                        </div>
+                                    </Grid>
+                                    <Grid item xs={12}>
+                                        <div className="form-group">
+                                            <label htmlFor="username">Username</label>
+                                            <Input
+                                                type="text"
+                                                className="form-control"
+                                                name="username"
+                                                value={username}
+                                                onChange={onChangeUsername}
+                                                validations={[required, validUsername]}
+                                            />
+                                        </div>
+                                    </Grid>
+                                    <Grid item xs={12}>
+                                        <div className="form-group">
+                                            <label htmlFor="email">Email</label>
+                                            <Input
+                                                type="text"
+                                                className="form-control"
+                                                name="email"
+                                                value={email}
+                                                onChange={onChangeEmail}
+                                                validations={[required, validEmail]}
+                                            />
+                                        </div>
+                                    </Grid>
+                                    <Grid item xs={12}>
+                                        <div className="form-group">
+                                            <label htmlFor="password">Password</label>
+                                            <Input
+                                                type="password"
+                                                className="form-control"
+                                                name="password"
+                                                value={password}
+                                                onChange={onChangePassword}
+                                                validations={[required, validPassword]}
+                                            />
+                                        </div>
+                                    </Grid>
+                                    <br/>
+                                    <br/>
+                                    <Grid xs={12}>
+                                        <div className="form-group" style={{marginTop: "20px", marginBottom: "20px"}}>
+                                            <Button type="submit" variant="contained" color="primary" block style={{margin: "10px"}}>Sign Up</Button>
+                                            <Button variant="contained" color="success" block href="/login">Back to login</Button>
+                                        </div>
+                                    </Grid>
                                 </Grid>
-                                <Grid xs={12} sm={6}>
-                                    <div className="form-group" style={{marginLeft: "5px"}}>
-                                        <label htmlFor="username">Last name</label>
-                                        <Input
-                                            type="text"
-                                            className="form-control"
-                                            name="lastName"
-                                            value={lastName}
-                                            onChange={onChangeLastName}
-                                            validations={[required, nameValidation]}
-                                        />
-                                    </div>
-                                </Grid>
-                                <Grid item xs={12}>
-                                    <div className="form-group">
-                                        <label htmlFor="username">Username</label>
-                                        <Input
-                                            type="text"
-                                            className="form-control"
-                                            name="username"
-                                            value={username}
-                                            onChange={onChangeUsername}
-                                            validations={[required, validUsername]}
-                                        />
-                                    </div>
-                                </Grid>
-                                <Grid item xs={12}>
-                                    <div className="form-group">
-                                        <label htmlFor="email">Email</label>
-                                        <Input
-                                            type="text"
-                                            className="form-control"
-                                            name="email"
-                                            value={email}
-                                            onChange={onChangeEmail}
-                                            validations={[required, validEmail]}
-                                        />
-                                    </div>
-                                </Grid>
-                                <Grid item xs={12}>
-                                    <div className="form-group">
-                                        <label htmlFor="password">Password</label>
-                                        <Input
-                                            type="password"
-                                            className="form-control"
-                                            name="password"
-                                            value={password}
-                                            onChange={onChangePassword}
-                                            validations={[required, validPassword]}
-                                        />
-                                    </div>
-                                </Grid>
-                                <br/>
-                                <br/>
-                                <Grid xs={12}>
-                                    <div className="form-group" style={{marginTop: "20px", marginBottom: "20px"}}>
-                                        <Button type="submit" variant="contained" color="primary" block style={{margin: "10px"}}>Sign Up</Button>
-                                        <Button variant="contained" color="success" block href="/login">Back to login</Button>
-                                    </div>
-                                </Grid>
-                            </Grid>
-                            <CheckButton style={{ display: "none" }} ref={checkBtn} />
-                        </Form>
-                    </div>
-                </Container>
-            </Paper>
+                                <CheckButton style={{ display: "none" }} ref={checkBtn} />
+                            </Form>
+                        </div>
+                    </Container>
+                </Paper>
+            </div>
         </div>
     );
 }

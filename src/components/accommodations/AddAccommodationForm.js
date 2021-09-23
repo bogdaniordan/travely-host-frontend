@@ -10,11 +10,9 @@ import {Container} from "@material-ui/core";
 const AddAccommodationForm = ({form, submitForm, setTitle, title, address, setAddress, location, setLocation, type, setType, price, setPrice, facilities, checkedFacilities, handleCheckboxChange,
                               checkBtn, setFirstImage, setSecondImage, setThirdImage}) => {
     return (
-        // <div>
             <Container
                 style={{height: "100%", width: "50%", margin: "auto", textAlign: "center"}}
             >
-                {/*<h1>Add accommodation</h1>*/}
                 <Form
                     onSubmit={submitForm}
                     ref={form}
@@ -114,7 +112,7 @@ const AddAccommodationForm = ({form, submitForm, setTitle, title, address, setAd
                     </div>
                     <div className="mb-3" >
                         <label>Facilities: </label>
-                        <div style={{display: "flex", alignItems: "center"}}>
+                        <div className="facilities-boxes-container">
                             {facilities.map(
                                 (facility, index) =>
                                     <div key={index}>
@@ -172,7 +170,6 @@ const AddAccommodationForm = ({form, submitForm, setTitle, title, address, setAd
                     <CheckButton style={{ display: "none" }} ref={checkBtn} />
                 </Form>
             </Container>
-        // </div>
     );
 };
 

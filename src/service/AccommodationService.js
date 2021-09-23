@@ -21,7 +21,7 @@ class AccommodationService {
             status: "Free",
             facilities: facilities,
             placeType: placeType,
-            cleaningStatus: "SUPER_CLEAN"
+            cleaningStatus: "CLEAN"
         },{headers: AuthHeader()});
     }
 

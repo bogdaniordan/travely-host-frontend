@@ -21,7 +21,7 @@ const Navbar = ({title, subtitle}) => {
                     </button>
                     <div className="collapse navbar-collapse" id="navbarsExample07">
                         {currentUser ? (
-                            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                            <ul className="navbar-nav me-auto mb-2 mb-lg-0" style={{width: "100%", border: "1px solid white"}}>
                                 <li className="nav-item">
                                     <a className="nav-link active" style={{color: "#aaaccc"}} aria-current="page" href="/questions">Questions</a>
                                 </li>
@@ -31,8 +31,8 @@ const Navbar = ({title, subtitle}) => {
                                 <li className="nav-item">
                                     <Notifications />
                                 </li>
-                                <li className="nav-item" style={{marginLeft: "900px"}}>
-                                    <a className="nav-link active" style={{color: "#aaaccc"}} aria-current="page" href="/login" onClick={logout}>Logout</a>
+                                <li className="nav-item">
+                                    <a className="nav-link active" style={{color: "#aaaccc", float: "right"}} aria-current="page" href="/login" onClick={logout}>Logout</a>
                                 </li>
 
                             </ul>

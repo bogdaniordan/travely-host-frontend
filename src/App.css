@@ -467,3 +467,12 @@ h3 {
 .center-header{
   text-align: center;
 }
+
+.facilities-boxes-container{
+  display: flex;
+  align-items: center;
+}
+
+.login-body-container {
+  text-align: center;
+}

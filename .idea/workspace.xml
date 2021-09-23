@@ -8,9 +8,12 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/accommodations/AccommodationCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/accommodations/AccommodationCard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/cleaner/CleanersPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/cleaner/CleanersPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/main/HomePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/main/HomePage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/question/QuestionsPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/question/QuestionsPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/accommodations/AddAccommodation.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/accommodations/AddAccommodation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/accommodations/AddAccommodationForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/accommodations/AddAccommodationForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/accommodations/DeclineBookingModal.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/booking/BookingCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/booking/BookingCard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/navigation/Footer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/navigation/Footer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/service/AccommodationService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/AccommodationService.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,7 +42,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../travely-backend" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -94,6 +97,7 @@
       <workItem from="1631691298898" duration="16000" />
       <workItem from="1632061330038" duration="1759000" />
       <workItem from="1632148896155" duration="8822000" />
+      <workItem from="1632217717779" duration="3240000" />
     </task>
     <servers />
   </component>

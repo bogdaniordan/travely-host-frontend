@@ -39,13 +39,13 @@ const AddAccommodation = () => {
     }
 
     const getFacilitiesNames = () => {
-        let lst = [];
+        let indexedFacilities = [];
         checkedFacilities.map((facility, index) => {
             if (facility) {
-                lst.push(facilities[index]);
+                indexedFacilities.push(facilities[index]);
             }
         })
-        return lst;
+        return indexedFacilities;
     }
 
     const submitForm = e => {
@@ -80,7 +80,6 @@ const AddAccommodation = () => {
     return (
         <div>
             <Navbar title={"Host a new accommodation"}/>
-            {/*<div className="light">*/}
                 {message && (
                     <div className="form-group">
                         <div
@@ -114,7 +113,6 @@ const AddAccommodation = () => {
                     setSecondImage={setSecondImage}
                     setThirdImage={setThirdImage}
                 />
-            {/*</div>*/}
         </div>
     );
 };

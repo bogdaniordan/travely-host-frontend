@@ -16,6 +16,7 @@ import {useStyles} from "./AuthStyles";
 import Navbar from "../navigation/Navbar";
 import Footer from "../navigation/Footer";
 import {Paper} from "@material-ui/core";
+import LandingPageNavbar from "../navigation/LandingPageNavbar";
 
 const Login = () => {
     const classes = useStyles();
@@ -62,72 +63,74 @@ const Login = () => {
     }
 
     return (
-        <div style={{textAlign: "center"}}>
-            <Navbar title={"Login as host"} subtitle={"Please fill in your credentials."}/>
-            <Paper style={{width: "600px", height: "400px", margin: "auto"}} elevation={3}>
-            <Container maxWidth="xs" className="sign-up-container">
-                <CssBaseline />
-                <div className={classes.paper}>
-                    <Avatar className={classes.avatar}>
-                        <LockOutlinedIcon />
-                    </Avatar>
-                    <Typography component="h1" variant="h5">
-                        Sign in
-                    </Typography>
-                    {message && (
-                        <div className="form-group">
-                            <div
-                                className={
-                                    successful ? "alert alert-success" : "alert alert-danger"
-                                }
-                                role="alert"
-                            >
-                                {message}
-                            </div>
+        <div>
+            <LandingPageNavbar />
+            <div className="login-body-container">
+                <Paper style={{width: "600px", height: "400px", margin: "auto", marginTop: "300px"}} elevation={3}>
+                    <Container maxWidth="xs" className="sign-up-container">
+                        <CssBaseline />
+                        <div className={classes.paper}>
+                            <Avatar className={classes.avatar}>
+                                <LockOutlinedIcon />
+                            </Avatar>
+                            <Typography component="h1" variant="h5">
+                                Sign in
+                            </Typography>
+                            {message && (
+                                <div className="form-group">
+                                    <div
+                                        className={
+                                            successful ? "alert alert-success" : "alert alert-danger"
+                                        }
+                                        role="alert"
+                                    >
+                                        {message}
+                                    </div>
+                                </div>
+                            )}
+                            <br/>
+                            <Form onSubmit={submitForm} ref={form}>
+                                <Grid container spacing={2}>
+                                    <Grid item xs={12}>
+                                        <div className="form-group">
+                                            <label htmlFor="username">Username</label>
+                                            <Input
+                                                type="text"
+                                                className="form-control"
+                                                name="username"
+                                                value={username}
+                                                onChange={onChangeUsername}
+                                                validations={[required, validUsername]}
+                                            />
+                                        </div>
+                                    </Grid>
+                                    <Grid item xs={12}>
+                                        <div className="form-group">
+                                            <label htmlFor="password">Password</label>
+                                            <Input
+                                                type="password"
+                                                className="form-control"
+                                                name="password"
+                                                value={password}
+                                                onChange={onChangePassword}
+                                                validations={[required, validPassword]}
+                                            />
+                                        </div>
+                                    </Grid>
+                                    <br/>
+                                    <br/>
+                                    <Grid xs={12}>
+                                        <div className="form-group" style={{marginTop: "20px", marginBottom: "20px"}}>
+                                            <Button type="submit" variant="contained" color="primary" block style={{margin: "10px"}}>Sign in</Button>
+                                        </div>
+                                    </Grid>
+                                </Grid>
+                                <CheckButton style={{ display: "none" }} ref={checkBtn} />
+                            </Form>
                         </div>
-                    )}
-                    <br/>
-                    <Form onSubmit={submitForm} ref={form}>
-                        <Grid container spacing={2}>
-                            <Grid item xs={12}>
-                                <div className="form-group">
-                                    <label htmlFor="username">Username</label>
-                                    <Input
-                                        type="text"
-                                        className="form-control"
-                                        name="username"
-                                        value={username}
-                                        onChange={onChangeUsername}
-                                        validations={[required, validUsername]}
-                                    />
-                                </div>
-                            </Grid>
-                            <Grid item xs={12}>
-                                <div className="form-group">
-                                    <label htmlFor="password">Password</label>
-                                    <Input
-                                        type="password"
-                                        className="form-control"
-                                        name="password"
-                                        value={password}
-                                        onChange={onChangePassword}
-                                        validations={[required, validPassword]}
-                                    />
-                                </div>
-                            </Grid>
-                            <br/>
-                            <br/>
-                            <Grid xs={12}>
-                                <div className="form-group" style={{marginTop: "20px", marginBottom: "20px"}}>
-                                    <Button type="submit" variant="contained" color="primary" block style={{margin: "10px"}}>Sign in</Button>
-                                </div>
-                            </Grid>
-                        </Grid>
-                        <CheckButton style={{ display: "none" }} ref={checkBtn} />
-                    </Form>
-                </div>
-            </Container>
-            </Paper>
+                    </Container>
+                </Paper>
+            </div>
         </div>
     );
 }

@@ -9,7 +9,6 @@ import AuthService from "../../service/AuthService";
 import QuestionsPage from "../question/QuestionsPage";
 import QuestionPage from "../question/QuestionPage";
 import CleanersPage from "../cleaner/CleanersPage";
-import Footer from "../navigation/Footer";
 import Testimonials from "../testimonials/Testimonials";
 
 
@@ -28,7 +27,7 @@ const Routes = () => {
                     <Route path="/testimonials/:accommodationId" exact component={Testimonials} />
                 </Switch>
             </Router>
-            <Footer/>
+            {/*<Footer/>*/}
         </div>
     );
 };
