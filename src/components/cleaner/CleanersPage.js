@@ -7,6 +7,7 @@ import {makeStyles} from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import Navbar from "../navigation/Navbar";
 import AuthService from "../../service/AuthService";
+import Footer from "../navigation/Footer";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -102,6 +103,7 @@ const CleanersPage = () => {
 
                 </List>
             </div>
+            <Footer />
         </div>
     );
 };

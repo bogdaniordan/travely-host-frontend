@@ -6,6 +6,7 @@ import AccommodationCard from "../accommodations/AccommodationCard";
 import ProfileCard from "../host/ProfileCard";
 import Button from "@material-ui/core/Button";
 import {useHistory} from "react-router-dom";
+import Footer from "../navigation/Footer";
 
 const HomePage = () => {
     const history = useHistory();
@@ -43,6 +44,7 @@ const HomePage = () => {
                     }
                 </div>
             </section>
+            <Footer />
         </div>
     );
 };

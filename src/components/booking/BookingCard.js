@@ -21,7 +21,7 @@ const BookingCard = ({booking, setBookings, bookings}) => {
     }
 
     return (
-        <Card className="card-wrapper" style={{margin: "10px"}}>
+        <Card className="card-wrapper" style={{margin: "10px", backgroundColor: "#eef4f7"}}>
             <CardActionArea>
                 <CardContent>
                     <div className="booking-avatar-container">
