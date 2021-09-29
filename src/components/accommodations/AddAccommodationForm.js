@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import {required, validLength, validPrice} from "../../util/Validations";
@@ -6,9 +6,12 @@ import Select from "react-validation/build/select";
 import Button from "@material-ui/core/Button";
 import CheckButton from "react-validation/build/button";
 import {Container, Paper} from "@material-ui/core";
+import {useHistory} from "react-router-dom";
 
 const AddAccommodationForm = ({form, submitForm, setTitle, title, address, setAddress, location, setLocation, type, setType, price, setPrice, facilities, checkedFacilities, handleCheckboxChange,
                               checkBtn, setFirstImage, setSecondImage, setThirdImage}) => {
+    const history = useHistory();
+
     return (
         <div className="container">
             <Paper elevation={3} style={{width: "75%", margin: "auto", height: "1200px"}}>
@@ -49,20 +52,6 @@ const AddAccommodationForm = ({form, submitForm, setTitle, title, address, setAd
                                 validations = {[required, validLength]}
                             />
                         </div>
-                        {/*<div className="mb-3">*/}
-                        {/*    <label htmlFor="location" className="form-label">*/}
-                        {/*        Location*/}
-                        {/*    </label>*/}
-                        {/*    <Input*/}
-                        {/*        type="text"*/}
-                        {/*        className="form-control"*/}
-                        {/*        name="location"*/}
-                        {/*        onChange={e => setLocation(e.target.value)}*/}
-                        {/*        value={location}*/}
-                        {/*        validations = {[required, validLength]}*/}
-                        {/*    />*/}
-                        {/*</div>*/}
-
                         <div className="mb-3">
                             <label htmlFor="type" className="form-label">
                                 Location
@@ -115,7 +104,7 @@ const AddAccommodationForm = ({form, submitForm, setTitle, title, address, setAd
                                 validations = {[required, validPrice]}
                             />
                         </div>
-                        <div className="mb-3" style={{border: "1px solid grey"}}>
+                        <div className="mb-3">
                             <label>Facilities: </label>
                             <div className="facilities-boxes-container">
                                 {facilities.map(
@@ -169,9 +158,15 @@ const AddAccommodationForm = ({form, submitForm, setTitle, title, address, setAd
                                 validations={[required]}
                             />
                         </div>
-                        <Button type="submit" variant="contained" color="primary">
-                            Submit
-                        </Button>
+                        <br/>
+                        <div>
+                            <Button type="submit" variant="contained" color="primary" style={{float: "left"}}>
+                                Submit
+                            </Button>
+                            <Button variant="contained" color="secondary" style={{float: "right"}} onClick={() => history.push("/")}>
+                               Back
+                            </Button>
+                        </div>
                         <CheckButton style={{ display: "none" }} ref={checkBtn} />
                     </Form>
                 </Container>

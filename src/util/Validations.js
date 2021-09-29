@@ -81,7 +81,7 @@ export const validLength = (value) => {
 }
 
 export const validPrice = value => {
-    if (!(/^\d+$/.test(value)) || value < 5000) {
+    if (!(/^\d+$/.test(value)) || value > 5000) {
         return (
             <div className="validation-negative">
                 <small>

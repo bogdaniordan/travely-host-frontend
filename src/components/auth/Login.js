@@ -68,7 +68,7 @@ const Login = () => {
             <div className="login-body-container">
                 <div className="login-image-container">
                     <img src={login_background} alt="Login background"/>
-                    <Paper style={{borderRadius: "25px", position: "absolute", width: "550px", height: "600px", margin: "auto"}} elevation={3}>
+                    <Paper style={{borderRadius: "25px", position: "absolute", width: "550px", height: "650px", margin: "auto"}} elevation={3}>
                         <Container maxWidth="xs" className="sign-up-container">
                             <CssBaseline />
                             <div className={classes.paper}>

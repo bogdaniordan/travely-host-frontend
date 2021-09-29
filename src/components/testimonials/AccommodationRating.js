@@ -15,9 +15,13 @@ const AccommodationRating = ({accommodationId}) => {
     return (
         <>
             {
-                reviews.length > 0 && (
+                reviews.length > 0 ? (
                     <div className="postcard__preview-txt">
                         <p><RatingView ratingValue={Math.round(rating)}/>      {rating.toFixed(1)}  - {reviews.length} review(s)</p>
+                    </div>
+                ) : (
+                    <div className="postcard__preview-txt">
+                        <p><RatingView ratingValue={0}/> 0 review(s)</p>
                     </div>
                 )
             }

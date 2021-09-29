@@ -32,9 +32,9 @@ const HomePage = () => {
                     <div className="container py-2">
                         {
                             accommodations ? (
-                                <h3 className="center-header">My accommodations <Button variant="contained" color="primary" onClick={addAccommodation}><AddIcon /></Button></h3>
+                                <h3 className="center-header">My accommodations <Button variant="contained" color="primary" onClick={addAccommodation} style={{float: "right"}}><AddIcon /></Button></h3>
                             ) : (
-                                <h3 className="center-header">You don't have any accommodations.    <Button variant="contained" color="primary" onClick={addAccommodation}>+</Button></h3>
+                                <h3 className="center-header">You don't have any accommodations.<Button variant="contained" color="primary" onClick={addAccommodation} style={{float: "right"}}><AddIcon /></Button></h3>
                             )
                         }
                         <br/>

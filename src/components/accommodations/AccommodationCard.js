@@ -11,21 +11,36 @@ import BookingCard from "../booking/BookingCard";
 import Button from "@material-ui/core/Button";
 import AccommodationService from "../../service/AccommodationService";
 import Avatar from "@material-ui/core/Avatar";
+import moment from "moment";
+
 
 const AccommodationCard = ({accommodation, accommodations, setAccommodations}) => {
-    const history = useHistory();
     const [bookings, setBookings] = useState([]);
     const [employedCleaners, setEmployedCleaners] = useState([]);
     const [accommodationCanBeCleaned, setAccommodationCanBeCleaned] = useState(false);
     const [currentCleaner, setCurrentCleaner] = useState(0);
     const [cleanersCurrentlyCleaningThis, setCleanersCurrentlyCleaningThis] = useState([]);
     const [showBookings, setShowBookings] = useState(false);
+    const [isBookedAtm, setIsBookedAtm] = useState(false);
+    const [hasFutureBookings, setHasFutureBookings] = useState([]);
+    const [closestFutureBooking, setClosestFutureBooking] = useState({});
 
     useEffect(() => {
         getCurrentCleanersOfThisAccommodations();
         CleanerService.accommodationCanBeCleaned(accommodation.id).then(res => setAccommodationCanBeCleaned(res.data))
         CleanerService.getAllForHost(AuthService.getCurrentUser().id).then(res => setEmployedCleaners(res.data));
         BookingService.getAllByAccommodation(accommodation.id).then(res => setBookings(res.data));
+        BookingService.accommodationIsBookedNow(accommodation.id).then(res => {
+            setIsBookedAtm(res.data)
+            if(!res.data) {
+                BookingService.accommodationHasFutureBookings(accommodation.id).then(res =>  {
+                    setHasFutureBookings(res.data)
+                    if(res.data) {
+                        BookingService.getClosestFutureBooking(accommodation.id).then(res => setClosestFutureBooking(res.data))
+                    }
+                })
+            }
+        })
     }, [])
 
     const getCurrentCleanersOfThisAccommodations = () => {
@@ -58,25 +73,30 @@ const AccommodationCard = ({accommodation, accommodations, setAccommodations}) =
                     <img className="postcard__img" src={`http://localhost:8080/accommodations/image/${accommodation.id}/firstImage/download`} alt="Image Title"/>
                 </a>
                 <div className="postcard__text t-dark">
-                    <h1 className="postcard__title blue" style={{marginLeft: "10px"}}><a href="#">{accommodation.title}</a></h1>
+                    {/*<h1 className="postcard__title blue" style={{marginLeft: "10px"}}><a href="#">{accommodation.title}</a></h1>*/}
+                    <h4 style={{margin: "auto"}}>{accommodation.title}</h4>
                     <CleanAccommodation accommodationCanBeCleaned={accommodationCanBeCleaned} employedCleaners={employedCleaners} setCleanerToCleanAccommodation={setCleanerToCleanAccommodation} cleanersCurrentlyCleaningThis={cleanersCurrentlyCleaningThis} setCleaner={setCleaner}/>
                     <div className="postcard__bar"></div>
-                    <div className="postcard__preview-txt">Location: {accommodation.location}</div>
+                    <div className="postcard__preview-txt">Location: <strong>{accommodation.location}</strong></div>
+                    <div className="postcard__preview-txt">Type: <strong>{accommodation.placeType}</strong></div>
                     <br/>
-                    <div className="postcard__preview-txt">Type: {accommodation.placeType}</div>
-
-                    <br/>
-                    <div className="postcard__preview-txt">{accommodation.status === "Booked" ? "Accommodation has one or more bookings" : "No bookings for this accommodation"}</div>
+                    {
+                        isBookedAtm ? (
+                            <div className="postcard__preview-txt">This accommodation is currently booked.</div>
+                        ) : (
+                            hasFutureBookings ? (
+                                <div className="postcard__preview-txt">Next booking starts on <strong>{moment(closestFutureBooking.checkInDate).format("DD-MM-YYYY")}</strong>.</div>
+                            ) : (
+                                <div className="postcard__preview-txt">This accommodation has no future bookings.</div>
+                            )
+                        )
+                    }
                     <ul className="postcard__tagbox">
-                    {/*    <li className="tag__item play green" onClick={goToAllQuestions}><i className="fas fa-tag mr-2"></i>All questions</li>*/}
-                    {/*    <li className="tag__item play blue" onClick={leaveQuestion}><i className="fas fa-tag mr-2"></i>Leave question</li>*/}
                         {
                             bookings.length > 0 && (
                                 <li className="tag__item play blue" onClick={toggleBookings}><i className="fas fa-clock mr-2"></i>Bookings</li>
                             )
                         }
-                        {/*<li className="tag__item" onClick={() => history.push(`/testimonials/${accommodation.id}`)}><i className="fas fa-clock mr-2"></i>Testimonials</li>*/}
-
                     </ul>
                     <div style={{marginLeft: "auto", padding: "15px"}} className="postcard__preview-txt">
                         <Avatar src={accommodation.cleaningStatus === "CLEAN" ? `https://cdn-icons-png.flaticon.com/512/995/995053.png` : `https://icon-library.com/images/dirty-icon/dirty-icon-4.jpg`}/>
