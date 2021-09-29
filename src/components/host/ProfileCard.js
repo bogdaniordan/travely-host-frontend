@@ -54,7 +54,7 @@ const ProfileCard = () => {
                                 <div className="col-sm-4 bg-c-lite-blue user-profile" style={{backgroundColor: "lightblue"}}>
                                     <div className="card-block text-center text-white">
                                         <div className="m-b-25"><img
-                                            src={host.picture ? `http://localhost:8080/hosts/image/${host.id}/download` : "https://w7.pngwing.com/pngs/831/88/png-transparent-user-profile-computer-icons-user-interface-mystique-miscellaneous-user-interface-design-smile.png"} height="100px" width="100px"
+                                            src={host.picture ? `http://localhost:8080/hosts/image/${host.id}/download` : "https://w7.pngwing.com/pngs/831/88/png-transparent-user-profile-computer-icons-user-interface-mystique-miscellaneous-user-interface-design-smile.png"} height="160px" width="160px"
                                             className="img-radius" alt="User-Profile-Image"/></div>
                                         <h6 className="f-w-600" style={{color: "black"}}>{host.firstName} {host.lastName}</h6>
                                         {/*className=" mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16"></i>*/}

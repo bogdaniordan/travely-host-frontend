@@ -14,6 +14,7 @@ import {nameValidation, required, validEmail, validPassword, validUsername} from
 import {Grid, Paper} from "@material-ui/core";
 import {useStyles} from "./AuthStyles";
 import LandingPageNavbar from "../navigation/LandingPageNavbar";
+import login_background from "../../images/login_background.jpg";
 
 const Register = () => {
     const classes = useStyles();
@@ -79,7 +80,9 @@ const Register = () => {
         <div>
             <LandingPageNavbar />
             <div className="login-body-container">
-                <Paper style={{width: "600px", height: "500px", margin: "auto", marginTop: "250px"}} elevation={3}>
+                <div className="login-image-container">
+                    <img src={login_background} alt="Login background"/>
+                    <Paper style={{borderRadius: "25px", position: "absolute", width: "600px", height: "700px", margin: "auto"}} elevation={3}>
                     <Container maxWidth="xs" className="sign-up-container">
                         <CssBaseline />
                         <div className={classes.paper}>
@@ -87,7 +90,7 @@ const Register = () => {
                                 <LockOutlinedIcon />
                             </Avatar>
                             <Typography component="h1" variant="h5">
-                                Sign up
+                                Sign up as host
                             </Typography>
                             {message && (
                                 <div className="form-group">
@@ -183,6 +186,7 @@ const Register = () => {
                         </div>
                     </Container>
                 </Paper>
+                </div>
             </div>
         </div>
     );

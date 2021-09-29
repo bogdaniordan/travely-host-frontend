@@ -7,6 +7,7 @@ import ProfileCard from "../host/ProfileCard";
 import Button from "@material-ui/core/Button";
 import {useHistory} from "react-router-dom";
 import Footer from "../navigation/Footer";
+import AddIcon from '@material-ui/icons/Add';
 
 const HomePage = () => {
     const history = useHistory();
@@ -26,24 +27,24 @@ const HomePage = () => {
     return (
         <div>
             <Navbar title={"Host profile"} subtitle={"Update your profile, add accommodations, manage your bookings."} />
-            <section>
-                <ProfileCard/>
-                <div className="container py-2">
-                    {
-                        accommodations ? (
-                            <h3 className="center-header">My accommodations    <Button variant="contained" color="primary" onClick={addAccommodation}>+</Button></h3>
-                        ) : (
-                            <h3 className="center-header">You don't have any accommodations.    <Button variant="contained" color="primary" onClick={addAccommodation}>+</Button></h3>
-                        )
-                    }
-                    <br/>
-                    {
-                        accommodations.map(
-                            accommodation => <AccommodationCard key={accommodation.id} accommodation={accommodation} accommodations={accommodations} setAccommodations={setAccommodations}/>
-                        )
-                    }
-                </div>
-            </section>
+                <section>
+                    <ProfileCard/>
+                    <div className="container py-2">
+                        {
+                            accommodations ? (
+                                <h3 className="center-header">My accommodations <Button variant="contained" color="primary" onClick={addAccommodation}><AddIcon /></Button></h3>
+                            ) : (
+                                <h3 className="center-header">You don't have any accommodations.    <Button variant="contained" color="primary" onClick={addAccommodation}>+</Button></h3>
+                            )
+                        }
+                        <br/>
+                        {
+                            accommodations.map(
+                                accommodation => <AccommodationCard key={accommodation.id} accommodation={accommodation} accommodations={accommodations} setAccommodations={setAccommodations}/>
+                            )
+                        }
+                    </div>
+                </section>
             <Footer />
         </div>
     );

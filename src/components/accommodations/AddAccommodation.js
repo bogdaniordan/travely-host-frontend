@@ -4,6 +4,7 @@ import {useHistory} from "react-router-dom";
 import Navbar from "../navigation/Navbar";
 import AccommodationService from "../../service/AccommodationService";
 import AddAccommodationForm from "./AddAccommodationForm";
+import Footer from "../navigation/Footer";
 
 const AddAccommodation = () => {
     const history = useHistory();
@@ -79,7 +80,7 @@ const AddAccommodation = () => {
 
     return (
         <div>
-            <Navbar title={"Host a new accommodation"}/>
+            <Navbar title={"Accommodation"}/>
                 {message && (
                     <div className="form-group">
                         <div
@@ -113,6 +114,7 @@ const AddAccommodation = () => {
                     setSecondImage={setSecondImage}
                     setThirdImage={setThirdImage}
                 />
+            <Footer />
         </div>
     );
 };

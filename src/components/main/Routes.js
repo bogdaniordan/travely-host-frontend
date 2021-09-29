@@ -27,7 +27,6 @@ const Routes = () => {
                     <Route path="/testimonials/:accommodationId" exact component={Testimonials} />
                 </Switch>
             </Router>
-            {/*<Footer/>*/}
         </div>
     );
 };

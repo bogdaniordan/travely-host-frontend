@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import AuthService from "../../service/AuthService";
 import Notifications from "./Notifications";
+import simple_logo from "./travely_logo.png";
 
 const Navbar = ({title, subtitle}) => {
     const [currentUser, setCurrentUser] = useState(AuthService.getCurrentUser());
@@ -13,7 +14,10 @@ const Navbar = ({title, subtitle}) => {
         <div>
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="Eighth navbar example">
                 <div className="container">
-                    <a className="navbar-brand" href="/" style={{color: "#aaaccc"}}>Travely</a>
+                    <a href="/">
+                        <img src={simple_logo} style={{width: "110px", height: "100px"}} alt="logo"/>
+                    </a>
+                    {/*<a className="navbar-brand" href="/" style={{color: "#aaaccc"}}>Travely</a>*/}
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
                             data-bs-target="#navbarsExample07" aria-controls="navbarsExample07" aria-expanded="false"
                             aria-label="Toggle navigation">
@@ -34,11 +38,9 @@ const Navbar = ({title, subtitle}) => {
                                 <li className="nav-item">
                                     <a className="nav-link active" style={{color: "#aaaccc", float: "right"}} aria-current="page" href="/login" onClick={logout}>Logout</a>
                                 </li>
-
                             </ul>
                         ) : (
                             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-
                                 <li className="nav-item">
                                     <a className="nav-link active" style={{color: "#aaaccc"}} aria-current="page" href="/login">Login</a>
                                 </li>

@@ -1,13 +1,17 @@
 import React from "react";
 import {useHistory} from "react-router-dom";
+import simple_logo from "./travely_logo.png";
 
 
 const LandingPageNavbar = () => {
     return (
         <div>
-            <nav style={{paddingTop: "35px", paddingBottom: "35px"}} className="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="Eighth navbar example">
+            <nav className="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="Eighth navbar example">
                 <div className="container" >
-                    <a style={{color: "#aaaccc"}} className="navbar-brand" href="#">Travely</a>
+                    <a href="/">
+                        <img src={simple_logo} style={{width: "110px", height: "100px"}} alt="logo"/>
+                    </a>
+                    {/*<a style={{color: "#aaaccc"}} className="navbar-brand" href="#">Travely</a>*/}
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
                             data-bs-target="#navbarsExample07" aria-controls="navbarsExample07" aria-expanded="false"
                             aria-label="Toggle navigation">

@@ -476,3 +476,9 @@ h3 {
 .login-body-container {
   text-align: center;
 }
+
+.validation-negative {
+  color: red;
+  text-align: left;
+  margin-bottom: 20px;
+}

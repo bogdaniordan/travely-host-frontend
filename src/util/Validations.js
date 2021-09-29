@@ -4,8 +4,11 @@ import React from "react";
 export const required = (value) => {
     if (!value) {
         return (
-            <div className="alert alert-danger" role="alert">
-                This field is required!
+            <div>
+                <small className="validation-negative">
+                    This field is required!
+                </small>
+                <br/>
             </div>
         );
     }
@@ -14,8 +17,11 @@ export const required = (value) => {
 export const nameValidation = value => {
     if (value.length < 3 && value.length > 15) {
         return (
-            <div className="alert alert-danger" role="alert">
-                Name must be between 3 and 15 characters long.
+            <div className="validation-negative">
+                <small>
+                    Name must be between 3 and 15 characters long.
+                </small>
+                <br/>
             </div>
         );
     }
@@ -24,8 +30,11 @@ export const nameValidation = value => {
 export const validEmail = (value) => {
     if (!isEmail(value)) {
         return (
-            <div className="alert alert-danger" role="alert">
-                This is not a valid email.
+            <div className="validation-negative">
+                <small>
+                    Enter a valid email (e.g. ending with "@gmail.com")
+                </small>
+                <br/>
             </div>
         );
     }
@@ -35,8 +44,11 @@ export const validEmail = (value) => {
 export const validUsername = (value) => {
     if (value.length < 3 || value.length > 25) {
         return (
-            <div className="alert alert-danger" role="alert">
-                The username must be between 3 and 25 characters.
+            <div className="validation-negative">
+                <small>
+                    The username must be between 3 and 25 characters.
+                </small>
+                <br/>
             </div>
         );
     }
@@ -45,8 +57,11 @@ export const validUsername = (value) => {
 export const validPassword = (value) => {
     if (value.length < 5 || value.length > 25) {
         return (
-            <div className="alert alert-danger" role="alert">
-                The password must be between 5 and 25 characters.
+            <div className="validation-negative">
+                <small>
+                    The password must be between 5 and 25 characters long.
+                </small>
+                <br/>
             </div>
         );
     }
@@ -55,19 +70,24 @@ export const validPassword = (value) => {
 export const validLength = (value) => {
     if (value.length < 3 || value.length > 20) {
         return (
-            <div className="alert alert-danger" role="alert">
-                Input length must not be lowed than 3 or higher than 20.
+            <div className="validation-negative">
+                <small>
+                    Input length must not be lowed than 3 or higher than 20.
+                </small>
+                <br/>
             </div>
-
-        )
+        );
     }
 }
 
 export const validPrice = value => {
-    if (!(/^\d+$/.test(value))) {
+    if (!(/^\d+$/.test(value)) || value < 5000) {
         return (
-            <div className="alert alert-danger" role="alert">
-                Price input can contain only digits.
+            <div className="validation-negative">
+                <small>
+                    Price input can contain only digits and must be less than $5000.
+                </small>
+                <br/>
             </div>
         );
     }

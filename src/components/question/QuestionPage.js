@@ -7,8 +7,8 @@ import DeleteQuestionModal from "./DeleteQuestionModal";
 import Modal from 'react-modal';
 import {customStyles} from "../../styling/ModalStyling";
 import QuestionService from "../../service/QuestionService";
-import {Paper} from "@material-ui/core";
 import Link from 'react-router-dom/Link';
+import Footer from "../navigation/Footer";
 
 Modal.setAppElement('#root');
 const QuestionPage = (props) => {
@@ -50,7 +50,7 @@ const QuestionPage = (props) => {
     return (
         <div>
             <Navbar title={"QuestionPage"} subtitle={"Answer, delete or mark this questions as solved."}/>
-                <Container style={{maxWidth: "70%", textAlign: "center"}}>
+                <Container style={{maxWidth: "70%", textAlign: "center", height: "500px"}}>
                     <Link to="/questions/">Back to questions</Link>
                     <br/>
                     <br/>
@@ -71,7 +71,7 @@ const QuestionPage = (props) => {
                                             className="form-control"
                                             placeholder="Leave a response here"
                                             id="response"
-                                            style={{height: "100px"}}
+                                            style={{height: "100px", width: "50%", margin: "auto"}}
                                             onChange={handleChange}
                                             name="response"
                                             required
@@ -100,27 +100,27 @@ const QuestionPage = (props) => {
                             </footer>
                         </form>
                         <div>
-                                Mark as solved {" "}
-                                {question.solved ? (
-                                    <input
-                                        type="checkbox"
-                                        name="solved"
-                                        id="solved"
-                                        checked
-                                        onClick={markAsSolved}
-                                    />
-                                ) : (
-                                    <input
-                                        type="checkbox"
-                                        name="not solved"
-                                        id="not solved"
-                                        onClick={markAsSolved}
-                                    />
-                                )}
-
+                            Mark as solved {" "}
+                            {question.solved ? (
+                                <input
+                                    type="checkbox"
+                                    name="solved"
+                                    id="solved"
+                                    checked
+                                    onClick={markAsSolved}
+                                />
+                            ) : (
+                                <input
+                                    type="checkbox"
+                                    name="not solved"
+                                    id="not solved"
+                                    onClick={markAsSolved}
+                                />
+                            )}
                         </div>
                     </div>
                 </Container>
+            <Footer />
         </div>
     );
 };

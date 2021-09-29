@@ -100,7 +100,6 @@ const AccommodationCard = ({accommodation, accommodations, setAccommodations}) =
                         </div>
                     )
                 }
-
             </Collapse>
         </div>
     );

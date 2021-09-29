@@ -8,6 +8,7 @@ import Avatar from "@material-ui/core/Avatar";
 import {List, ListItem, ListItemAvatar, ListItemText} from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import {useStyles} from "../../styling/QuestionsStyling"
+import Footer from "../navigation/Footer";
 
 const QuestionsPage = () => {
     const history = useHistory();
@@ -62,7 +63,6 @@ const QuestionsPage = () => {
                     <Button variant="contained" color="primary" onClick={() => history.push(`/question/${question.id}`)}>View</Button>
                 </ListItem>
                 </Paper>
-
                 )
         );
     }
@@ -83,6 +83,7 @@ const QuestionsPage = () => {
                     </div>
                 )}
             </div>
+            <Footer />
         </div>
     );
 };
