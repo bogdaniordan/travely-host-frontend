@@ -10,13 +10,16 @@ const AddAccommodation = () => {
     const history = useHistory();
     const form = useRef();
     const checkBtn = useRef();
-    const [facilities, setFacilities] = useState([]);
-    const [checkedFacilities, setCheckedFacilities] = useState([]);
+    // const [facilities, setFacilities] = useState([]);
+    // const [checkedFacilities, setCheckedFacilities] = useState([]);
+    const [remainingFacilities, setRemainingFacilities] = useState([]);
+    const [currentFacilities, setCurrentFacilities] = useState([]);
 
     useEffect(() => {
         AccommodationService.getAllFacilities().then(res => {
-            setFacilities(res.data);
-            setCheckedFacilities(new Array(res.data.length).fill(false));
+            setCurrentFacilities(res.data);
+            // setFacilities(res.data);
+            // setCheckedFacilities(new Array(res.data.length).fill(false));
         })
     }, [])
 
@@ -32,21 +35,33 @@ const AddAccommodation = () => {
     const [successful, setSuccessful] = useState(false);
     const [message, setMessage] = useState("");
 
-    const handleCheckboxChange = (position) => {
-        const updatedCheckedState = checkedFacilities.map((item, index) =>
-            index === position ? !item : item
-        );
-        setCheckedFacilities(updatedCheckedState);
+    // const handleCheckboxChange = (position) => {
+    //     const updatedCheckedState = checkedFacilities.map((item, index) =>
+    //         index === position ? !item : item
+    //     );
+    //     setCheckedFacilities(updatedCheckedState);
+    // }
+    //
+    // const getFacilitiesNames = () => {
+    //     let indexedFacilities = [];
+    //     checkedFacilities.map((facility, index) => {
+    //         if (facility) {
+    //             indexedFacilities.push(facilities[index]);
+    //         }
+    //     })
+    //     return indexedFacilities;
+    // }
+
+    const addFacility = e => {
+        const chosenFacility = e.target.textContent.substr(0, e.target.textContent.indexOf(" "))
+        setCurrentFacilities([...currentFacilities, chosenFacility])
+        setRemainingFacilities(remainingFacilities.filter(facility => facility !== chosenFacility))
     }
 
-    const getFacilitiesNames = () => {
-        let indexedFacilities = [];
-        checkedFacilities.map((facility, index) => {
-            if (facility) {
-                indexedFacilities.push(facilities[index]);
-            }
-        })
-        return indexedFacilities;
+    const removeFacility = e => {
+        const chosenFacility = e.target.textContent.substr(0, e.target.textContent.indexOf(" "))
+        setCurrentFacilities(currentFacilities.filter(facility => facility !== chosenFacility))
+        setRemainingFacilities([...remainingFacilities, chosenFacility])
     }
 
     const submitForm = e => {
@@ -55,7 +70,7 @@ const AddAccommodation = () => {
         setSuccessful(false);
         form.current.validateAll();
         if (checkBtn.current.context._errors.length === 0) {
-            AccommodationService.addAccommodation(title, address, location ,price, getFacilitiesNames(), type, AuthService.getCurrentUser().id).then(
+            AccommodationService.addAccommodation(title, address, location ,price, currentFacilities, type, AuthService.getCurrentUser().id).then(
                 res => {
                     uploadImages()
                     setTimeout(() => {
@@ -104,9 +119,13 @@ const AddAccommodation = () => {
                     setType={setType}
                     price={price}
                     setPrice={setPrice}
-                    facilities={facilities}
-                    checkedFacilities={checkedFacilities}
-                    handleCheckboxChange={handleCheckboxChange}
+                    // facilities={facilities}
+                    // checkedFacilities={checkedFacilities}
+                    // handleCheckboxChange={handleCheckboxChange}
+                    currentFacilities={currentFacilities}
+                    remainingFacilities={remainingFacilities}
+                    addFacility={addFacility}
+                    removeFacility={removeFacility}
                     checkBtn={checkBtn}
                     setFirstImage={setFirstImage}
                     setSecondImage={setSecondImage}

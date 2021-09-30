@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import Navbar from "../navigation/Navbar";
 import Footer from "../navigation/Footer";
-import {Container, Divider, Paper} from "@material-ui/core";
+import {Container, Paper} from "@material-ui/core";
 import AccommodationService from "../../service/AccommodationService";
 import {useForm} from "react-hook-form";
 import Button from "@material-ui/core/Button";
@@ -49,16 +49,18 @@ const UpdateAccommodation = (props) => {
         <div>
             <Navbar title="Update accommodation"/>
             <div className="container">
-                <Paper elevation={3} style={{width: "75%", margin: "auto", height: "900px"}}>
+                <Paper elevation={3} style={{margin: "auto", height: "900px"}}>
                     <Container
-                        style={{height: "100%", margin: "auto", textAlign: "center"}}
+                        style={{height: "100%", margin: "auto"}}
                     >
                         <br/>
-                        <h4>Update {accommodation.title} details</h4>
+                        <div className="booking-avatar-container">
+                            <h4>Update {accommodation.title} details</h4>
+                        </div>
                         <br/>
                         <br/>
                         <form
-                            style={{width: "50%", margin: "auto"}}
+                            style={{width: "80%", margin: "auto"}}
                             onSubmit={handleSubmit((data) => {
                                 AccommodationService.updateAccommodation(id, data, currentFacilities)
                                     .then(res => history.push("/"))
@@ -147,7 +149,6 @@ const UpdateAccommodation = (props) => {
                             {/*        name="thirdImage"*/}
                             {/*    />*/}
                             {/*</div>*/}
-                            <br/>
                             <br/>
                             <div className="mb-3">
                                 {

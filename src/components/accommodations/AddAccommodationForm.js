@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import {required, validLength, validPrice} from "../../util/Validations";
@@ -8,23 +8,28 @@ import CheckButton from "react-validation/build/button";
 import {Container, Paper} from "@material-ui/core";
 import {useHistory} from "react-router-dom";
 
-const AddAccommodationForm = ({form, submitForm, setTitle, title, address, setAddress, location, setLocation, type, setType, price, setPrice, facilities, checkedFacilities, handleCheckboxChange,
+const AddAccommodationForm = ({form, submitForm, setTitle, title, address, setAddress, location, setLocation, type, setType, price, setPrice, addFacility, removeFacility, currentFacilities, remainingFacilities,
                               checkBtn, setFirstImage, setSecondImage, setThirdImage}) => {
     const history = useHistory();
+    const [showPlus, setShowPlus] = useState(false);
+    const [showMinus, setShowMinus] = useState(false);
+
 
     return (
         <div className="container">
-            <Paper elevation={3} style={{width: "75%", margin: "auto", height: "1200px"}}>
+            <Paper elevation={3} style={{margin: "auto", height: "1200px"}}>
                 <Container
-                    style={{height: "100%", margin: "auto", textAlign: "center"}}
+                    style={{height: "100%", margin: "auto"}}
                 >
                     <br/>
-                    <h4>Host a new accommodation</h4>
+                    <div className="booking-avatar-container">
+                        <h4>Host a new accommodation</h4>
+                    </div>
                     <br/>
                     <Form
                         onSubmit={submitForm}
                         ref={form}
-                        style={{width: "50%", margin: "auto"}}
+                        style={{width: "80%", margin: "auto"}}
                     >
                         <div className="mb-3">
                             <label htmlFor="title" className="form-label">
@@ -105,23 +110,72 @@ const AddAccommodationForm = ({form, submitForm, setTitle, title, address, setAd
                             />
                         </div>
                         <div className="mb-3">
-                            <label>Facilities: </label>
-                            <div className="facilities-boxes-container">
-                                {facilities.map(
-                                    (facility, index) =>
-                                        <div key={index}>
-                                            <label style={{margin: "10px"}}>{facility.replace("_", " ")}</label>
-                                            <input
-                                                type="checkbox"
-                                                checked={checkedFacilities[index]}
-                                                name={facility}
-                                                value={facility}
-                                                onChange={() => handleCheckboxChange(index)}
-                                            />
-                                        </div>
-                                )}
-                            </div>
+                            {
+                                currentFacilities.length > 0 && (
+                                    <div>
+                                        <label className="form-label">Facilities for this accommodation</label>
+                                        <ul className="nav">
+                                            {currentFacilities.map(facility => (
+                                                <li className="active">
+                                                    <Button
+                                                        color="primary"
+                                                        variant="contained"
+                                                        style={{margin: "2px"}}
+                                                        onClick={removeFacility}
+                                                        onMouseEnter={() => setShowMinus(true)}
+                                                        onMouseLeave={() => setShowMinus(false)}
+                                                    >
+                                                        <i className="glyphicon glyphicon-home">{facility}{showMinus ? <> -</> : <> </>}</i>
+                                                    </Button>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                )
+                            }
+                            <br/>
+                            {
+                                remainingFacilities.length > 0 && (
+                                    <div>
+                                        <label className="form-label">Add facilities</label>
+                                        <ul className="nav">
+                                            {remainingFacilities.map(facility => (
+                                                <li className="active">
+                                                    <Button
+                                                        color="error"
+                                                        variant="contained"
+                                                        style={{margin: "2px", backgroundColor: "green", color: "white"}}
+                                                        onClick={addFacility}
+                                                        onMouseEnter={() => setShowPlus(true)}
+                                                        onMouseLeave={() => setShowPlus(false)}
+                                                    >
+                                                        <i className="glyphicon glyphicon-home">{facility}{showPlus ? <> +</> : <> </>}</i>
+                                                    </Button>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                )
+                            }
                         </div>
+                        {/*<div className="mb-3">*/}
+                        {/*    <label>Facilities: </label>*/}
+                        {/*    <div className="facilities-boxes-container">*/}
+                        {/*        {facilities.map(*/}
+                        {/*            (facility, index) =>*/}
+                        {/*                <div key={index}>*/}
+                        {/*                    <label style={{margin: "10px"}}>{facility.replace("_", " ")}</label>*/}
+                        {/*                    <input*/}
+                        {/*                        type="checkbox"*/}
+                        {/*                        checked={checkedFacilities[index]}*/}
+                        {/*                        name={facility}*/}
+                        {/*                        value={facility}*/}
+                        {/*                        onChange={() => handleCheckboxChange(index)}*/}
+                        {/*                    />*/}
+                        {/*                </div>*/}
+                        {/*        )}*/}
+                        {/*    </div>*/}
+                        {/*</div>*/}
                         <div className="mb-3">
                             <label htmlFor="firstImage" className="form-label">
                                 First image
