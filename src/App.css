@@ -482,3 +482,7 @@ h3 {
   text-align: left;
   margin-bottom: 20px;
 }
+
+.right-align-container {
+  text-align: right;
+}

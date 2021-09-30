@@ -3,7 +3,6 @@ import "../../styling/AccommodationCardStyling.scss";
 import BookingService from "../../service/BookingService";
 import CleanerService from "../../service/CleanerService";
 import AuthService from "../../service/AuthService";
-import {useHistory} from "react-router-dom";
 import AccommodationRating from "../testimonials/AccommodationRating";
 import CleanAccommodation from "../cleaner/CleanAccommodation";
 import {Collapse} from "@material-ui/core";
@@ -22,7 +21,7 @@ const AccommodationCard = ({accommodation, accommodations, setAccommodations}) =
     const [cleanersCurrentlyCleaningThis, setCleanersCurrentlyCleaningThis] = useState([]);
     const [showBookings, setShowBookings] = useState(false);
     const [isBookedAtm, setIsBookedAtm] = useState(false);
-    const [hasFutureBookings, setHasFutureBookings] = useState([]);
+    const [hasFutureBookings, setHasFutureBookings] = useState(false);
     const [closestFutureBooking, setClosestFutureBooking] = useState({});
 
     useEffect(() => {
@@ -30,6 +29,10 @@ const AccommodationCard = ({accommodation, accommodations, setAccommodations}) =
         CleanerService.accommodationCanBeCleaned(accommodation.id).then(res => setAccommodationCanBeCleaned(res.data))
         CleanerService.getAllForHost(AuthService.getCurrentUser().id).then(res => setEmployedCleaners(res.data));
         BookingService.getAllByAccommodation(accommodation.id).then(res => setBookings(res.data));
+        getBookingStatus();
+    }, [])
+
+    const getBookingStatus = () => {
         BookingService.accommodationIsBookedNow(accommodation.id).then(res => {
             setIsBookedAtm(res.data)
             if(!res.data) {
@@ -41,7 +44,7 @@ const AccommodationCard = ({accommodation, accommodations, setAccommodations}) =
                 })
             }
         })
-    }, [])
+    }
 
     const getCurrentCleanersOfThisAccommodations = () => {
         CleanerService.accommodationIsCleanedBy(accommodation.id).then(res => setCleanersCurrentlyCleaningThis(res.data))
@@ -73,6 +76,9 @@ const AccommodationCard = ({accommodation, accommodations, setAccommodations}) =
                     <img className="postcard__img" src={`http://localhost:8080/accommodations/image/${accommodation.id}/firstImage/download`} alt="Image Title"/>
                 </a>
                 <div className="postcard__text t-dark">
+                    {/*<div className="right-align-container">*/}
+                    {/*    <Button variant="contained" color="secondary" onClick={removeAccommodation} style={{width: "5%"}}>X</Button>*/}
+                    {/*</div>*/}
                     {/*<h1 className="postcard__title blue" style={{marginLeft: "10px"}}><a href="#">{accommodation.title}</a></h1>*/}
                     <h4 style={{margin: "auto"}}>{accommodation.title}</h4>
                     <CleanAccommodation accommodationCanBeCleaned={accommodationCanBeCleaned} employedCleaners={employedCleaners} setCleanerToCleanAccommodation={setCleanerToCleanAccommodation} cleanersCurrentlyCleaningThis={cleanersCurrentlyCleaningThis} setCleaner={setCleaner}/>
@@ -97,13 +103,17 @@ const AccommodationCard = ({accommodation, accommodations, setAccommodations}) =
                                 <li className="tag__item play blue" onClick={toggleBookings}><i className="fas fa-clock mr-2"></i>Bookings</li>
                             )
                         }
+                        {
+                            (!isBookedAtm && !hasFutureBookings) && (
+                                <li className="tag__item play red" onClick={removeAccommodation}><i className="fas fa-clock mr-2"></i>Remove</li>
+                            )
+                        }
                     </ul>
                     <div style={{marginLeft: "auto", padding: "15px"}} className="postcard__preview-txt">
                         <Avatar src={accommodation.cleaningStatus === "CLEAN" ? `https://cdn-icons-png.flaticon.com/512/995/995053.png` : `https://icon-library.com/images/dirty-icon/dirty-icon-4.jpg`}/>
                     </div>
                     <AccommodationRating accommodationId={accommodation.id}/>
                 </div>
-                <Button variant="contained" color="secondary" onClick={removeAccommodation}>X</Button>
             </article>
             <Collapse in={showBookings}>
                 {

@@ -8,13 +8,13 @@ const CleanAccommodation = ({accommodationCanBeCleaned, employedCleaners, setCle
         <>
             {
                 accommodationCanBeCleaned ? (
-                    <div className="select-cleaner-container" >
+                    <div className="select-cleaner-container">
                         {
                             employedCleaners.filter(cleaner => !cleaner.currentCleaningJob).length > 0 ? (
                                 <Paper elevation={2} style={{backgroundColor: "#212529", color: "white"}}>
                                     <small className="small-cleaner-text">Select cleaner</small>
                                     <br/>
-                                    <select style={{backgroundColor: "#212529", color: "white"}} className="form-select" aria-label="Default select example" onChange={setCleaner}>
+                                    <select className="form-select" aria-label="Default select example" onChange={setCleaner} style={{backgroundColor: "#212529", color: "white"}} >
                                         <option value="" selected disabled hidden>Choose type</option>
                                         {
                                             employedCleaners.filter(cleaner => !cleaner.currentCleaningJob).map(

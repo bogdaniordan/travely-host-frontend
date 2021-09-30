@@ -107,7 +107,7 @@ const Register = () => {
                             <br/>
                             <Form onSubmit={submitForm} ref={form}>
                                 <Grid container spacing={2}>
-                                    <Grid xs={12} sm={6} >
+                                    <Grid item={12} sm={6} >
                                         <div className="form-group" style={{marginRight: "5px"}}>
                                             <label htmlFor="firstName">First name</label>
                                             <Input
@@ -120,7 +120,7 @@ const Register = () => {
                                             />
                                         </div>
                                     </Grid>
-                                    <Grid xs={12} sm={6}>
+                                    <Grid item={12} sm={6}>
                                         <div className="form-group" style={{marginLeft: "5px"}}>
                                             <label htmlFor="username">Last name</label>
                                             <Input
