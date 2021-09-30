@@ -57,8 +57,6 @@ const AddAccommodation = () => {
         if (checkBtn.current.context._errors.length === 0) {
             AccommodationService.addAccommodation(title, address, location ,price, getFacilitiesNames(), type, AuthService.getCurrentUser().id).then(
                 res => {
-                    // setMessage("Accommodation successfully added.")
-                    // setSuccessful(true);
                     uploadImages()
                     setTimeout(() => {
                         history.push("/");

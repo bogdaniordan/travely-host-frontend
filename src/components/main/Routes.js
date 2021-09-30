@@ -10,6 +10,7 @@ import QuestionsPage from "../question/QuestionsPage";
 import QuestionPage from "../question/QuestionPage";
 import CleanersPage from "../cleaner/CleanersPage";
 import Testimonials from "../testimonials/Testimonials";
+import UpdateAccommodation from "../accommodations/UpdateAccommodation";
 
 
 const Routes = () => {
@@ -25,6 +26,7 @@ const Routes = () => {
                     <Route path="/question/:questionId" exact component={QuestionPage} />
                     <Route path="/cleaners" exact component={CleanersPage} />
                     <Route path="/testimonials/:accommodationId" exact component={Testimonials} />
+                    <Route path="/update-accommodation/:id" exact component={UpdateAccommodation} />
                 </Switch>
             </Router>
         </div>

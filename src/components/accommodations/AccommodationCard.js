@@ -7,13 +7,14 @@ import AccommodationRating from "../testimonials/AccommodationRating";
 import CleanAccommodation from "../cleaner/CleanAccommodation";
 import {Collapse} from "@material-ui/core";
 import BookingCard from "../booking/BookingCard";
-import Button from "@material-ui/core/Button";
 import AccommodationService from "../../service/AccommodationService";
 import Avatar from "@material-ui/core/Avatar";
 import moment from "moment";
+import {useHistory} from "react-router-dom";
 
 
 const AccommodationCard = ({accommodation, accommodations, setAccommodations}) => {
+    const history = useHistory();
     const [bookings, setBookings] = useState([]);
     const [employedCleaners, setEmployedCleaners] = useState([]);
     const [accommodationCanBeCleaned, setAccommodationCanBeCleaned] = useState(false);
@@ -69,6 +70,10 @@ const AccommodationCard = ({accommodation, accommodations, setAccommodations}) =
         AccommodationService.deleteAccommodation(accommodation.id).then(res => setAccommodations(accommodations.filter(ac => ac.id !== accommodation.id)))
     }
 
+    const updateAccommodation = () => {
+        history.push(`/update-accommodation/${accommodation.id}`)
+    }
+
     return (
         <div>
             <article className="postcard light blue">
@@ -76,9 +81,6 @@ const AccommodationCard = ({accommodation, accommodations, setAccommodations}) =
                     <img className="postcard__img" src={`http://localhost:8080/accommodations/image/${accommodation.id}/firstImage/download`} alt="Image Title"/>
                 </a>
                 <div className="postcard__text t-dark">
-                    {/*<div className="right-align-container">*/}
-                    {/*    <Button variant="contained" color="secondary" onClick={removeAccommodation} style={{width: "5%"}}>X</Button>*/}
-                    {/*</div>*/}
                     {/*<h1 className="postcard__title blue" style={{marginLeft: "10px"}}><a href="#">{accommodation.title}</a></h1>*/}
                     <h4 style={{margin: "auto"}}>{accommodation.title}</h4>
                     <CleanAccommodation accommodationCanBeCleaned={accommodationCanBeCleaned} employedCleaners={employedCleaners} setCleanerToCleanAccommodation={setCleanerToCleanAccommodation} cleanersCurrentlyCleaningThis={cleanersCurrentlyCleaningThis} setCleaner={setCleaner}/>
@@ -103,6 +105,7 @@ const AccommodationCard = ({accommodation, accommodations, setAccommodations}) =
                                 <li className="tag__item play blue" onClick={toggleBookings}><i className="fas fa-clock mr-2"></i>Bookings</li>
                             )
                         }
+                        <li className="tag__item play blue" onClick={updateAccommodation}><i className="fas fa-clock mr-2"></i>Update</li>
                         {
                             (!isBookedAtm && !hasFutureBookings) && (
                                 <li className="tag__item play red" onClick={removeAccommodation}><i className="fas fa-clock mr-2"></i>Remove</li>
