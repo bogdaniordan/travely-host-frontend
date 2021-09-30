@@ -12,7 +12,6 @@ const UpdateAccommodation = (props) => {
     const history = useHistory();
     const id = props.match.params.id;
     const [accommodation, setAccommodation] = useState({});
-    const [facilities, setFacilities] = useState([])
     const [remainingFacilities, setRemainingFacilities] = useState([]);
     const [currentFacilities, setCurrentFacilities] = useState(location.state.accommodationFacilities);
     const [showPlus, setShowPlus] = useState(false);
@@ -24,7 +23,6 @@ const UpdateAccommodation = (props) => {
 
     const facilityIsIncluded = facility => {
         return !currentFacilities.includes(facility);
-
     }
 
     useEffect(() => {
@@ -32,10 +30,7 @@ const UpdateAccommodation = (props) => {
             setAccommodation(res.data)
             reset(res.data)
         })
-        AccommodationService.getAllFacilities().then(res => {
-            setFacilities(res.data)
-            setRemainingFacilities(res.data.filter(facilityIsIncluded))
-        })
+        AccommodationService.getAllFacilities().then(res => setRemainingFacilities(res.data.filter(facilityIsIncluded)))
     },[reset])
 
     const addFacility = e => {
@@ -54,15 +49,20 @@ const UpdateAccommodation = (props) => {
         <div>
             <Navbar title="Update accommodation"/>
             <div className="container">
-                <Paper elevation={3} style={{width: "75%", margin: "auto", height: "1200px"}}>
+                <Paper elevation={3} style={{width: "75%", margin: "auto", height: "900px"}}>
                     <Container
                         style={{height: "100%", margin: "auto", textAlign: "center"}}
                     >
                         <br/>
                         <h4>Update {accommodation.title} details</h4>
                         <br/>
+                        <br/>
                         <form
                             style={{width: "50%", margin: "auto"}}
+                            onSubmit={handleSubmit((data) => {
+                                AccommodationService.updateAccommodation(id, data, currentFacilities)
+                                    .then(res => history.push("/"))
+                            })}
                         >
                             <div className="mb-3">
                                 <label htmlFor="title" className="form-label">
@@ -116,74 +116,89 @@ const UpdateAccommodation = (props) => {
                                     {...register("pricePerNight", {required: true, pattern: /^[0-9]*$/, max: 5000})}
                                 />
                             </div>
-                            {errors.placeType && <span style={{color:"red"}}>Price needs to contain only digits.</span>}
+                            {errors.pricePerNight && <span style={{color:"red"}}>Price needs to contain only digits.</span>}
+                            {/*<div className="mb-3">*/}
+                            {/*    <label htmlFor="firstImage" className="form-label">*/}
+                            {/*        First image*/}
+                            {/*    </label>*/}
+                            {/*    <input*/}
+                            {/*        type="file"*/}
+                            {/*        className="form-control"*/}
+                            {/*        name="firstImage"*/}
+                            {/*    />*/}
+                            {/*</div>*/}
+                            {/*<div className="mb-3">*/}
+                            {/*    <label htmlFor="secondImage" className="form-label">*/}
+                            {/*        Second Image*/}
+                            {/*    </label>*/}
+                            {/*    <input*/}
+                            {/*        type="file"*/}
+                            {/*        className="form-control"*/}
+                            {/*        name="secondImage"*/}
+                            {/*    />*/}
+                            {/*</div>*/}
+                            {/*<div className="mb-3">*/}
+                            {/*    <label htmlFor="thirdImage" className="form-label">*/}
+                            {/*        Third image*/}
+                            {/*    </label>*/}
+                            {/*    <input*/}
+                            {/*        type="file"*/}
+                            {/*        className="form-control"*/}
+                            {/*        name="thirdImage"*/}
+                            {/*    />*/}
+                            {/*</div>*/}
+                            <br/>
+                            <br/>
                             <div className="mb-3">
-                                <label htmlFor="firstImage" className="form-label">
-                                    First image
-                                </label>
-                                <input
-                                    type="file"
-                                    className="form-control"
-                                    name="firstImage"
-                                />
+                                {
+                                    currentFacilities.length > 0 && (
+                                        <div>
+                                            <label className="form-label">Facilities for this accommodation</label>
+                                            <ul className="nav">
+                                                {currentFacilities.map(facility => (
+                                                    <li className="active">
+                                                        <Button
+                                                            color="primary"
+                                                            variant="contained"
+                                                            style={{margin: "2px"}}
+                                                            onClick={removeFacility}
+                                                            onMouseEnter={() => setShowMinus(true)}
+                                                            onMouseLeave={() => setShowMinus(false)}
+                                                        >
+                                                            <i className="glyphicon glyphicon-home">{facility}{showMinus ? <> -</> : <> </>}</i>
+                                                        </Button>
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </div>
+                                    )
+                                }
+                                <br/>
+                                {
+                                    remainingFacilities.length > 0 && (
+                                        <div>
+                                            <label className="form-label">Add facilities</label>
+                                            <ul className="nav">
+                                                {remainingFacilities.map(facility => (
+                                                    <li className="active">
+                                                        <Button
+                                                            color="error"
+                                                            variant="contained"
+                                                            style={{margin: "2px", backgroundColor: "green", color: "white"}}
+                                                            onClick={addFacility}
+                                                            onMouseEnter={() => setShowPlus(true)}
+                                                            onMouseLeave={() => setShowPlus(false)}
+                                                        >
+                                                            <i className="glyphicon glyphicon-home">{facility}{showPlus ? <> +</> : <> </>}</i>
+                                                        </Button>
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </div>
+                                    )
+                                }
                             </div>
-                            <div className="mb-3">
-                                <label htmlFor="secondImage" className="form-label">
-                                    Second Image
-                                </label>
-                                <input
-                                    type="file"
-                                    className="form-control"
-                                    name="secondImage"
-                                />
-                            </div>
-                            <div className="mb-3">
-                                <label htmlFor="thirdImage" className="form-label">
-                                    Third image
-                                </label>
-                                <input
-                                    type="file"
-                                    className="form-control"
-                                    name="thirdImage"
-                                />
-                            </div>
-                            <div className="mb-3">
-                                <label className="form-label">Facilities for this accommodation</label>
-                                <ul className="nav">
-                                    {currentFacilities.map(facility => (
-                                        <li className="active">
-                                            <Button
-                                                color="primary"
-                                                variant="contained"
-                                                style={{margin: "2px"}}
-                                                onClick={removeFacility}
-                                                onMouseEnter={() => setShowMinus(true)}
-                                                onMouseLeave={() => setShowMinus(false)}
-                                            >
-                                                <i className="glyphicon glyphicon-home">{facility}{showMinus && <span> -</span>}</i>
-                                            </Button>
-                                        </li>
-                                    ))}
-                                </ul>
-                                <Divider />
-                                <label className="form-label">Add facilities</label>
-                                <ul className="nav">
-                                    {remainingFacilities.map(facility => (
-                                        <li className="active">
-                                            <Button
-                                                color="error"
-                                                variant="contained"
-                                                style={{margin: "2px", backgroundColor: "green", color: "white"}}
-                                                onClick={addFacility}
-                                                onMouseEnter={() => setShowPlus(true)}
-                                                onMouseLeave={() => setShowPlus(false)}
-                                            >
-                                                <i className="glyphicon glyphicon-home">{facility}{showPlus && <span> +</span>}</i>
-                                            </Button>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
+                            <br/>
                             <br/>
                             <div>
                                 <Button type="submit" variant="contained" color="primary" style={{float: "left"}}>

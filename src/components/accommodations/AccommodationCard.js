@@ -11,6 +11,7 @@ import AccommodationService from "../../service/AccommodationService";
 import Avatar from "@material-ui/core/Avatar";
 import moment from "moment";
 import {useHistory} from "react-router-dom";
+import Button from "@material-ui/core/Button";
 
 
 const AccommodationCard = ({accommodation, accommodations, setAccommodations}) => {
@@ -90,6 +91,7 @@ const AccommodationCard = ({accommodation, accommodations, setAccommodations}) =
                     <div className="postcard__bar"></div>
                     <div className="postcard__preview-txt">Location: <strong>{accommodation.location}</strong></div>
                     <div className="postcard__preview-txt">Type: <strong>{accommodation.placeType}</strong></div>
+
                     <br/>
                     {
                         isBookedAtm ? (
@@ -115,6 +117,19 @@ const AccommodationCard = ({accommodation, accommodations, setAccommodations}) =
                             )
                         }
                     </ul>
+                    {/*<ul className="nav" style={{marginLeft: "10px"}}>*/}
+                    {/*    {accommodation.facilities.map(facility => (*/}
+                    {/*        <li className="active">*/}
+                    {/*            <Button*/}
+                    {/*                color="error"*/}
+                    {/*                variant="contained"*/}
+                    {/*                style={{margin: "2px", backgroundColor: "green", color: "white"}}*/}
+                    {/*            >*/}
+                    {/*                <i className="glyphicon glyphicon-home">{facility}</i>*/}
+                    {/*            </Button>*/}
+                    {/*        </li>*/}
+                    {/*    ))}*/}
+                    {/*</ul>*/}
                     <div style={{marginLeft: "auto", padding: "15px"}} className="postcard__preview-txt">
                         <Avatar src={accommodation.cleaningStatus === "CLEAN" ? `https://cdn-icons-png.flaticon.com/512/995/995053.png` : `https://icon-library.com/images/dirty-icon/dirty-icon-4.jpg`}/>
                     </div>

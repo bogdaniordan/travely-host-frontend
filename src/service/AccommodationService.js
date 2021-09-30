@@ -48,6 +48,17 @@ class AccommodationService {
         return axios.get(`${ACCOMMODATION_SERVICE_API_URL}/${id}`,{headers: AuthHeader()})
     }
 
+    updateAccommodation(id, data, facilities) {
+        const accommodation = {
+            title: data.title,
+            address: data.address,
+            pricePerNight: data.pricePerNight,
+            facilities: facilities,
+            placeType: data.placeType
+        }
+        return axios.put(`${ACCOMMODATION_SERVICE_API_URL}/update/${id}`, accommodation, {headers: AuthHeader()});
+    }
+
 }
 
 export default new AccommodationService;
