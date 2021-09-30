@@ -71,7 +71,10 @@ const AccommodationCard = ({accommodation, accommodations, setAccommodations}) =
     }
 
     const updateAccommodation = () => {
-        history.push(`/update-accommodation/${accommodation.id}`)
+        history.push({
+            pathname: `/update-accommodation/${accommodation.id}`,
+            state: {accommodationFacilities: accommodation.facilities}
+        })
     }
 
     return (

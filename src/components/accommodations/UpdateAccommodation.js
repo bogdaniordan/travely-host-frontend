@@ -1,37 +1,58 @@
 import React, {useEffect, useState} from 'react';
 import Navbar from "../navigation/Navbar";
 import Footer from "../navigation/Footer";
-import {Container, Paper} from "@material-ui/core";
+import {Container, Divider, Paper} from "@material-ui/core";
 import AccommodationService from "../../service/AccommodationService";
 import {useForm} from "react-hook-form";
-import Form from "react-validation/build/form";
-import Input from "react-validation/build/input";
-import Select from "react-validation/build/select";
 import Button from "@material-ui/core/Button";
-import {useHistory} from "react-router-dom";
+import {useHistory, useLocation} from "react-router-dom";
 
 const UpdateAccommodation = (props) => {
+    const location = useLocation();
     const history = useHistory();
     const id = props.match.params.id;
     const [accommodation, setAccommodation] = useState({});
     const [facilities, setFacilities] = useState([])
+    const [remainingFacilities, setRemainingFacilities] = useState([]);
+    const [currentFacilities, setCurrentFacilities] = useState(location.state.accommodationFacilities);
+    const [showPlus, setShowPlus] = useState(false);
+    const [showMinus, setShowMinus] = useState(false);
 
     const { register, handleSubmit, formState: {errors}, reset } = useForm({
         defaultValues: {}
     });
 
+    const facilityIsIncluded = facility => {
+        return !currentFacilities.includes(facility);
+
+    }
+
     useEffect(() => {
         AccommodationService.getById(id).then(res => {
-            console.log(res.data)
             setAccommodation(res.data)
             reset(res.data)
         })
-        AccommodationService.getAllFacilities().then(res => setFacilities(res.data))
+        AccommodationService.getAllFacilities().then(res => {
+            setFacilities(res.data)
+            setRemainingFacilities(res.data.filter(facilityIsIncluded))
+        })
     },[reset])
+
+    const addFacility = e => {
+        const chosenFacility = e.target.textContent.substr(0, e.target.textContent.indexOf(" "))
+        setCurrentFacilities([...currentFacilities, chosenFacility])
+        setRemainingFacilities(remainingFacilities.filter(facility => facility !== chosenFacility))
+    }
+
+    const removeFacility = e => {
+        const chosenFacility = e.target.textContent.substr(0, e.target.textContent.indexOf(" "))
+        setCurrentFacilities(currentFacilities.filter(facility => facility !== chosenFacility))
+        setRemainingFacilities([...remainingFacilities, chosenFacility])
+    }
 
     return (
         <div>
-            <Navbar/>
+            <Navbar title="Update accommodation"/>
             <div className="container">
                 <Paper elevation={3} style={{width: "75%", margin: "auto", height: "1200px"}}>
                     <Container
@@ -92,28 +113,10 @@ const UpdateAccommodation = (props) => {
                                     type="price"
                                     className="form-control"
                                     name="email"
-                                    {...register("price", {required: true, pattern: /^[0-9]*$/, max: 5000})}
+                                    {...register("pricePerNight", {required: true, pattern: /^[0-9]*$/, max: 5000})}
                                 />
                             </div>
                             {errors.placeType && <span style={{color:"red"}}>Price needs to contain only digits.</span>}
-                            <div className="mb-3">
-                                <label>Facilities: </label>
-                                <div className="facilities-boxes-container">
-                                    {facilities.map(
-                                        (facility, index) =>
-                                            <div key={index}>
-                                                <label style={{margin: "10px"}}>{facility.replace("_", " ")}</label>
-                                                <input
-                                                    type="checkbox"
-                                                    // checked={checkedFacilities[index]}
-                                                    name={facility}
-                                                    value={facility}
-                                                    // onChange={() => handleCheckboxChange(index)}
-                                                />
-                                            </div>
-                                    )}
-                                </div>
-                            </div>
                             <div className="mb-3">
                                 <label htmlFor="firstImage" className="form-label">
                                     First image
@@ -144,10 +147,47 @@ const UpdateAccommodation = (props) => {
                                     name="thirdImage"
                                 />
                             </div>
+                            <div className="mb-3">
+                                <label className="form-label">Facilities for this accommodation</label>
+                                <ul className="nav">
+                                    {currentFacilities.map(facility => (
+                                        <li className="active">
+                                            <Button
+                                                color="primary"
+                                                variant="contained"
+                                                style={{margin: "2px"}}
+                                                onClick={removeFacility}
+                                                onMouseEnter={() => setShowMinus(true)}
+                                                onMouseLeave={() => setShowMinus(false)}
+                                            >
+                                                <i className="glyphicon glyphicon-home">{facility}{showMinus && <span> -</span>}</i>
+                                            </Button>
+                                        </li>
+                                    ))}
+                                </ul>
+                                <Divider />
+                                <label className="form-label">Add facilities</label>
+                                <ul className="nav">
+                                    {remainingFacilities.map(facility => (
+                                        <li className="active">
+                                            <Button
+                                                color="error"
+                                                variant="contained"
+                                                style={{margin: "2px", backgroundColor: "green", color: "white"}}
+                                                onClick={addFacility}
+                                                onMouseEnter={() => setShowPlus(true)}
+                                                onMouseLeave={() => setShowPlus(false)}
+                                            >
+                                                <i className="glyphicon glyphicon-home">{facility}{showPlus && <span> +</span>}</i>
+                                            </Button>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
                             <br/>
                             <div>
                                 <Button type="submit" variant="contained" color="primary" style={{float: "left"}}>
-                                    Submit
+                                    Update
                                 </Button>
                                 <Button variant="contained" color="secondary" style={{float: "right"}} onClick={() => history.push("/")}>
                                     Back
