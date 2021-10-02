@@ -23,6 +23,14 @@ class BookingService {
     getClosestFutureBooking(id) {
         return axios.get(`${BOOKING_SERVICE_API_URL}/closest-future-booking/${id}`, {headers: AuthHeader()});
     }
+
+    getAllByHost(id) {
+        return axios.get(`${BOOKING_SERVICE_API_URL}/bookings-by-host/${id}`, {headers: AuthHeader()});
+    }
+
+    markAsSeen(id) {
+        return axios.get(`${BOOKING_SERVICE_API_URL}/mark-as-seen/${id}`, {headers: AuthHeader()})
+    }
 }
 
 export default new BookingService;

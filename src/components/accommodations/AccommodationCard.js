@@ -11,7 +11,6 @@ import AccommodationService from "../../service/AccommodationService";
 import Avatar from "@material-ui/core/Avatar";
 import moment from "moment";
 import {useHistory} from "react-router-dom";
-import Button from "@material-ui/core/Button";
 
 
 const AccommodationCard = ({accommodation, accommodations, setAccommodations}) => {
@@ -91,7 +90,6 @@ const AccommodationCard = ({accommodation, accommodations, setAccommodations}) =
                     <div className="postcard__bar"></div>
                     <div className="postcard__preview-txt">Location: <strong>{accommodation.location}</strong></div>
                     <div className="postcard__preview-txt">Type: <strong>{accommodation.placeType}</strong></div>
-
                     <br/>
                     {
                         isBookedAtm ? (

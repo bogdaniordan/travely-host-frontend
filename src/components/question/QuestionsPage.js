@@ -2,24 +2,17 @@ import React, {useEffect, useState} from 'react';
 import Paper from '@material-ui/core/Paper';
 import Navbar from "../navigation/Navbar";
 import QuestionService from "../../service/QuestionService";
-import Button from "@material-ui/core/Button";
-import {useHistory} from "react-router-dom";
+import {Link} from "react-router-dom";
 import Avatar from "@material-ui/core/Avatar";
 import {List, ListItem, ListItemAvatar, ListItemText} from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import {useStyles} from "../../styling/QuestionsStyling"
 import Footer from "../navigation/Footer";
+import moment from "moment";
 
 const QuestionsPage = () => {
-    const history = useHistory();
     const classes = useStyles();
     const [questions, setQuestions] = useState([]);
-
-    const getFormattedDate = (date) => {
-        if (date) {
-            return date[0] + "-" + date[1] + "-" + date[2]
-        }
-    }
 
     useEffect(() => {
         QuestionService.getAllQuestions().then(res => setQuestions(res.data))
@@ -42,7 +35,7 @@ const QuestionsPage = () => {
                     </ListItemAvatar>
                     <ListItemText
                         key={question.id}
-                        primary={question.text}
+                        primary={<Link to={`/question/${question.id}`}>{question.text}</Link>}
                         secondary={
                             <>
                                 <Typography
@@ -56,11 +49,10 @@ const QuestionsPage = () => {
                                     </small>
                                 </Typography>
                                 {" - "}
-                                {getFormattedDate(question.date)}
+                                {moment(question.date).format("DD-MM-YYYY")}
                             </>
                         }
                     />
-                    <Button variant="contained" color="primary" onClick={() => history.push(`/question/${question.id}`)}>View</Button>
                 </ListItem>
                 </Paper>
                 )

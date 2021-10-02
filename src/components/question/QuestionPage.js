@@ -9,6 +9,8 @@ import {customStyles} from "../../styling/ModalStyling";
 import QuestionService from "../../service/QuestionService";
 import Link from 'react-router-dom/Link';
 import Footer from "../navigation/Footer";
+import ContactSupportIcon from '@material-ui/icons/ContactSupport';
+import moment from "moment";
 
 Modal.setAppElement('#root');
 const QuestionPage = (props) => {
@@ -51,16 +53,18 @@ const QuestionPage = (props) => {
         <div>
             <Navbar title={"QuestionPage"} subtitle={"Answer, delete or mark this questions as solved."}/>
                 <Container style={{maxWidth: "70%", textAlign: "center", height: "500px"}}>
-                    <Link to="/questions/">Back to questions</Link>
+                    <Link to="/questions/" style={{float: "left"}}>Back to questions</Link>
                     <br/>
                     <br/>
                     <div className="question-box">
                         <div className="card-body">
-                            <p className="title">Message: <strong>{question.text}</strong></p>
-                            <p className="subtitle">Host: <strong>{question.author}</strong></p>
+                            <ContactSupportIcon color="primary" style={{height: "120px", width: "120px", marginBottom: "20px"}}/>
+                            <h4 className="title"><strong>{question.text}</strong></h4>
+                            <br/>
+                            <p className="subtitle">From: <strong>{question.author}</strong></p>
                             <p>
-                                Submission date:{" "}
-                                <strong>12-12-2020</strong>
+                                Submitted at:{" "}
+                                <strong>{moment(question.date).format("DD-MM-YYYY")}</strong>
                             </p>
                         </div>
                         <form className="form-signin" method="post" onSubmit={submitForm}>

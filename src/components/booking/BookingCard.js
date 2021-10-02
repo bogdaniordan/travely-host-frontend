@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Card} from "@material-ui/core";
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
@@ -7,14 +7,9 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Avatar from "@material-ui/core/Avatar";
 import BookingService from "../../service/BookingService";
+import moment from "moment";
 
 const BookingCard = ({booking, setBookings, bookings}) => {
-
-    const getFormattedDate = (date) => {
-        if (date) {
-            return date[0] + "-" + date[1] + "-" + date[2]
-        }
-    }
 
     const cancelBooking = () => {
         BookingService.declineBooking(booking.id).then(res => setBookings(bookings.filter(bk => bk.id !== booking.id)))
@@ -37,9 +32,9 @@ const BookingCard = ({booking, setBookings, bookings}) => {
                         </Typography>
                     </div>
                     <Typography gutterBottom variant="h6" component="h6">
-                        Check in: {getFormattedDate(booking.checkInDate)}
+                        Check in: {moment(booking.checkInDate).format("DD-MM-YYYY")}
                         <br/>
-                        Check out: {getFormattedDate(booking.checkoutDate)}
+                        Check out: {moment(booking.checkoutDate).format("DD-MM-YYYY")}
                     </Typography>
 
                     {/*/!*{*!/*/}
@@ -57,7 +52,7 @@ const BookingCard = ({booking, setBookings, bookings}) => {
             </CardActionArea>
             <CardActions style={{justifyContent: 'center'}}>
             {
-                new Date() > new Date(getFormattedDate(booking.checkoutDate)) ? (
+                new Date() > new Date(moment(booking.checkoutDate).format("DD-MM-YYYY")) ? (
                     <Button size="small" variant="contained" color="secondary" onClick={cancelBooking}>
                         Cancel
                     </Button>
