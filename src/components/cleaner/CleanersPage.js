@@ -92,15 +92,12 @@ const CleanersPage = () => {
                                                     </React.Fragment>
                                                 }
                                             />
-                                            {/*</Link>*/}
                                         </ListItem>
                                     </Paper>
                                 )
                             )
-
                         ) : (<h5>No results for your search.</h5>)
                     }
-
                 </List>
             </div>
             <Footer />

@@ -28,26 +28,24 @@ const BookingCard = ({booking, setBookings, bookings}) => {
                     <br/>
                     <div className="booking-avatar-container">
                         <Typography variant="body2" color="textSecondary" component="p">
+
                             <strong> {booking.customer.firstName} {booking.customer.lastName}</strong>
                         </Typography>
                     </div>
                     <Typography gutterBottom variant="h6" component="h6">
+                        <div className="center-header">
+                            {
+                                booking.price && (
+                                    <div>
+                                        <strong>${booking.price}</strong>
+                                    </div>
+                                )
+                            }
+                        </div>
                         Check in: {moment(booking.checkInDate).format("DD-MM-YYYY")}
                         <br/>
                         Check out: {moment(booking.checkoutDate).format("DD-MM-YYYY")}
                     </Typography>
-
-                    {/*/!*{*!/*/}
-                    {/*/!*    props.job.company_name ? (*!/*/}
-                    {/*/!*        <Typography variant="body2" component="h7">*!/*/}
-                    {/*/!*            {props.job.company_name}*!/*/}
-                    {/*/!*        </Typography>*!/*/}
-                    {/*/!*    ) : ("")*!/*/}
-                    {/*/!*}*!/*/}
-                    {/*<br/>*/}
-                    {/*<Typography variant="body2" color="textSecondary" component="h7">*/}
-                    {/*    Type: {(props.job.jobType).replace("_", " ").toLowerCase()}*/}
-                    {/*</Typography>*/}
                 </CardContent>
             </CardActionArea>
             <CardActions style={{justifyContent: 'center'}}>

@@ -8,8 +8,11 @@ import Modal from "react-modal";
 import {customStyles} from "../../styling/ModalStyling";
 import CleanersModal from "../cleaner/CleanersModal";
 import Tooltip from '@material-ui/core/Tooltip';
+import Button from "@material-ui/core/Button";
+import {useHistory} from "react-router-dom";
 
 const ProfileCard = () => {
+    const history = useHistory();
     const [host, setHost] = useState({});
     const [employedCleaners, setEmployedCleaners] = useState([])
     const [modalIsOpen, setIsOpen] = useState(false);
@@ -57,9 +60,7 @@ const ProfileCard = () => {
                                             src={host.picture ? `http://localhost:8080/hosts/image/${host.id}/download` : "https://w7.pngwing.com/pngs/831/88/png-transparent-user-profile-computer-icons-user-interface-mystique-miscellaneous-user-interface-design-smile.png"} height="160px" width="160px"
                                             className="img-radius" alt="User-Profile-Image"/></div>
                                         <h6 className="f-w-600" style={{color: "black"}}>{host.firstName} {host.lastName}</h6>
-                                        {/*className=" mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16"></i>*/}
-                                        {/*<p><Button variant="contained" color="secondary" onClick={() => history.push(`/update-profile`)}>Update</Button></p>*/}
-                                        {/*<p><Button variant="contained" color="primary">Add accommodation</Button></p>*/}
+                                        <p><Button variant="contained" color="primary" onClick={() => history.push("/update-host")}>Update profile</Button></p>
                                     </div>
                                 </div>
                                 <div className="col-sm-8">
@@ -93,7 +94,7 @@ const ProfileCard = () => {
                                                             <h6 className="text-muted f-w-400" style={{margin: "10px"}}>
                                                                 <small>{badge.name}</small>
                                                                 <Tooltip title={badge.description}>
-                                                                    <Avatar style={{margin: "15px", height: "50px", width: "50px"}} src={`http://localhost:8080/hosts/image/badge/${badge.picture}/download`} />
+                                                                    <Avatar src={`http://localhost:8080/hosts/image/badge/${badge.picture}/download`} style={{margin: "15px", height: "50px", width: "50px"}}  />
                                                                 </Tooltip>
                                                             </h6>)
                                                     ) : (
