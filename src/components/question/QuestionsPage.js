@@ -9,6 +9,7 @@ import Typography from "@material-ui/core/Typography";
 import {useStyles} from "../../styling/QuestionsStyling"
 import Footer from "../navigation/Footer";
 import moment from "moment";
+import ErrorIcon from '@material-ui/icons/Error';
 
 const QuestionsPage = () => {
     const classes = useStyles();
@@ -68,9 +69,10 @@ const QuestionsPage = () => {
                             {showQuestions()}
                         </List>
                 ) : (
-                    <div
-                        style={{ margin: "0 auto", textAlign: "center", marginTop: "15%" }}
-                    >
+                    <div className="no-questions-container">
+                        <ErrorIcon color="error" style={{height: "100px", width: "100px"}} />
+                        <br/>
+                        <br/>
                         <h3 className="title">There are no unresolved questions from your customers at the moment.</h3>
                     </div>
                 )}

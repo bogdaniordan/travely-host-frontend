@@ -11,6 +11,7 @@ import AccommodationService from "../../service/AccommodationService";
 import Avatar from "@material-ui/core/Avatar";
 import moment from "moment";
 import {useHistory} from "react-router-dom";
+import Button from "@material-ui/core/Button";
 
 
 const AccommodationCard = ({accommodation, accommodations, setAccommodations}) => {
@@ -80,9 +81,7 @@ const AccommodationCard = ({accommodation, accommodations, setAccommodations}) =
     return (
         <div>
             <article className="postcard light blue">
-                <a className="postcard__img_link" href="#">
-                    <img className="postcard__img" src={`http://localhost:8080/accommodations/image/${accommodation.id}/firstImage/download`} alt="Image Title"/>
-                </a>
+
                 <div className="postcard__text t-dark">
                     {/*<h1 className="postcard__title blue" style={{marginLeft: "10px"}}><a href="#">{accommodation.title}</a></h1>*/}
                     <h4 style={{margin: "auto"}}>{accommodation.title}</h4>
@@ -133,6 +132,9 @@ const AccommodationCard = ({accommodation, accommodations, setAccommodations}) =
                     </div>
                     <AccommodationRating accommodationId={accommodation.id}/>
                 </div>
+                <a className="postcard__img_link" href="#">
+                    <img className="postcard__img" src={`http://localhost:8080/accommodations/image/${accommodation.id}/firstImage/download`} alt="Image Title"/>
+                </a>
             </article>
             <Collapse in={showBookings}>
                 {

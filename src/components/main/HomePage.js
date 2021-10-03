@@ -29,21 +29,44 @@ const HomePage = () => {
             <Navbar title={"Host profile"} subtitle={"Update your profile, add accommodations, manage your bookings."} />
                 <section>
                     <ProfileCard/>
-                    <div className="container py-2">
-                        {
-                            accommodations ? (
-                                <h3 className="center-header">My accommodations <Button variant="contained" color="primary" onClick={addAccommodation} style={{float: "right"}}><AddIcon /></Button></h3>
-                            ) : (
-                                <h3 className="center-header">You don't have any accommodations.<Button variant="contained" color="primary" onClick={addAccommodation} style={{float: "right"}}><AddIcon /></Button></h3>
-                            )
-                        }
-                        <br/>
-                        {
-                            accommodations.map(
-                                accommodation => <AccommodationCard key={accommodation.id} accommodation={accommodation} accommodations={accommodations} setAccommodations={setAccommodations}/>
-                            )
-                        }
-                    </div>
+                    {
+                        accommodations.length > 0 && (
+                            <div className="container">
+                                <section className="section about-section gray-bg" id="about">
+                                    <div className="counter">
+                                        <div style={{textAlign: "center"}}>
+                                            <h4 style={{margin: "auto"}}>Accommodations <Button variant="contained" color="primary" onClick={addAccommodation} endIcon={<AddIcon />}style={{float: "right"}}>new</Button></h4>
+                                        </div>
+                                        <div className="container py-2">
+                                            <br/>
+                                            {
+                                                accommodations.map(
+                                                    accommodation => <AccommodationCard key={accommodation.id} accommodation={accommodation} accommodations={accommodations} setAccommodations={setAccommodations}/>
+                                                )
+                                            }
+                                        </div>
+                                    </div>
+                                </section>
+                            </div>
+                        )
+                    }
+
+
+                    {/*    <div className="container py-2">*/}
+                    {/*    {*/}
+                    {/*        accommodations ? (*/}
+                    {/*            <h3 className="center-header">My accommodations <Button variant="contained" color="primary" onClick={addAccommodation} style={{float: "right"}}><AddIcon /></Button></h3>*/}
+                    {/*        ) : (*/}
+                    {/*            <h3 className="center-header">You don't have any accommodations.<Button variant="contained" color="primary" onClick={addAccommodation} style={{float: "right"}}><AddIcon /></Button></h3>*/}
+                    {/*        )*/}
+                    {/*    }*/}
+                    {/*    <br/>*/}
+                    {/*    {*/}
+                    {/*        accommodations.map(*/}
+                    {/*            accommodation => <AccommodationCard key={accommodation.id} accommodation={accommodation} accommodations={accommodations} setAccommodations={setAccommodations}/>*/}
+                    {/*        )*/}
+                    {/*    }*/}
+                    {/*</div>*/}
                 </section>
             <Footer />
         </div>
