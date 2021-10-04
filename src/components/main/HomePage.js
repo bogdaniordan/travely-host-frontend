@@ -34,8 +34,8 @@ const HomePage = () => {
                             <div className="container">
                                 <section className="section about-section gray-bg" id="about">
                                     <div className="counter">
-                                        <div style={{textAlign: "center"}}>
-                                            <h4 style={{margin: "auto"}}>Accommodations <Button variant="contained" color="primary" onClick={addAccommodation} endIcon={<AddIcon />}style={{float: "right"}}>new</Button></h4>
+                                        <div className="login-body-container">
+                                            <h4 className="accommodations-header">Accommodations <Button variant="contained" color="primary" onClick={addAccommodation} endIcon={<AddIcon />}style={{float: "right"}}>new</Button></h4>
                                         </div>
                                         <div className="container py-2">
                                             <br/>

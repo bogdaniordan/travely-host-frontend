@@ -23,6 +23,7 @@ const UpdateHostDetails = () => {
         HostService.getById(AuthService.getCurrentUser().id).then(
             res => {
                 setHost(res.data)
+                console.log(AuthService.getCurrentUser().id)
                 reset(res.data)
             }
         )

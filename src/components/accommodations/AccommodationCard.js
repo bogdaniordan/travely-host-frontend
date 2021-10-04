@@ -12,6 +12,7 @@ import Avatar from "@material-ui/core/Avatar";
 import moment from "moment";
 import {useHistory} from "react-router-dom";
 import Button from "@material-ui/core/Button";
+import LocationOnIcon from '@material-ui/icons/LocationOn';
 
 
 const AccommodationCard = ({accommodation, accommodations, setAccommodations}) => {
@@ -87,7 +88,7 @@ const AccommodationCard = ({accommodation, accommodations, setAccommodations}) =
                     <h4 style={{margin: "auto"}}>{accommodation.title}</h4>
                     <CleanAccommodation accommodationCanBeCleaned={accommodationCanBeCleaned} employedCleaners={employedCleaners} setCleanerToCleanAccommodation={setCleanerToCleanAccommodation} cleanersCurrentlyCleaningThis={cleanersCurrentlyCleaningThis} setCleaner={setCleaner}/>
                     <div className="postcard__bar"></div>
-                    <div className="postcard__preview-txt">Location: <strong>{accommodation.location}</strong></div>
+                    <div className="postcard__preview-txt"><LocationOnIcon /> <strong>{accommodation.location}</strong></div>
                     <div className="postcard__preview-txt">Type: <strong>{accommodation.placeType}</strong></div>
                     <br/>
                     {
@@ -127,7 +128,7 @@ const AccommodationCard = ({accommodation, accommodations, setAccommodations}) =
                     {/*        </li>*/}
                     {/*    ))}*/}
                     {/*</ul>*/}
-                    <div style={{marginLeft: "auto", padding: "15px"}} className="postcard__preview-txt">
+                    <div className="postcard__preview-txt" style={{marginLeft: "auto", padding: "15px"}}>
                         <Avatar src={accommodation.cleaningStatus === "CLEAN" ? `https://cdn-icons-png.flaticon.com/512/995/995053.png` : `https://icon-library.com/images/dirty-icon/dirty-icon-4.jpg`}/>
                     </div>
                     <AccommodationRating accommodationId={accommodation.id}/>

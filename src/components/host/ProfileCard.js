@@ -10,13 +10,14 @@ import CleanersModal from "../cleaner/CleanersModal";
 import Tooltip from '@material-ui/core/Tooltip';
 import Button from "@material-ui/core/Button";
 import {useHistory} from "react-router-dom";
+import BadgesBar from "../main/BadgesBar";
+import StatsBar from "../main/StatsBar";
 
 const ProfileCard = () => {
     const history = useHistory();
     const [host, setHost] = useState({});
     const [employedCleaners, setEmployedCleaners] = useState([])
     const [modalIsOpen, setIsOpen] = useState(false);
-    const [badges, setBadges] = useState([]);
 
     const openModal = () => {
         setIsOpen(true);
@@ -31,20 +32,12 @@ const ProfileCard = () => {
     }
 
     useEffect(() => {
-        HostService.earnBadges(AuthService.getCurrentUser().id);
         HostService.getById(AuthService.getCurrentUser().id).then(res => setHost(res.data))
         getCleaners();
-        getHostBadges();
     }, [])
 
     const fireCleaner = (id) => {
         CleanerService.fireCleaner(id).then(res => getCleaners())
-    }
-
-    const getHostBadges = () => {
-        setTimeout(() => {
-            HostService.getHostBadges(AuthService.getCurrentUser().id).then(res => setBadges(res.data))
-        }, 1500)
     }
 
     return (
@@ -56,8 +49,7 @@ const ProfileCard = () => {
                     <div className="row align-items-center flex-row-reverse">
                         <div className="col-lg-6">
                             <div className="about-text go-to">
-                                <h3 className="dark-color">Bogdan Iordan <Button color="primary" variant="contained" onClick={() => history.push("/update-host")}>Update</Button>
-                                </h3>
+                                <h3 className="dark-color">Bogdan Iordan <Button color="primary" variant="contained" onClick={() => history.push("/update-host")}>Update</Button></h3>
                                 {/*<h6 className="theme-color lead">A Lead UX &amp; UI designer based in Canada</h6>*/}
                                 {/*<p>I <mark>design and develop</mark> services for customers of all sizes, specializing*/}
                                 {/*    in creating stylish, modern websites, web services and online stores. My passion is*/}
@@ -94,7 +86,15 @@ const ProfileCard = () => {
                                         </div>
                                         <div className="media">
                                             <label>Hired cleaners</label>
-                                            <p>None</p>
+                                            <div>
+                                                {
+                                                    employedCleaners.length > 0 ? (
+                                                        <Button variant="contained" color="primary" onClick={openModal}>View</Button>
+                                                    ) : (
+                                                        <p>No employed cleaners</p>
+                                                    )
+                                                }
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -108,64 +108,10 @@ const ProfileCard = () => {
                     </div>
                     <br/>
 
-                    <div className="counter">
-                        <div style={{textAlign: "center"}}>
-                            <h4 style={{margin: "auto"}}>Statistics</h4>
-                        </div>
-                        <div className="row">
-                            <div className="col-6 col-lg-3">
-                                <div className="count-data text-center">
-                                    <h6 className="count h2" data-to="500" data-speed="500">500</h6>
-                                    <p className="m-0px font-w-600">Bookings</p>
-                                </div>
-                            </div>
-                            <div className="col-6 col-lg-3">
-                                <div className="count-data text-center">
-                                    <h6 className="count h2" data-to="150" data-speed="150">150</h6>
-                                    <p className="m-0px font-w-600">Accommodations</p>
-                                </div>
-                            </div>
-                            <div className="col-6 col-lg-3">
-                                <div className="count-data text-center">
-                                    <h6 className="count h2" data-to="850" data-speed="850">850</h6>
-                                    <p className="m-0px font-w-600">Reviews</p>
-                                </div>
-                            </div>
-                            <div className="col-6 col-lg-3">
-                                <div className="count-data text-center">
-                                    <h6 className="count h2" data-to="850" data-speed="850">850</h6>
-                                    <p className="m-0px font-w-600">Recommendation</p>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
+                    <StatsBar />
                     <br/>
-                    <div className="counter">
-                        <div style={{textAlign: "center"}}>
-                            <h4 style={{margin: "auto"}}>Badges</h4>
-                        </div>
-                        <div className="row">
-                            <div className="col-6 col-lg-3">
-                                <div className="count-data text-center">
-                                    <h6 className="count h2" data-to="500" data-speed="500">500</h6>
-                                    <p className="m-0px font-w-600">Bookings</p>
-                                </div>
-                            </div>
-                            <div className="col-6 col-lg-3">
-                                <div className="count-data text-center">
-                                    <h6 className="count h2" data-to="150" data-speed="150">150</h6>
-                                    <p className="m-0px font-w-600">Accommodations</p>
-                                </div>
-                            </div>
-                            <div className="col-6 col-lg-3">
-                                <div className="count-data text-center">
-                                    <h6 className="count h2" data-to="850" data-speed="850">850</h6>
-                                    <p className="m-0px font-w-600">Reviews</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
+                    <BadgesBar />
                     <br/>
                     {/*<div className="counter">*/}
                     {/*    <div style={{width: "90%", border: "1px solid black", height: "200px"}}>*/}
@@ -239,17 +185,17 @@ const ProfileCard = () => {
             {/*                            </div>*/}
             {/*                        </div>*/}
             {/*                    </div>*/}
-            {/*                    <Modal*/}
-            {/*                        isOpen={modalIsOpen}*/}
-            {/*                        onRequestClose={closeModal}*/}
-            {/*                        style={customStyles}*/}
-            {/*                    >*/}
-            {/*                        <CleanersModal*/}
-            {/*                            closeModal={closeModal}*/}
-            {/*                            fireCleaner={fireCleaner}*/}
-            {/*                            employedCleaners={employedCleaners}*/}
-            {/*                        />*/}
-            {/*                    </Modal>*/}
+                                <Modal
+                                    isOpen={modalIsOpen}
+                                    onRequestClose={closeModal}
+                                    style={customStyles}
+                                >
+                                    <CleanersModal
+                                        closeModal={closeModal}
+                                        fireCleaner={fireCleaner}
+                                        employedCleaners={employedCleaners}
+                                    />
+                                </Modal>
             {/*                </div>*/}
             {/*            </div>*/}
             {/*        </div>*/}
