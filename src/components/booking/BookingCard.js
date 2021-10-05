@@ -16,22 +16,15 @@ const BookingCard = ({booking, setBookings, bookings}) => {
     }
 
     return (
-        <Card className="card-wrapper" style={{margin: "10px", backgroundColor: "#eef4f7"}}>
+        <Card className="card-wrapper" style={{margin: "10px", backgroundColor: "#eef4f7", width: "300px"}}>
             <CardActionArea>
                 <CardContent>
                     <div className="booking-avatar-container">
                         <Avatar
-                            src={`http://localhost:8080/customers/image/${booking.customer.id}/download`}
-                            style={{height: "70px", width: "70px", margin: "auto"}}
+                            src={`http://localhost:8080/customers/image/${booking.customer.id}/download`} style={{height: "70px", width: "70px", margin: "auto"}}
                         />
                     </div>
                     <br/>
-                    <div className="booking-avatar-container">
-                        <Typography variant="body2" color="textSecondary" component="p">
-
-                            <strong> {booking.customer.firstName} {booking.customer.lastName}</strong>
-                        </Typography>
-                    </div>
                     <Typography gutterBottom variant="h6" component="h6">
                         <div className="center-header">
                             {
@@ -42,10 +35,17 @@ const BookingCard = ({booking, setBookings, bookings}) => {
                                 )
                             }
                         </div>
-                        Check in: {moment(booking.checkInDate).format("DD-MM-YYYY")}
-                        <br/>
-                        Check out: {moment(booking.checkoutDate).format("DD-MM-YYYY")}
                     </Typography>
+                    <div className="booking-avatar-container">
+                        <Typography variant="body2" color="textSecondary" component="p">
+
+                            <strong>{booking.customer.firstName} {booking.customer.lastName}</strong>
+                        </Typography>
+                        Check-in: {moment(booking.checkInDate).format("DD-MM-YYYY")}
+                        <br/>
+                        Check-out: {moment(booking.checkoutDate).format("DD-MM-YYYY")}
+                    </div>
+
                 </CardContent>
             </CardActionArea>
             <CardActions style={{justifyContent: 'center'}}>

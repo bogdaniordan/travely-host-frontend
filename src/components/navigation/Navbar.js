@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import AuthService from "../../service/AuthService";
 import Notifications from "./Notifications";
-import simple_logo from "./travely_logo.png";
+import simple_logo from "../../images/travely_logo.png";
 
 const Navbar = ({title, subtitle}) => {
     const [currentUser, setCurrentUser] = useState(AuthService.getCurrentUser());

@@ -10,6 +10,7 @@ import {useStyles} from "../../styling/QuestionsStyling"
 import Footer from "../navigation/Footer";
 import moment from "moment";
 import ErrorIcon from '@material-ui/icons/Error';
+import Button from "@material-ui/core/Button";
 
 const QuestionsPage = () => {
     const classes = useStyles();
@@ -22,14 +23,7 @@ const QuestionsPage = () => {
     const showQuestions = () => {
         return questions.map((question) =>
             !question.solved && (
-                <Paper
-                    elevation={3}
-                    style={{
-                        width: "80%",
-                        margin: "auto",
-                        marginTop: "10px",
-                    }}
-                >
+                <Paper elevation={3} className={classes.paper}>
                 <ListItem alignItems="flex-start">
                     <ListItemAvatar>
                         <Avatar alt="Remy Sharp" src={`http://localhost:8080/customers/image/${question.customer.id}/download` ? `http://localhost:8080/customers/image/${question.customer.id}/download` : "https://w7.pngwing.com/pngs/831/88/png-transparent-user-profile-computer-icons-user-interface-mystique-miscellaneous-user-interface-design-smile.png"} />
@@ -46,7 +40,7 @@ const QuestionsPage = () => {
                                     color="textPrimary"
                                 >
                                     <small key={question.id}>
-                                        {question.author}
+                                        {question.customer.firstName} {question.customer.lastName}
                                     </small>
                                 </Typography>
                                 {" - "}
@@ -54,6 +48,9 @@ const QuestionsPage = () => {
                             </>
                         }
                     />
+                    {
+                        question.response && <Button variant="contained" disabled>ANSWERED</Button>
+                    }
                 </ListItem>
                 </Paper>
                 )
@@ -64,13 +61,20 @@ const QuestionsPage = () => {
         <div>
             <Navbar title={"Questions"} subtitle={"Answer to or resolve question from customers about your accommodations."}/>
             <div className="container" style={{height: "400px"}}>
-                {questions.filter(question => !question.solved).length > 0 ? (
+
+                {questions.filter(question => !question.solved).length > 0 ?(
+                    <div>
+                        <div className="login-body-container">
+                            <h4 className="centered-element">Manage questions</h4>
+                            <br/>
+                        </div>
                         <List className={classes.root}>
                             {showQuestions()}
                         </List>
+                    </div>
                 ) : (
                     <div className="no-questions-container">
-                        <ErrorIcon color="error" style={{height: "100px", width: "100px"}} />
+                        <ErrorIcon className={classes.error} color="error" />
                         <br/>
                         <br/>
                         <h3 className="title">There are no unresolved questions from your customers at the moment.</h3>

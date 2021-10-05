@@ -8,10 +8,14 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/accommodations/AccommodationCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/accommodations/AccommodationCard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/host/ProfileCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/host/ProfileCard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/host/UpdateHostDetails.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/host/UpdateHostDetails.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/main/HomePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/main/HomePage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/service/TestimonialService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/TestimonialService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/accommodations/AddAccommodation.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/accommodations/AddAccommodation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/accommodations/AddAccommodationForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/accommodations/AddAccommodationForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/booking/BookingCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/booking/BookingCard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/navigation/LandingPageNavbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/navigation/LandingPageNavbar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/navigation/Navbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/navigation/Navbar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/navigation/travely_logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/images/travely_logo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/question/QuestionsPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/question/QuestionsPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styling/QuestionsStyling.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/styling/QuestionsStyling.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,6 +62,7 @@
       <recent name="$PROJECT_DIR$/src/components/auth" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/images" />
       <recent name="$PROJECT_DIR$/src/components/navigation" />
       <recent name="$PROJECT_DIR$/src/util" />
       <recent name="$PROJECT_DIR$/src" />
@@ -105,7 +110,8 @@
       <workItem from="1633259849281" duration="1736000" />
       <workItem from="1633262838478" duration="4000" />
       <workItem from="1633262856264" duration="1796000" />
-      <workItem from="1633348419157" duration="3611000" />
+      <workItem from="1633348419157" duration="10206000" />
+      <workItem from="1633427816551" duration="597000" />
     </task>
     <servers />
   </component>

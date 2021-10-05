@@ -3,7 +3,7 @@ import Button from "@material-ui/core/Button";
 import {ListItem, ListItemAvatar, ListItemText, Paper} from "@material-ui/core";
 import Avatar from "@material-ui/core/Avatar";
 
-const CleanersModal = ({closeModal, fireCleaner, employedCleaners}) => {
+const HostCleanersModal = ({closeModal, fireCleaner, employedCleaners}) => {
     return (
         <div style={{width: "500px"}}>
             <div className="close-modal-btn-container">
@@ -57,4 +57,4 @@ const CleanersModal = ({closeModal, fireCleaner, employedCleaners}) => {
     );
 };
 
-export default CleanersModal;
+export default HostCleanersModal;

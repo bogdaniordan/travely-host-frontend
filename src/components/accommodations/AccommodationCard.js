@@ -85,7 +85,8 @@ const AccommodationCard = ({accommodation, accommodations, setAccommodations}) =
 
                 <div className="postcard__text t-dark">
                     {/*<h1 className="postcard__title blue" style={{marginLeft: "10px"}}><a href="#">{accommodation.title}</a></h1>*/}
-                    <h4 style={{margin: "auto"}}>{accommodation.title}</h4>
+                    <h4 className="centered-element">{accommodation.title}</h4>
+
                     <CleanAccommodation accommodationCanBeCleaned={accommodationCanBeCleaned} employedCleaners={employedCleaners} setCleanerToCleanAccommodation={setCleanerToCleanAccommodation} cleanersCurrentlyCleaningThis={cleanersCurrentlyCleaningThis} setCleaner={setCleaner}/>
                     <div className="postcard__bar"></div>
                     <div className="postcard__preview-txt"><LocationOnIcon /> <strong>{accommodation.location}</strong></div>
@@ -102,6 +103,15 @@ const AccommodationCard = ({accommodation, accommodations, setAccommodations}) =
                             )
                         )
                     }
+                    <ul className="nav">
+                        {accommodation.facilities.map(facility => (
+                            <li className="active">
+                                <Button variant="contained" style={{margin: "2px", backgroundColor: "blue", color: "white"}}>
+                                    <i className="glyphicon glyphicon-home">{facility}</i>
+                                </Button>
+                            </li>
+                        ))}
+                    </ul>
                     <ul className="postcard__tagbox">
                         {
                             bookings.length > 0 && (
@@ -115,19 +125,6 @@ const AccommodationCard = ({accommodation, accommodations, setAccommodations}) =
                             )
                         }
                     </ul>
-                    {/*<ul className="nav" style={{marginLeft: "10px"}}>*/}
-                    {/*    {accommodation.facilities.map(facility => (*/}
-                    {/*        <li className="active">*/}
-                    {/*            <Button*/}
-                    {/*                color="error"*/}
-                    {/*                variant="contained"*/}
-                    {/*                style={{margin: "2px", backgroundColor: "green", color: "white"}}*/}
-                    {/*            >*/}
-                    {/*                <i className="glyphicon glyphicon-home">{facility}</i>*/}
-                    {/*            </Button>*/}
-                    {/*        </li>*/}
-                    {/*    ))}*/}
-                    {/*</ul>*/}
                     <div className="postcard__preview-txt" style={{marginLeft: "auto", padding: "15px"}}>
                         <Avatar src={accommodation.cleaningStatus === "CLEAN" ? `https://cdn-icons-png.flaticon.com/512/995/995053.png` : `https://icon-library.com/images/dirty-icon/dirty-icon-4.jpg`}/>
                     </div>
@@ -141,7 +138,7 @@ const AccommodationCard = ({accommodation, accommodations, setAccommodations}) =
                 {
                     bookings.length > 0 && (
                         <div>
-                            <h4 style={{textAlign:"center"}}>Bookings of {accommodation.title}</h4>
+                            <h4 className="login-body-container">Bookings of {accommodation.title}</h4>
                             <div className="bookings-section">
                                 {
                                     bookings.map(

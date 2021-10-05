@@ -10,16 +10,12 @@ const AddAccommodation = () => {
     const history = useHistory();
     const form = useRef();
     const checkBtn = useRef();
-    // const [facilities, setFacilities] = useState([]);
-    // const [checkedFacilities, setCheckedFacilities] = useState([]);
     const [remainingFacilities, setRemainingFacilities] = useState([]);
     const [currentFacilities, setCurrentFacilities] = useState([]);
 
     useEffect(() => {
         AccommodationService.getAllFacilities().then(res => {
             setCurrentFacilities(res.data);
-            // setFacilities(res.data);
-            // setCheckedFacilities(new Array(res.data.length).fill(false));
         })
     }, [])
 
@@ -34,23 +30,6 @@ const AddAccommodation = () => {
 
     const [successful, setSuccessful] = useState(false);
     const [message, setMessage] = useState("");
-
-    // const handleCheckboxChange = (position) => {
-    //     const updatedCheckedState = checkedFacilities.map((item, index) =>
-    //         index === position ? !item : item
-    //     );
-    //     setCheckedFacilities(updatedCheckedState);
-    // }
-    //
-    // const getFacilitiesNames = () => {
-    //     let indexedFacilities = [];
-    //     checkedFacilities.map((facility, index) => {
-    //         if (facility) {
-    //             indexedFacilities.push(facilities[index]);
-    //         }
-    //     })
-    //     return indexedFacilities;
-    // }
 
     const addFacility = e => {
         const chosenFacility = e.target.textContent.substr(0, e.target.textContent.indexOf(" "))
@@ -119,9 +98,6 @@ const AddAccommodation = () => {
                     setType={setType}
                     price={price}
                     setPrice={setPrice}
-                    // facilities={facilities}
-                    // checkedFacilities={checkedFacilities}
-                    // handleCheckboxChange={handleCheckboxChange}
                     currentFacilities={currentFacilities}
                     remainingFacilities={remainingFacilities}
                     addFacility={addFacility}

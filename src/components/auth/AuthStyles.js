@@ -11,4 +11,18 @@ export const useStyles = makeStyles((theme) => ({
         margin: theme.spacing(1),
         backgroundColor: theme.palette.secondary.main,
     },
+    container: {
+        borderRadius: "25px",
+        position: "absolute",
+        width: "550px",
+        height: "650px",
+        margin: "auto"
+    },
+    register: {
+        borderRadius: "25px",
+        position: "absolute",
+        width: "600px",
+        height: "700px",
+        margin: "auto"
+    }
 }));

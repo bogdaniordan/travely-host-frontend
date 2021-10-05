@@ -17,6 +17,20 @@ const useStyles = makeStyles((theme) => ({
     inline: {
         display: "inline",
     },
+    list: {
+        display: "grid",
+        gridTemplateColumns: "repeat(3, 1fr)",
+        gridGap: "10px",
+        gridAutoRows: 'minMax(100px, auto)'
+    },
+    paper: {
+        margin: "30px",
+        width: "350px"
+    },
+    button: {
+        height: "20px",
+        width: "40px"
+    }
 }));
 
 const CleanersPage = () => {
@@ -45,18 +59,18 @@ const CleanersPage = () => {
             <div className="container" style={{height: "400px"}}>
                 <div className="cleaners-container">
                     <p>Filter by hiring status</p>
-                    <select className="form-select" aria-label="Default select example" style={{width: "200px"}} onChange={setCleanersFilter}>
+                    <select className="form-select" aria-label="Default select example" onChange={setCleanersFilter} style={{width: "200px"}}>
                         <option value="Any status">Any status</option>
                         <option value="Hired">Hired</option>
                         <option value="Free">Free</option>
                     </select>
                 </div>
-                <List style={{display: "flex"}}>
+                <List className={classes.list}>
                     {
                         cleaners.length > 0 ? (
                             cleaners.map(
                                 cleaner => (
-                                    <Paper elevation={2} style={{margin: "30px", width: "350px"}}>
+                                    <Paper elevation={2} className={classes.paper}>
                                         <ListItem alignItems="flex-start">
                                             <ListItemAvatar>
                                                 <Avatar alt="Remy Sharp" src="http://cdn.onlinewebfonts.com/svg/img_507212.png" />
@@ -69,7 +83,7 @@ const CleanersPage = () => {
                                                         <small>
                                                             {
                                                                 !cleaner.hired && (
-                                                                    <Button style={{height: "20px", width: "40px"}} onClick={() => hireCleaner(cleaner.id)} variant="contained" color="primary">HIRE</Button>
+                                                                    <Button className={classes.button} onClick={() => hireCleaner(cleaner.id)} variant="contained" color="primary">HIRE</Button>
                                                                 )
                                                             }
                                                         </small>

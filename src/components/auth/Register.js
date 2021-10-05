@@ -82,7 +82,7 @@ const Register = () => {
             <div className="login-body-container">
                 <div className="login-image-container">
                     <img src={login_background} alt="Login background"/>
-                    <Paper style={{borderRadius: "25px", position: "absolute", width: "600px", height: "700px", margin: "auto"}} elevation={3}>
+                    <Paper className={classes.register} elevation={3}>
                     <Container maxWidth="xs" className="sign-up-container">
                         <CssBaseline />
                         <div className={classes.paper}>

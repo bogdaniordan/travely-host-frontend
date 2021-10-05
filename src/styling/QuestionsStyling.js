@@ -8,4 +8,13 @@ export const useStyles = makeStyles((theme) => ({
     inline: {
         display: "inline",
     },
+    paper: {
+        width: "80%",
+        margin: "auto",
+        marginTop: "10px"
+    },
+    error: {
+        height: "100px",
+        width: "100px"
+    }
 }));

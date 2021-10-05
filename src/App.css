@@ -500,6 +500,7 @@ h3 {
 .profile-img {
   height: 350px;
   width: 350px;
+  border-radius: 25px;
 }
 
 .about-text h3 {
@@ -615,4 +616,10 @@ mark {
 
 .centered-element {
   margin: auto;
+}
+
+.testimonials-clean {
+  color:#313437;
+  background-color:#eef4f7;
+  border-radius: 25px;
 }

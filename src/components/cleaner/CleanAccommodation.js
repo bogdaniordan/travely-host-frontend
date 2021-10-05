@@ -11,7 +11,7 @@ const CleanAccommodation = ({accommodationCanBeCleaned, employedCleaners, setCle
                     <div className="select-cleaner-container">
                         {
                             employedCleaners.filter(cleaner => !cleaner.currentCleaningJob).length > 0 ? (
-                                <Paper elevation={2} style={{backgroundColor: "#212529", color: "white"}}>
+                                <Paper elevation={2} style={{color: "white"}}>
                                     <small className="small-cleaner-text">Select cleaner</small>
                                     <br/>
                                     <select className="form-select" aria-label="Default select example" onChange={setCleaner} style={{backgroundColor: "#212529", color: "white"}} >

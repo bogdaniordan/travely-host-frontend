@@ -6,7 +6,7 @@ import CleanerService from "../../service/CleanerService";
 import Link from 'react-router-dom/Link';
 import Modal from "react-modal";
 import {customStyles} from "../../styling/ModalStyling";
-import CleanersModal from "../cleaner/CleanersModal";
+import HostCleanersModal from "../cleaner/HostCleanersModal";
 import Tooltip from '@material-ui/core/Tooltip';
 import Button from "@material-ui/core/Button";
 import {useHistory} from "react-router-dom";
@@ -190,7 +190,7 @@ const ProfileCard = () => {
                                     onRequestClose={closeModal}
                                     style={customStyles}
                                 >
-                                    <CleanersModal
+                                    <HostCleanersModal
                                         closeModal={closeModal}
                                         fireCleaner={fireCleaner}
                                         employedCleaners={employedCleaners}

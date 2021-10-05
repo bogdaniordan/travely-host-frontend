@@ -23,7 +23,7 @@ const AddAccommodationForm = ({form, submitForm, setTitle, title, address, setAd
                 >
                     <br/>
                     <div className="booking-avatar-container">
-                        <h4>Host a new accommodation</h4>
+                        <h4>List a new property</h4>
                     </div>
                     <br/>
                     <Form
@@ -158,24 +158,6 @@ const AddAccommodationForm = ({form, submitForm, setTitle, title, address, setAd
                                 )
                             }
                         </div>
-                        {/*<div className="mb-3">*/}
-                        {/*    <label>Facilities: </label>*/}
-                        {/*    <div className="facilities-boxes-container">*/}
-                        {/*        {facilities.map(*/}
-                        {/*            (facility, index) =>*/}
-                        {/*                <div key={index}>*/}
-                        {/*                    <label style={{margin: "10px"}}>{facility.replace("_", " ")}</label>*/}
-                        {/*                    <input*/}
-                        {/*                        type="checkbox"*/}
-                        {/*                        checked={checkedFacilities[index]}*/}
-                        {/*                        name={facility}*/}
-                        {/*                        value={facility}*/}
-                        {/*                        onChange={() => handleCheckboxChange(index)}*/}
-                        {/*                    />*/}
-                        {/*                </div>*/}
-                        {/*        )}*/}
-                        {/*    </div>*/}
-                        {/*</div>*/}
                         <div className="mb-3">
                             <label htmlFor="firstImage" className="form-label">
                                 First image

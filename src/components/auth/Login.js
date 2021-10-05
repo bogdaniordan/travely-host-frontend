@@ -20,6 +20,7 @@ import LandingPageNavbar from "../navigation/LandingPageNavbar";
 import "../../styling/LoginStyling.css"
 import login_background from "../../images/login_background.jpg"
 import { Link } from "react-router-dom";
+import HouseIcon from '@material-ui/icons/House';
 
 const Login = () => {
     const classes = useStyles();
@@ -68,12 +69,13 @@ const Login = () => {
             <div className="login-body-container">
                 <div className="login-image-container">
                     <img src={login_background} alt="Login background"/>
-                    <Paper style={{borderRadius: "25px", position: "absolute", width: "550px", height: "650px", margin: "auto"}} elevation={3}>
+                    <Paper className={classes.container} elevation={3}>
                         <Container maxWidth="xs" className="sign-up-container">
                             <CssBaseline />
                             <div className={classes.paper}>
                                 <Avatar className={classes.avatar}>
-                                    <LockOutlinedIcon />
+                                    <HouseIcon />
+                                    {/*<LockOutlinedIcon />*/}
                                 </Avatar>
                                 <br/>
                                 <Typography component="h1" variant="h5">
