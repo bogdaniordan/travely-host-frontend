@@ -7,30 +7,25 @@ import Button from "@material-ui/core/Button";
 import CheckButton from "react-validation/build/button";
 import {Container, Paper} from "@material-ui/core";
 import {useHistory} from "react-router-dom";
+import {useStyles} from "../../styling/js-styling/AuthStyles";
 
 const AddAccommodationForm = ({form, submitForm, setTitle, title, address, setAddress, location, setLocation, type, setType, price, setPrice, addFacility, removeFacility, currentFacilities, remainingFacilities,
                               checkBtn, setFirstImage, setSecondImage, setThirdImage}) => {
+    const classes = useStyles();
     const history = useHistory();
     const [showPlus, setShowPlus] = useState(false);
     const [showMinus, setShowMinus] = useState(false);
 
-
     return (
         <div className="container">
-            <Paper elevation={3} style={{margin: "auto", height: "1200px"}}>
-                <Container
-                    style={{height: "100%", margin: "auto"}}
-                >
+            <Paper elevation={3} className={classes.addPaper}>
+                <Container className={classes.addContainer}>
                     <br/>
                     <div className="booking-avatar-container">
                         <h4>List a new property</h4>
                     </div>
                     <br/>
-                    <Form
-                        onSubmit={submitForm}
-                        ref={form}
-                        style={{width: "80%", margin: "auto"}}
-                    >
+                    <Form onSubmit={submitForm} ref={form} className={classes.addForm}>
                         <div className="mb-3">
                             <label htmlFor="title" className="form-label">
                                 Title
@@ -196,14 +191,14 @@ const AddAccommodationForm = ({form, submitForm, setTitle, title, address, setAd
                         </div>
                         <br/>
                         <div>
-                            <Button type="submit" variant="contained" color="primary" style={{float: "left"}}>
+                            <Button type="submit" variant="contained" color="primary" className={classes.updateBtn}>
                                 Submit
                             </Button>
-                            <Button variant="contained" color="secondary" style={{float: "right"}} onClick={() => history.push("/")}>
+                            <Button variant="contained" color="secondary" className={classes.backBtn} onClick={() => history.push("/")}>
                                Back
                             </Button>
                         </div>
-                        <CheckButton style={{ display: "none" }} ref={checkBtn} />
+                        <CheckButton className={classes.checkBtn} ref={checkBtn} />
                     </Form>
                 </Container>
             </Paper>

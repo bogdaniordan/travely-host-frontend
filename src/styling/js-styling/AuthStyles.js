@@ -24,5 +24,42 @@ export const useStyles = makeStyles((theme) => ({
         width: "600px",
         height: "700px",
         margin: "auto"
+    },
+    updateContainer: {
+        height: "100%",
+        margin: "auto"
+    },
+    updatePaper: {
+        margin: "auto",
+        height: "900px"
+    },
+    updateBtn: {
+        float: "left"
+    },
+    backBtn: {
+        float: "right"
+    },
+    addPaper: {
+        margin: "auto",
+        height: "1100px"
+    },
+    addForm: {
+        width: "80%",
+        margin: "auto"
+    },
+    addContainer: {
+        height: "100%",
+        margin: "auto"
+    },
+    checkBtn: {
+        display: "none"
+    },
+    bookingAvatar: {
+        height: "70px",
+        width: "70px",
+        margin: "auto"
+    },
+    cardActions : {
+        justifyContent: "center"
     }
 }));

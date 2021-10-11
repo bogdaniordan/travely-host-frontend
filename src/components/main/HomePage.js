@@ -36,6 +36,7 @@ const HomePage = () => {
                                     <div className="counter">
                                         <div className="login-body-container">
                                             <h4 className="accommodations-header">Accommodations <Button variant="contained" color="primary" onClick={addAccommodation} endIcon={<AddIcon />}style={{float: "right"}}>new</Button></h4>
+                                            <br/>
                                         </div>
                                         <div className="container py-2">
                                             <br/>
@@ -50,8 +51,6 @@ const HomePage = () => {
                             </div>
                         )
                     }
-
-
                     {/*    <div className="container py-2">*/}
                     {/*    {*/}
                     {/*        accommodations ? (*/}

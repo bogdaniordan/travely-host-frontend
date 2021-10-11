@@ -14,13 +14,11 @@ import {useHistory} from "react-router-dom";
 import Button from "@material-ui/core/Button";
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 
-
 const AccommodationCard = ({accommodation, accommodations, setAccommodations}) => {
     const history = useHistory();
     const [bookings, setBookings] = useState([]);
     const [employedCleaners, setEmployedCleaners] = useState([]);
     const [accommodationCanBeCleaned, setAccommodationCanBeCleaned] = useState(false);
-    const [currentCleaner, setCurrentCleaner] = useState(0);
     const [cleanersCurrentlyCleaningThis, setCleanersCurrentlyCleaningThis] = useState([]);
     const [showBookings, setShowBookings] = useState(false);
     const [isBookedAtm, setIsBookedAtm] = useState(false);
@@ -57,12 +55,8 @@ const AccommodationCard = ({accommodation, accommodations, setAccommodations}) =
         setShowBookings(!showBookings);
     }
 
-    const setCleaner= e => {
-        setCurrentCleaner(e.target.value)
-    }
-
-    const setCleanerToCleanAccommodation = () => {
-        CleanerService.setToCleanAccommodation(currentCleaner, accommodation.id).then(res => {
+    const setCleanerToCleanAccommodation = e => {
+        CleanerService.setToCleanAccommodation(e.target.value, accommodation.id).then(res => {
             setAccommodationCanBeCleaned(false)
             getCurrentCleanersOfThisAccommodations();
         });
@@ -87,7 +81,7 @@ const AccommodationCard = ({accommodation, accommodations, setAccommodations}) =
                     {/*<h1 className="postcard__title blue" style={{marginLeft: "10px"}}><a href="#">{accommodation.title}</a></h1>*/}
                     <h4 className="centered-element">{accommodation.title}</h4>
 
-                    <CleanAccommodation accommodationCanBeCleaned={accommodationCanBeCleaned} employedCleaners={employedCleaners} setCleanerToCleanAccommodation={setCleanerToCleanAccommodation} cleanersCurrentlyCleaningThis={cleanersCurrentlyCleaningThis} setCleaner={setCleaner}/>
+                    <CleanAccommodation accommodationCanBeCleaned={accommodationCanBeCleaned} employedCleaners={employedCleaners} setCleanerToCleanAccommodation={setCleanerToCleanAccommodation} cleanersCurrentlyCleaningThis={cleanersCurrentlyCleaningThis}/>
                     <div className="postcard__bar"></div>
                     <div className="postcard__preview-txt"><LocationOnIcon /> <strong>{accommodation.location}</strong></div>
                     <div className="postcard__preview-txt">Type: <strong>{accommodation.placeType}</strong></div>
@@ -97,7 +91,7 @@ const AccommodationCard = ({accommodation, accommodations, setAccommodations}) =
                             <div className="postcard__preview-txt">This accommodation is currently booked.</div>
                         ) : (
                             hasFutureBookings ? (
-                                <div className="postcard__preview-txt">Next booking starts on <strong>{moment(closestFutureBooking.checkInDate).format("DD-MM-YYYY")}</strong>.</div>
+                                <div className="postcard__preview-txt">Next booking starts on <strong>{moment(closestFutureBooking.checkInDate).subtract(1, 'months').format("DD-MM-YYYY")}</strong>.</div>
                             ) : (
                                 <div className="postcard__preview-txt">This accommodation has no future bookings.</div>
                             )
@@ -125,7 +119,7 @@ const AccommodationCard = ({accommodation, accommodations, setAccommodations}) =
                             )
                         }
                     </ul>
-                    <div className="postcard__preview-txt" style={{marginLeft: "auto", padding: "15px"}}>
+                    <div className="postcard__preview-txt" id="cleaning-icon-container">
                         <Avatar src={accommodation.cleaningStatus === "CLEAN" ? `https://cdn-icons-png.flaticon.com/512/995/995053.png` : `https://icon-library.com/images/dirty-icon/dirty-icon-4.jpg`}/>
                     </div>
                     <AccommodationRating accommodationId={accommodation.id}/>
@@ -138,7 +132,6 @@ const AccommodationCard = ({accommodation, accommodations, setAccommodations}) =
                 {
                     bookings.length > 0 && (
                         <div>
-                            <h4 className="login-body-container">Bookings of {accommodation.title}</h4>
                             <div className="bookings-section">
                                 {
                                     bookings.map(

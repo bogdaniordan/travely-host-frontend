@@ -1,37 +1,13 @@
 import React, {useEffect, useState} from 'react';
-import {Link, List, ListItem, ListItemAvatar, ListItemText, Paper} from "@material-ui/core";
+import {List, ListItem, ListItemAvatar, ListItemText, Paper} from "@material-ui/core";
 import Avatar from "@material-ui/core/Avatar";
 import CleanerService from "../../service/CleanerService";
 import Typography from "@material-ui/core/Typography"
-import {makeStyles} from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import Navbar from "../navigation/Navbar";
 import AuthService from "../../service/AuthService";
 import Footer from "../navigation/Footer";
-
-const useStyles = makeStyles((theme) => ({
-    root: {
-        width: "100%",
-        backgroundColor: theme.palette.background.paper,
-    },
-    inline: {
-        display: "inline",
-    },
-    list: {
-        display: "grid",
-        gridTemplateColumns: "repeat(3, 1fr)",
-        gridGap: "10px",
-        gridAutoRows: 'minMax(100px, auto)'
-    },
-    paper: {
-        margin: "30px",
-        width: "350px"
-    },
-    button: {
-        height: "20px",
-        width: "40px"
-    }
-}));
+import {useStyles} from "../../styling/js-styling/CleanersPageStyling";
 
 const CleanersPage = () => {
     const classes = useStyles();
@@ -51,6 +27,10 @@ const CleanersPage = () => {
 
     const hireCleaner = (id) => {
         CleanerService.hireCleaner(id, AuthService.getCurrentUser().id).then(res => findAllCleaners());
+    }
+
+    const fireCleaner = id => {
+        CleanerService.fireCleaner(id).then(res => findAllCleaners());
     }
 
     return (
@@ -78,16 +58,20 @@ const CleanersPage = () => {
                                             <ListItemText
                                                 key={cleaner.id}
                                                 primary={
-                                                    <>
+                                                    <div className="flexed-container">
                                                         <p>{cleaner.name}</p>
-                                                        <small>
+                                                        <small className="margined-left">
                                                             {
-                                                                !cleaner.hired && (
+                                                                !cleaner.hired ? (
                                                                     <Button className={classes.button} onClick={() => hireCleaner(cleaner.id)} variant="contained" color="primary">HIRE</Button>
+                                                                ) : (
+                                                                    cleaner.employer.id === AuthService.getCurrentUser().id && (
+                                                                        <Button className={classes.button} onClick={() => fireCleaner(cleaner.id)} variant="contained" color="secondary">FIRE</Button>
+                                                                    )
                                                                 )
                                                             }
                                                         </small>
-                                                    </>
+                                                    </div>
                                                 }
                                                 secondary={
                                                     <React.Fragment>
@@ -102,7 +86,23 @@ const CleanersPage = () => {
                                                             </small>
                                                         </Typography>
                                                         {" - "}
-                                                        {cleaner.hired ? "hired" : "free"}
+                                                        {cleaner.hired ? `hired by ${cleaner.employer.firstName} ${cleaner.employer.lastName}` : "free"}
+                                                        {
+                                                            cleaner.cleaningHistory.length > 0 && (
+                                                                <div>
+                                                                    <br/>
+                                                                    <strong>Cleaning history</strong>
+                                                                    <div>
+                                                                        {
+                                                                            cleaner.cleaningHistory.map(
+                                                                                cleanedAccommodation => (<small>{cleanedAccommodation.title}</small>)
+                                                                            )
+                                                                        }
+                                                                    </div>
+
+                                                                </div>
+                                                            )
+                                                        }
                                                     </React.Fragment>
                                                 }
                                             />

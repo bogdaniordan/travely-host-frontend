@@ -6,8 +6,10 @@ import AccommodationService from "../../service/AccommodationService";
 import {useForm} from "react-hook-form";
 import Button from "@material-ui/core/Button";
 import {useHistory, useLocation} from "react-router-dom";
+import {useStyles} from "../../styling/js-styling/AuthStyles";
 
 const UpdateAccommodation = (props) => {
+    const classes = useStyles();
     const location = useLocation();
     const history = useHistory();
     const id = props.match.params.id;
@@ -49,19 +51,15 @@ const UpdateAccommodation = (props) => {
         <div>
             <Navbar title="Update accommodation"/>
             <div className="container">
-                <Paper elevation={3} style={{margin: "auto", height: "900px"}}>
-                    <Container
-                        style={{height: "100%", margin: "auto"}}
-                    >
+                <Paper elevation={3} className={classes.updatePaper}>
+                    <Container className={classes.updateContainer}>
                         <br/>
                         <div className="booking-avatar-container">
                             <h4>Update {accommodation.title} details</h4>
                         </div>
                         <br/>
                         <br/>
-                        <form
-                            style={{width: "80%", margin: "auto"}}
-                            onSubmit={handleSubmit((data) => {
+                        <form className="update-user-form" onSubmit={handleSubmit((data) => {
                                 AccommodationService.updateAccommodation(id, data, currentFacilities)
                                     .then(res => history.push("/"))
                             })}
@@ -77,7 +75,7 @@ const UpdateAccommodation = (props) => {
                                     {...register("title", {required: true, minLength: 5})}
                                 />
                             </div>
-                            {errors.title && <span style={{color:"red"}}>This field needs at least 5 characters.</span>}
+                            {errors.title && <span className="error-red">This field needs at least 5 characters.</span>}
                             <div className="mb-3">
                                 <label htmlFor="address" className="form-label">
                                     Address
@@ -89,7 +87,7 @@ const UpdateAccommodation = (props) => {
                                     {...register("address", {required: true, minLength: 7})}
                                 />
                             </div>
-                            {errors.address && <span style={{color:"red"}}>This field needs at least 7 characters.</span>}
+                            {errors.address && <span className="error-red">This field needs at least 7 characters.</span>}
                             <div className="mb-3">
                                 <label htmlFor="type" className="form-label">
                                     Accommodation type
@@ -106,7 +104,7 @@ const UpdateAccommodation = (props) => {
                                     <option value="Hotel">Hotel</option>
                                 </select>
                             </div>
-                            {errors.placeType && <span style={{color:"red"}}>Choose a place type.</span>}
+                            {errors.placeType && <span className="error-red">Choose a place type.</span>}
                             <div className="mb-3">
                                 <label htmlFor="price" className="form-label">
                                     Price per night
@@ -118,37 +116,7 @@ const UpdateAccommodation = (props) => {
                                     {...register("pricePerNight", {required: true, pattern: /^[0-9]*$/, max: 5000})}
                                 />
                             </div>
-                            {errors.pricePerNight && <span style={{color:"red"}}>Price needs to contain only digits.</span>}
-                            {/*<div className="mb-3">*/}
-                            {/*    <label htmlFor="firstImage" className="form-label">*/}
-                            {/*        First image*/}
-                            {/*    </label>*/}
-                            {/*    <input*/}
-                            {/*        type="file"*/}
-                            {/*        className="form-control"*/}
-                            {/*        name="firstImage"*/}
-                            {/*    />*/}
-                            {/*</div>*/}
-                            {/*<div className="mb-3">*/}
-                            {/*    <label htmlFor="secondImage" className="form-label">*/}
-                            {/*        Second Image*/}
-                            {/*    </label>*/}
-                            {/*    <input*/}
-                            {/*        type="file"*/}
-                            {/*        className="form-control"*/}
-                            {/*        name="secondImage"*/}
-                            {/*    />*/}
-                            {/*</div>*/}
-                            {/*<div className="mb-3">*/}
-                            {/*    <label htmlFor="thirdImage" className="form-label">*/}
-                            {/*        Third image*/}
-                            {/*    </label>*/}
-                            {/*    <input*/}
-                            {/*        type="file"*/}
-                            {/*        className="form-control"*/}
-                            {/*        name="thirdImage"*/}
-                            {/*    />*/}
-                            {/*</div>*/}
+                            {errors.pricePerNight && <span className="error-red">Price needs to contain only digits.</span>}
                             <br/>
                             <div className="mb-3">
                                 {
@@ -202,10 +170,10 @@ const UpdateAccommodation = (props) => {
                             <br/>
                             <br/>
                             <div>
-                                <Button type="submit" variant="contained" color="primary" style={{float: "left"}}>
+                                <Button type="submit" variant="contained" color="primary" className={classes.updateBtn}>
                                     Update
                                 </Button>
-                                <Button variant="contained" color="secondary" style={{float: "right"}} onClick={() => history.push("/")}>
+                                <Button variant="contained" color="secondary" className={classes.backBtn} onClick={() => history.push("/")}>
                                     Back
                                 </Button>
                             </div>

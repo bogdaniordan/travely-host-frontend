@@ -11,3 +11,34 @@
     min-width: 100%;
     min-height: 100%
 }
+
+#landing-page-navbar-font {
+    font-size: 20px !important;
+}
+
+.logo-image {
+    width: 110px;
+    height: 100px;
+}
+
+#navbar-text {
+    color: #aaaacc;
+}
+
+#testimonials-container {
+    min-height: 400px;
+}
+
+.update-user-form {
+    width: 80%;
+    margin: auto;
+}
+
+.error-red {
+    color: red;
+}
+
+#cleaning-icon-container {
+    margin-left: auto;
+    padding: 15px;
+}

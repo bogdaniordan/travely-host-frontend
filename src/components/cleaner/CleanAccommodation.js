@@ -11,10 +11,10 @@ const CleanAccommodation = ({accommodationCanBeCleaned, employedCleaners, setCle
                     <div className="select-cleaner-container">
                         {
                             employedCleaners.filter(cleaner => !cleaner.currentCleaningJob).length > 0 ? (
-                                <Paper elevation={2} style={{color: "white"}}>
+                                <Paper elevation={2} style={{backgroundColor: "#E1E5EA"}}>
                                     <small className="small-cleaner-text">Select cleaner</small>
                                     <br/>
-                                    <select className="form-select" aria-label="Default select example" onChange={setCleaner} style={{backgroundColor: "#212529", color: "white"}} >
+                                    <select className="form-select" aria-label="Default select example" onChange={setCleanerToCleanAccommodation} style={{backgroundColor: "#E1E5EA"}} >
                                         <option value="" selected disabled hidden>Choose type</option>
                                         {
                                             employedCleaners.filter(cleaner => !cleaner.currentCleaningJob).map(
@@ -22,10 +22,10 @@ const CleanAccommodation = ({accommodationCanBeCleaned, employedCleaners, setCle
                                             )
                                         }
                                     </select>
-                                    <Button onClick={setCleanerToCleanAccommodation} variant="contained" color="primary" style={{height: "20px", width: "30px"}}>Set</Button>
+                                    {/*<Button onClick={setCleanerToCleanAccommodation} variant="contained" color="primary" style={{height: "20px", width: "30px"}}>Set</Button>*/}
                                 </Paper>
                             ) : (
-                                <Paper elevation={2} style={{backgroundColor: "#212529", color: "white"}}>
+                                <Paper elevation={2} style={{backgroundColor: "#E1E5EA"}}>
                                     <small className="small-cleaner-text">No cleaners available.</small>
                                 </Paper>
                             )
@@ -34,12 +34,11 @@ const CleanAccommodation = ({accommodationCanBeCleaned, employedCleaners, setCle
                 ) : (
                     cleanersCurrentlyCleaningThis.length === 1 && (
                         <div className="select-cleaner-container">
-                            <Avatar style={{margin: "10px"}} alt="Remy Sharp" src="http://cdn.onlinewebfonts.com/svg/img_507212.png" />
-                            <Paper elevation={2} style={{backgroundColor: "#212529", color: "white"}}>
+                            {/*<Avatar style={{margin: "10px"}} alt="Remy Sharp" src="http://cdn.onlinewebfonts.com/svg/img_507212.png" />*/}
+                            <Paper elevation={2} style={{backgroundColor: "#E1E5EA"}}>
                                 <small className="small-cleaner-text">Currently being cleaned by {cleanersCurrentlyCleaningThis[0].name}</small>
                             </Paper>
                         </div>
-
                     ))
             }
         </>

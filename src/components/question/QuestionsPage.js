@@ -6,7 +6,7 @@ import {Link} from "react-router-dom";
 import Avatar from "@material-ui/core/Avatar";
 import {List, ListItem, ListItemAvatar, ListItemText} from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
-import {useStyles} from "../../styling/QuestionsStyling"
+import {useStyles} from "../../styling/js-styling/QuestionsStyling"
 import Footer from "../navigation/Footer";
 import moment from "moment";
 import ErrorIcon from '@material-ui/icons/Error';
@@ -21,8 +21,7 @@ const QuestionsPage = () => {
     }, []);
 
     const showQuestions = () => {
-        return questions.map((question) =>
-            !question.solved && (
+        return questions.map((question) => (
                 <Paper elevation={3} className={classes.paper}>
                 <ListItem alignItems="flex-start">
                     <ListItemAvatar>
@@ -44,13 +43,11 @@ const QuestionsPage = () => {
                                     </small>
                                 </Typography>
                                 {" - "}
-                                {moment(question.date).format("DD-MM-YYYY")}
+                                {moment(question.date).subtract(1, 'months').format("DD-MM-YYYY")}
                             </>
                         }
                     />
-                    {
-                        question.response && <Button variant="contained" disabled>ANSWERED</Button>
-                    }
+                    {question.response && <Button variant="contained" disabled>ANSWERED</Button>}
                 </ListItem>
                 </Paper>
                 )
@@ -60,7 +57,7 @@ const QuestionsPage = () => {
     return (
         <div>
             <Navbar title={"Questions"} subtitle={"Answer to or resolve question from customers about your accommodations."}/>
-            <div className="container" style={{height: "400px"}}>
+            <div className="container" id="customer-question-container">
 
                 {questions.filter(question => !question.solved).length > 0 ?(
                     <div>

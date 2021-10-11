@@ -5,12 +5,13 @@ import {useHistory} from "react-router-dom";
 import Button from "@material-ui/core/Button";
 import DeleteQuestionModal from "./DeleteQuestionModal";
 import Modal from 'react-modal';
-import {customStyles} from "../../styling/ModalStyling";
+import {customStyles} from "../../styling/js-styling/ModalStyling";
 import QuestionService from "../../service/QuestionService";
 import Link from 'react-router-dom/Link';
 import Footer from "../navigation/Footer";
 import ContactSupportIcon from '@material-ui/icons/ContactSupport';
 import moment from "moment";
+import InfoIcon from '@material-ui/icons/Info';
 
 Modal.setAppElement('#root');
 const QuestionPage = (props) => {
@@ -51,12 +52,15 @@ const QuestionPage = (props) => {
 
     return (
         <div>
+
+
             <Navbar title={"QuestionPage"} subtitle={"Answer, delete or mark this questions as solved."}/>
-                <Container style={{maxWidth: "70%", textAlign: "center", height: "500px"}}>
-                    <Link to="/questions/" style={{float: "left"}}>Back to questions</Link>
-                    <br/>
-                    <br/>
-                    <div className="question-box">
+                <div className="container">
+                    <Container style={{maxWidth: "70%", textAlign: "center", height: "700px"}}>
+                        <Link to="/questions/" style={{float: "left"}}>Back to questions</Link>
+                        <br/>
+                        <br/>
+                        <div className="question-box">
                         <div className="card-body">
                             <ContactSupportIcon color="primary" style={{height: "120px", width: "120px", marginBottom: "20px"}}/>
                             <h4 className="title"><strong>{question.text}</strong></h4>
@@ -103,8 +107,9 @@ const QuestionPage = (props) => {
                                 </p>
                             </footer>
                         </form>
+                        <br/>
                         <div>
-                            Mark as solved {" "}
+                            <h5>Mark as solved {" "}
                             {question.solved ? (
                                 <input
                                     type="checkbox"
@@ -121,9 +126,13 @@ const QuestionPage = (props) => {
                                     onClick={markAsSolved}
                                 />
                             )}
+                            </h5>
+                            <br/>
+                            <p><InfoIcon style={{color: "orange"}}/> If you mark it as solved, you won't be able to see the question again.</p>
                         </div>
-                    </div>
-                </Container>
+                        </div>
+                    </Container>
+                </div>
             <Footer />
         </div>
     );

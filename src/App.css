@@ -289,6 +289,8 @@
   margin: 100px auto;
 }
 
+/*cleaners*/
+
 .question-page-buttons-container {
   margin-top: 20px;
 }
@@ -622,4 +624,16 @@ mark {
   color:#313437;
   background-color:#eef4f7;
   border-radius: 25px;
+}
+
+.flexed-container {
+  display: flex;
+}
+
+.margined-left {
+  margin-left: 10px;
+}
+
+#customer-question-container {
+  height: 400px;
 }

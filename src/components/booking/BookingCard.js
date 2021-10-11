@@ -8,8 +8,10 @@ import Typography from '@material-ui/core/Typography';
 import Avatar from "@material-ui/core/Avatar";
 import BookingService from "../../service/BookingService";
 import moment from "moment";
+import {useStyles} from "../../styling/js-styling/AuthStyles";
 
 const BookingCard = ({booking, setBookings, bookings}) => {
+    const classes = useStyles();
 
     const cancelBooking = () => {
         BookingService.declineBooking(booking.id).then(res => setBookings(bookings.filter(bk => bk.id !== booking.id)))
@@ -21,8 +23,7 @@ const BookingCard = ({booking, setBookings, bookings}) => {
                 <CardContent>
                     <div className="booking-avatar-container">
                         <Avatar
-                            src={`http://localhost:8080/customers/image/${booking.customer.id}/download`} style={{height: "70px", width: "70px", margin: "auto"}}
-                        />
+                            src={`http://localhost:8080/customers/image/${booking.customer.id}/download`} className={classes.bookingAvatar}/>
                     </div>
                     <br/>
                     <Typography gutterBottom variant="h6" component="h6">
@@ -41,16 +42,16 @@ const BookingCard = ({booking, setBookings, bookings}) => {
 
                             <strong>{booking.customer.firstName} {booking.customer.lastName}</strong>
                         </Typography>
-                        Check-in: {moment(booking.checkInDate).format("DD-MM-YYYY")}
+                        Check-in: {moment(booking.checkInDate).subtract(1, 'months').format("DD-MM-YYYY")}
                         <br/>
-                        Check-out: {moment(booking.checkoutDate).format("DD-MM-YYYY")}
+                        Check-out: {moment(booking.checkoutDate).subtract(1, 'months').format("DD-MM-YYYY")}
                     </div>
 
                 </CardContent>
             </CardActionArea>
-            <CardActions style={{justifyContent: 'center'}}>
+            <CardActions className={classes.cardActions}>
             {
-                new Date() > new Date(moment(booking.checkoutDate).format("DD-MM-YYYY")) ? (
+                new Date() > new Date(moment(booking.checkoutDate).subtract(1, 'months').format("YYYY-MM-DD")) ? (
                     <Button size="small" variant="contained" color="secondary" onClick={cancelBooking}>
                         Cancel
                     </Button>
