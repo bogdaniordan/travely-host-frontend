@@ -31,7 +31,18 @@ const AccommodationCard = ({accommodation, accommodations, setAccommodations}) =
         CleanerService.getAllForHost(AuthService.getCurrentUser().id).then(res => setEmployedCleaners(res.data));
         BookingService.getAllByAccommodation(accommodation.id).then(res => setBookings(res.data));
         getBookingStatus();
+        getBookings();
     }, [])
+
+    const getBookings = () => {
+        BookingService.getAllByAccommodation(accommodation.id).then(res => {
+            let bookings = res.data;
+            bookings.sort((a, b) => {
+                return new Date(a.checkInDate) -  new Date(b.checkoutDate)
+            })
+            setBookings(bookings)
+        });
+    }
 
     const getBookingStatus = () => {
         BookingService.accommodationIsBookedNow(accommodation.id).then(res => {
@@ -132,6 +143,10 @@ const AccommodationCard = ({accommodation, accommodations, setAccommodations}) =
                 {
                     bookings.length > 0 && (
                         <div>
+                            <div className="center-header">
+                                <h5 className="centered-element">Booking history for {accommodation.title}</h5>
+                            </div>
+                            <br/>
                             <div className="bookings-section">
                                 {
                                     bookings.map(

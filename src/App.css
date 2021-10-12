@@ -635,5 +635,14 @@ mark {
 }
 
 #customer-question-container {
-  height: 400px;
+  height: 550px;
 }
+
+#manage-questions-header {
+  margin-bottom: 50px;
+}
+
+#question-text {
+  font-size: 15px !important;
+}
+

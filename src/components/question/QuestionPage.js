@@ -52,8 +52,6 @@ const QuestionPage = (props) => {
 
     return (
         <div>
-
-
             <Navbar title={"QuestionPage"} subtitle={"Answer, delete or mark this questions as solved."}/>
                 <div className="container">
                     <Container style={{maxWidth: "70%", textAlign: "center", height: "700px"}}>

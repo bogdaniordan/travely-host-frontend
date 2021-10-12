@@ -21,5 +21,8 @@ export const useStyles = makeStyles((theme) => ({
     button: {
         height: "20px",
         width: "40px"
+    },
+    cleaningPaper : {
+        backgroundColor: "#E1E5EA"
     }
 }));

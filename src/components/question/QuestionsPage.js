@@ -11,6 +11,7 @@ import Footer from "../navigation/Footer";
 import moment from "moment";
 import ErrorIcon from '@material-ui/icons/Error';
 import Button from "@material-ui/core/Button";
+import QuestionAnswerIcon from '@material-ui/icons/QuestionAnswer';
 
 const QuestionsPage = () => {
     const classes = useStyles();
@@ -38,7 +39,7 @@ const QuestionsPage = () => {
                                     className={classes.inline}
                                     color="textPrimary"
                                 >
-                                    <small key={question.id}>
+                                    <small key={question.id} id="question-text">
                                         {question.customer.firstName} {question.customer.lastName}
                                     </small>
                                 </Typography>
@@ -58,12 +59,11 @@ const QuestionsPage = () => {
         <div>
             <Navbar title={"Questions"} subtitle={"Answer to or resolve question from customers about your accommodations."}/>
             <div className="container" id="customer-question-container">
-
                 {questions.filter(question => !question.solved).length > 0 ?(
                     <div>
                         <div className="login-body-container">
-                            <h4 className="centered-element">Manage questions</h4>
-                            <br/>
+                            <QuestionAnswerIcon color="primary" style={{height: "150px", width: "150px"}}/>
+                            <h4 className="centered-element" id="manage-questions-header">Manage questions from your tenants</h4>
                         </div>
                         <List className={classes.root}>
                             {showQuestions()}
