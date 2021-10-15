@@ -5,13 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="54af3455-6289-4698-bfb0-824572c3fe26" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/accommodations/AccommodationCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/accommodations/AccommodationCard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/cleaner/CleanAccommodation.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/cleaner/CleanAccommodation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/auth/Register.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/auth/Register.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/booking/BookingCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/booking/BookingCard.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/cleaner/CleanersPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/cleaner/CleanersPage.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/host/ProfileCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/host/ProfileCard.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/main/HomePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/main/HomePage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/question/QuestionsPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/question/QuestionsPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/navigation/Footer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/navigation/Footer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/testimonials/AccommodationRating.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/testimonials/AccommodationRating.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styling/LoginStyling.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styling/LoginStyling.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styling/js-styling/AuthStyles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/styling/js-styling/AuthStyles.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,7 +44,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../travely-frontend" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -109,6 +113,10 @@
       <workItem from="1633348419157" duration="10206000" />
       <workItem from="1633427816551" duration="597000" />
       <workItem from="1633605170388" duration="27000" />
+      <workItem from="1634025466890" duration="6626000" />
+      <workItem from="1634048462329" duration="2283000" />
+      <workItem from="1634105110716" duration="4922000" />
+      <workItem from="1634307095777" duration="89000" />
     </task>
     <servers />
   </component>

@@ -46,3 +46,18 @@
 #cleaning-text {
     font-size: 15px !important;
 }
+
+.footer-container {
+    color: #aaaccc;
+    max-height: 75%;
+    height: 350px;
+    background-color: #212529;
+}
+
+#theme-colored {
+    color: #aaaccc !important;
+}
+
+#cleaners-container-height {
+    height: 600px
+}

@@ -264,9 +264,9 @@
   font-size: 58px;
   margin: -2px 0 0 -2px;
 }
-.modal-confirm.modal-dialog {
-  margin-top: 80px;
-}
+/*.modal-confirm.modal-dialog {*/
+/*  margin-top: 80px;*/
+/*}*/
 .modal-confirm .btn, .modal-confirm .btn:active {
   color: #fff;
   border-radius: 4px;

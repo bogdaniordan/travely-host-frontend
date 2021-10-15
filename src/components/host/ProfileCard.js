@@ -12,6 +12,7 @@ import Button from "@material-ui/core/Button";
 import {useHistory} from "react-router-dom";
 import BadgesBar from "../main/BadgesBar";
 import StatsBar from "../main/StatsBar";
+import InfoIcon from '@material-ui/icons/Info';
 
 const ProfileCard = () => {
     const history = useHistory();
@@ -46,16 +47,14 @@ const ProfileCard = () => {
             <br/>
             <section className="section about-section gray-bg" id="about">
                 <div className="container">
-                    <div className="row align-items-center flex-row-reverse">
-                        <div className="col-lg-6" style={{border: "1px solid black", width: "40%"}}>
+                    <div className="row align-items-center flex-row-reverse" style={{border: "1px solid blue"}}>
+                        <div className="col-lg-6" style={{border: "3px solid red", width: "30%", height: "350px"}}>
+
+                        </div>
+                        <div className="col-lg-6" style={{border: "1px solid yellow", width: "40%"}}>
                             <div className="about-text go-to">
-                                <h3 className="dark-color">Bogdan Iordan <Button color="primary" variant="contained" onClick={() => history.push("/update-host")} style={{marginLeft: "45px"}}>Update profile</Button></h3>
-                                {/*<h6 className="theme-color lead">A Lead UX &amp; UI designer based in Canada</h6>*/}
-                                {/*<p>I <mark>design and develop</mark> services for customers of all sizes, specializing*/}
-                                {/*    in creating stylish, modern websites, web services and online stores. My passion is*/}
-                                {/*    to design digital user experiences through the bold interface and meaningful*/}
-                                {/*    interactions.*/}
-                                {/*</p>*/}
+                                <h3 className="dark-color">Bogdan Iordan <Button color="primary" variant="contained" onClick={() => history.push("/update-host")}>Update profile</Button></h3>
+                                {!host.phoneNumber && <small><InfoIcon style={{color: "orange"}} /> Please update your profile with all the required details.</small>}
                                 <div className="row about-list">
                                     <div className="col-md-6">
                                         <div className="media">
@@ -107,10 +106,8 @@ const ProfileCard = () => {
                         </div>
                     </div>
                     <br/>
-
                     <StatsBar />
                     <br/>
-
                     <BadgesBar />
                     <br/>
                 </div>

@@ -50,8 +50,13 @@ const BookingCard = ({booking, setBookings, bookings}) => {
                     <div>
                         <Typography variant="body2" color="textSecondary" component="p">
 
-                            <strong>{booking.customer.firstName} {booking.customer.lastName}</strong>
+                            <strong>{booking.customer.firstName} {booking.customer.lastName}</strong>{
+                            booking.rescheduled && (
+                                <small> - REBOOKED</small>
+                            )
+                        }
                         </Typography>
+
                         Check-in: {moment(booking.checkInDate).subtract(1, 'months').format("DD-MMM-YYYY")}
                         <br/>
                         Check-out: {moment(booking.checkoutDate).subtract(1, 'months').format("DD-MMM-YYYY")}

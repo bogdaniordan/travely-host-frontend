@@ -22,7 +22,7 @@ export const useStyles = makeStyles((theme) => ({
         borderRadius: "25px",
         position: "absolute",
         width: "600px",
-        height: "700px",
+        height: "650px",
         margin: "auto"
     },
     updateContainer: {

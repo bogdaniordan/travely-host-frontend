@@ -13,6 +13,7 @@ import moment from "moment";
 import {useHistory} from "react-router-dom";
 import Button from "@material-ui/core/Button";
 import LocationOnIcon from '@material-ui/icons/LocationOn';
+import SortByAlphaIcon from '@material-ui/icons/SortByAlpha';
 
 const AccommodationCard = ({accommodation, accommodations, setAccommodations}) => {
     const history = useHistory();
@@ -135,7 +136,7 @@ const AccommodationCard = ({accommodation, accommodations, setAccommodations}) =
                     </div>
                     <AccommodationRating accommodationId={accommodation.id}/>
                 </div>
-                <a className="postcard__img_link" href="#">
+                <a className="postcard__img_link" href="#" >
                     <img className="postcard__img" src={`http://localhost:8080/accommodations/image/${accommodation.id}/firstImage/download`} alt="Image Title"/>
                 </a>
             </article>
@@ -144,7 +145,7 @@ const AccommodationCard = ({accommodation, accommodations, setAccommodations}) =
                     bookings.length > 0 && (
                         <div>
                             <div className="center-header">
-                                <h5 className="centered-element">Booking history for {accommodation.title}</h5>
+                                <h5 className="centered-element">Booking history for {accommodation.title} <Button><SortByAlphaIcon /></Button></h5>
                             </div>
                             <br/>
                             <div className="bookings-section">

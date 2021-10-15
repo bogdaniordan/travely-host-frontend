@@ -177,7 +177,7 @@ const Register = () => {
                                     <Grid xs={12}>
                                         <div className="form-group" style={{marginTop: "20px", marginBottom: "20px"}}>
                                             <Button type="submit" variant="contained" color="primary" block style={{margin: "10px"}}>Sign Up</Button>
-                                            <Button variant="contained" color="success" block href="/login">Back to login</Button>
+                                            <Button variant="contained" color="secondary" block href="/login">Back to login</Button>
                                         </div>
                                     </Grid>
                                 </Grid>

@@ -13,7 +13,7 @@ const AccommodationRating = ({accommodationId}) => {
     }, [])
 
     return (
-        <>
+        <div>
             {
                 reviews.length > 0 ? (
                     <div className="postcard__preview-txt">
@@ -26,7 +26,7 @@ const AccommodationRating = ({accommodationId}) => {
                 )
             }
 
-        </>
+        </div>
     );
 };
 

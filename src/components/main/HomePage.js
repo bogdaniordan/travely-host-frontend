@@ -35,7 +35,7 @@ const HomePage = () => {
                                 <section className="section about-section gray-bg" id="about">
                                     <div className="counter">
                                         <div className="login-body-container">
-                                            <h4 className="accommodations-header">Accommodations <Button variant="contained" color="primary" onClick={addAccommodation} endIcon={<AddIcon />}style={{float: "right"}}>new</Button></h4>
+                                            <h4 className="accommodations-header">Listed properties <Button variant="contained" color="primary" onClick={addAccommodation} endIcon={<AddIcon />}style={{float: "right"}}>new</Button></h4>
                                             <br/>
                                         </div>
                                         <div className="container py-2">
@@ -51,21 +51,6 @@ const HomePage = () => {
                             </div>
                         )
                     }
-                    {/*    <div className="container py-2">*/}
-                    {/*    {*/}
-                    {/*        accommodations ? (*/}
-                    {/*            <h3 className="center-header">My accommodations <Button variant="contained" color="primary" onClick={addAccommodation} style={{float: "right"}}><AddIcon /></Button></h3>*/}
-                    {/*        ) : (*/}
-                    {/*            <h3 className="center-header">You don't have any accommodations.<Button variant="contained" color="primary" onClick={addAccommodation} style={{float: "right"}}><AddIcon /></Button></h3>*/}
-                    {/*        )*/}
-                    {/*    }*/}
-                    {/*    <br/>*/}
-                    {/*    {*/}
-                    {/*        accommodations.map(*/}
-                    {/*            accommodation => <AccommodationCard key={accommodation.id} accommodation={accommodation} accommodations={accommodations} setAccommodations={setAccommodations}/>*/}
-                    {/*        )*/}
-                    {/*    }*/}
-                    {/*</div>*/}
                 </section>
             <Footer />
         </div>
