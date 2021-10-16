@@ -24,5 +24,18 @@ export const useStyles = makeStyles((theme) => ({
     },
     cleaningPaper : {
         backgroundColor: "#E1E5EA"
+    },
+    cleanerModal: {
+        width: "500px"
+    },
+    exitButton: {
+        maxWidth: "30px",
+        maxHeight: "30px",
+        minWidth: "30px",
+        minHeight: "30px"
+    },
+    fireCleaner: {
+        height: "20px",
+        width: "35px"
     }
 }));

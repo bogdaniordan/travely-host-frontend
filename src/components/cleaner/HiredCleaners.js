@@ -1,23 +1,23 @@
 import React from 'react';
-import Button from "@material-ui/core/Button";
 import {ListItem, ListItemAvatar, ListItemText, Paper} from "@material-ui/core";
 import Avatar from "@material-ui/core/Avatar";
-import {useStyles} from "../../styling/js-styling/CleanersPageStyling";
+import Button from "@material-ui/core/Button";
+import {useStyles} from "../../styling/js-styling/CleanersPageStyling"
+// import {logo} from "./clipart899308.png"
 
-const HostCleanersModal = ({closeModal, fireCleaner, employedCleaners}) => {
+const HiredCleaners = ({employedCleaners, fireCleaner}) => {
     const classes = useStyles();
 
     return (
-        <div className={classes.cleanerModal}>
-            <div className="close-modal-btn-container">
-                <Button onClick={closeModal} className={classes.exitButton} variant="contained" color="secondary">X</Button>
-            </div>
-            <div className="modal-body text-center">
-                <h5>Hired cleaners</h5>
-                <br/>
-                <div className="contained">
-                        {
-                            employedCleaners.length > 0 ? (
+        <>
+            {
+                employedCleaners.length > 0 ? (
+                    <>
+                        <div style={{textAlign: "center"}}>
+                            <h5 style={{color: "#211f79"}}>Hired cleaners</h5>
+                        </div>
+                        <div className="contained">
+                            {
                                 employedCleaners.map(
                                     cleaner => (
                                         <Paper elevation={2} style={{margin: "15px"}}>
@@ -29,7 +29,7 @@ const HostCleanersModal = ({closeModal, fireCleaner, employedCleaners}) => {
                                                     key={cleaner.id}
                                                     primary={
                                                         <>
-                                                            <p>{cleaner.name}   <Button onClick={() => fireCleaner(cleaner.id)} className={classes.fireCleaner} variant="contained" color="secondary">Fire</Button></p>
+                                                            <p>{cleaner.name}   <Button className={classes.fireCleaner} onClick={() => fireCleaner(cleaner.id)} variant="contained" color="secondary">Fire</Button></p>
                                                         </>
                                                     }
                                                     secondary={
@@ -37,9 +37,9 @@ const HostCleanersModal = ({closeModal, fireCleaner, employedCleaners}) => {
                                                             <p>{cleaner.experience.toLowerCase()}</p>
                                                             {
                                                                 cleaner.currentCleaningJob ? (
-                                                                    <small>Currently cleaning {cleaner.currentCleaningJob.title}</small>
+                                                                    <small className="small-text">Currently cleaning {cleaner.currentCleaningJob.title}</small>
                                                                 ) : (
-                                                                    <small>Available for cleaning</small>
+                                                                    <small className="small-text">Available for cleaning</small>
                                                                 )
                                                             }
                                                         </>
@@ -50,14 +50,22 @@ const HostCleanersModal = ({closeModal, fireCleaner, employedCleaners}) => {
 
                                     )
                                 )
-                            ) : (
-                                <p>You did not hire any cleaners.</p>
-                            )
-                        }
-                </div>
-            </div>
-        </div>
+                            }
+                        </div>
+                    </>
+
+                ) : (
+                    <>
+                        <div style={{textAlign: "center"}}>
+                            <h5 style={{color: "#211f79"}}>No hired cleaners</h5>
+                            {/*<img src={logo} alt="cleaner"/>*/}
+                        </div>
+                    </>
+                )
+            }
+
+        </>
     );
 };
 
-export default HostCleanersModal;
+export default HiredCleaners;

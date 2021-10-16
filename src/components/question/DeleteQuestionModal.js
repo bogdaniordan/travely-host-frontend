@@ -7,7 +7,7 @@ const DeleteQuestionModal = ({closeModal, deleteQuestion}) => {
                 <div className="modal-content">
                     <div className="modal-header justify-content-center">
                         <div className="icon-box">
-                            <i className="material-icons">&#xE5CD;</i>
+                            {/*<i className="material-icons">&#xE5CD;</i>*/}
                         </div>
                     </div>
                     <div className="modal-body text-center">
