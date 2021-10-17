@@ -37,5 +37,8 @@ export const useStyles = makeStyles((theme) => ({
     fireCleaner: {
         height: "20px",
         width: "35px"
+    },
+    cleanerCard: {
+        margin: "15px"
     }
 }));

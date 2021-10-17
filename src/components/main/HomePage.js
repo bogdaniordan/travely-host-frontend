@@ -27,7 +27,7 @@ const HomePage = () => {
     return (
         <div>
             <Navbar title={"Host profile"} subtitle={"Update your profile, add accommodations, manage your bookings."} />
-                <section>
+                <section className="accommodations-section">
                     <ProfileCard/>
                     {
                         accommodations.length > 0 && (

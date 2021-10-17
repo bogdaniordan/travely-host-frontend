@@ -1,0 +1,19 @@
+#employed-cleaners-container {
+    width: 30%;
+    height: 350px;
+    overflow: auto;
+}
+
+
+#profile-bar{
+    width: 40%;
+}
+
+#profile-empty-container {
+    margin-bottom: 90px;
+}
+
+#profile-picture-container {
+    width: 30%;
+    float: left;
+}

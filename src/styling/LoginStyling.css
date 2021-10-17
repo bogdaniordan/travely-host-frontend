@@ -61,3 +61,20 @@
 #cleaners-container-height {
     height: 600px
 }
+
+.cleaner-font {
+    color: #211f79
+}
+
+.centered-aligned {
+    text-align: center;
+}
+
+.broom-image {
+    height: 150px;
+    width: 150px;
+}
+
+.accommodations-section {
+    margin-bottom: 150px;
+}
