@@ -20,9 +20,13 @@ const QuestionPage = (props) => {
     const [modalIsOpen, setIsOpen] = useState(false)
     const [question, setQuestion] = useState({});
     const [response, setResponse] = useState("");
+    const [isSolved, setIsSolved] = useState(false);
 
     const markAsSolved = () => {
-        QuestionService.markAsSolved(questionId).then(r => window.location.reload())
+        QuestionService.markAsSolved(questionId).then(r => {
+            setIsSolved(true)
+            // window.location.reload()
+        })
     }
 
     const openModal = () => {
@@ -39,6 +43,7 @@ const QuestionPage = (props) => {
 
     useEffect(() => {
         QuestionService.getQuestion(questionId).then(res => setQuestion(res.data))
+        QuestionService.isSolved(questionId).then(res => setIsSolved(res.data))
     }, [])
 
     const handleChange = e => {
@@ -54,8 +59,9 @@ const QuestionPage = (props) => {
         <div>
             <Navbar title={"QuestionPage"} subtitle={"Answer, delete or mark this questions as solved."}/>
                 <div className="container">
+                    <Link to="/questions/" style={{float: "left"}}>Back to questions</Link>
+
                     <Container style={{maxWidth: "70%", textAlign: "center", height: "700px"}}>
-                        <Link to="/questions/" style={{float: "left"}}>Back to questions</Link>
                         <br/>
                         <br/>
                         <div className="question-box">
@@ -69,42 +75,46 @@ const QuestionPage = (props) => {
                                 <strong>{moment(question.date).format("DD-MM-YYYY")}</strong>
                             </p>
                         </div>
-                        <form className="form-signin" method="post" onSubmit={submitForm}>
-                            {
-                                !question.response && (
-                                    <div>
+                        {
+                            !isSolved && (
+                                <form className="form-signin" method="post" onSubmit={submitForm}>
+                                    {
+                                        !question.response && (
+                                            <div>
                                         <textarea
                                             className="form-control"
                                             placeholder="Leave a response here"
                                             id="response"
-                                            style={{height: "100px", width: "50%", margin: "auto"}}
+                                            style={{height: "100px", width: "70%", margin: "auto"}}
                                             onChange={handleChange}
                                             name="response"
                                             required
                                         ></textarea>
-                                    </div>
-                                )
-                            }
-                            <footer>
-                                <p className="card-footer-item">
-                                    <p className="question-page-buttons-container">
-                                        {
-                                            !question.response && (
-                                                <Button type="submit" variant="contained" color="primary">Submit response</Button>
-                                            )
-                                        }
-                                            <Button variant="contained" color="secondary" style={{marginLeft: "10px"}} onClick={openModal}>Delete question</Button>
-                                            <Modal
-                                                isOpen={modalIsOpen}
-                                                onRequestClose={closeModal}
-                                                style={customStyles}
-                                            >
-                                            <DeleteQuestionModal closeModal={closeModal} deleteQuestion={deleteQuestion}/>
-                                            </Modal>
-                                    </p>
-                                </p>
-                            </footer>
-                        </form>
+                                            </div>
+                                        )
+                                    }
+                                    <footer>
+                                        <p className="card-footer-item">
+                                            <p className="question-page-buttons-container">
+                                                {
+                                                    !question.response && (
+                                                        <Button type="submit" variant="contained" color="primary">Submit response</Button>
+                                                    )
+                                                }
+                                                <Button variant="contained" color="secondary" style={{marginLeft: "10px"}} onClick={openModal}>Delete question</Button>
+                                                <Modal
+                                                    isOpen={modalIsOpen}
+                                                    onRequestClose={closeModal}
+                                                    style={customStyles}
+                                                >
+                                                    <DeleteQuestionModal closeModal={closeModal} deleteQuestion={deleteQuestion}/>
+                                                </Modal>
+                                            </p>
+                                        </p>
+                                    </footer>
+                                </form>
+                            )
+                        }
                         <br/>
                         <div>
                             <h5>Mark as solved {" "}

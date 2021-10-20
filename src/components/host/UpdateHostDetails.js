@@ -15,19 +15,13 @@ const UpdateHostDetails = () => {
     const classes = useStyles();
     const history = useHistory();
     const [file, setFile] = useState();
-    // const [host, setHost] = useState({})
 
     const { register, handleSubmit, formState: {errors}, reset } = useForm({
         defaultValues: {}
     })
 
     useEffect(() => {
-        HostService.getById(AuthService.getCurrentUser().id).then(
-            res => {
-                // setHost(res.data)
-                reset(res.data)
-            }
-        )
+        HostService.getById(AuthService.getCurrentUser().id).then(res => reset(res.data))
     }, [reset])
 
     const getProfilePicture = event => {
