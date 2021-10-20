@@ -15,8 +15,9 @@ export const useStyles = makeStyles((theme) => ({
         borderRadius: "25px",
         position: "absolute",
         width: "550px",
-        height: "650px",
-        margin: "auto"
+        minHeight: "600px",
+        margin: "auto",
+        overflow: "auto"
     },
     register: {
         borderRadius: "25px",
@@ -41,7 +42,8 @@ export const useStyles = makeStyles((theme) => ({
     },
     addPaper: {
         margin: "auto",
-        height: "1100px"
+        // height: "1100px"
+        overflow: "auto"
     },
     addForm: {
         width: "80%",
@@ -49,7 +51,8 @@ export const useStyles = makeStyles((theme) => ({
     },
     addContainer: {
         height: "100%",
-        margin: "auto"
+        margin: "auto",
+        marginBottom: "100px"
     },
     checkBtn: {
         display: "none"

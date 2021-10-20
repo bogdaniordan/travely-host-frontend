@@ -17,3 +17,11 @@
     width: 30%;
     float: left;
 }
+
+.red-colored {
+    color: red;
+}
+
+#bold-font {
+    font-weight: bold;
+}

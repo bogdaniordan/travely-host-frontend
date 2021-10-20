@@ -27,7 +27,7 @@ const AddAccommodationForm = ({form, submitForm, setTitle, title, address, setAd
                     <br/>
                     <Form onSubmit={submitForm} ref={form} className={classes.addForm}>
                         <div className="mb-3">
-                            <label htmlFor="title" className="form-label">
+                            <label htmlFor="title" className="form-label" id="bold-font">
                                 Title
                             </label>
                             <Input
@@ -40,7 +40,7 @@ const AddAccommodationForm = ({form, submitForm, setTitle, title, address, setAd
                             />
                         </div>
                         <div className="mb-3">
-                            <label htmlFor="address" className="form-label">
+                            <label htmlFor="address" className="form-label" id="bold-font">
                                 Address
                             </label>
                             <Input
@@ -53,7 +53,7 @@ const AddAccommodationForm = ({form, submitForm, setTitle, title, address, setAd
                             />
                         </div>
                         <div className="mb-3">
-                            <label htmlFor="type" className="form-label">
+                            <label htmlFor="type" className="form-label" id="bold-font">
                                 Location
                             </label>
                             <Select
@@ -74,7 +74,7 @@ const AddAccommodationForm = ({form, submitForm, setTitle, title, address, setAd
                             </Select>
                         </div>
                         <div className="mb-3">
-                            <label htmlFor="type" className="form-label">
+                            <label htmlFor="type" className="form-label" id="bold-font">
                                 Accommodation type
                             </label>
                             <Select
@@ -92,7 +92,7 @@ const AddAccommodationForm = ({form, submitForm, setTitle, title, address, setAd
                             </Select>
                         </div>
                         <div className="mb-3">
-                            <label htmlFor="price" className="form-label">
+                            <label htmlFor="price" className="form-label" id="bold-font">
                                 Price per night
                             </label>
                             <Input
@@ -108,7 +108,7 @@ const AddAccommodationForm = ({form, submitForm, setTitle, title, address, setAd
                             {
                                 currentFacilities.length > 0 && (
                                     <div>
-                                        <label className="form-label">Facilities for this accommodation</label>
+                                        <label className="form-label" id="bold-font">Facilities for this accommodation</label>
                                         <ul className="nav">
                                             {currentFacilities.map(facility => (
                                                 <li className="active">
@@ -132,7 +132,7 @@ const AddAccommodationForm = ({form, submitForm, setTitle, title, address, setAd
                             {
                                 remainingFacilities.length > 0 && (
                                     <div>
-                                        <label className="form-label">Add facilities</label>
+                                        <label className="form-label" id="bold-font">Add facilities</label>
                                         <ul className="nav">
                                             {remainingFacilities.map(facility => (
                                                 <li className="active">
@@ -154,7 +154,7 @@ const AddAccommodationForm = ({form, submitForm, setTitle, title, address, setAd
                             }
                         </div>
                         <div className="mb-3">
-                            <label htmlFor="firstImage" className="form-label">
+                            <label htmlFor="firstImage" className="form-label" id="bold-font">
                                 First image
                             </label>
                             <Input
@@ -166,7 +166,7 @@ const AddAccommodationForm = ({form, submitForm, setTitle, title, address, setAd
                             />
                         </div>
                         <div className="mb-3">
-                            <label htmlFor="secondImage" className="form-label">
+                            <label htmlFor="secondImage" className="form-label" id="bold-font">
                                 Second Image
                             </label>
                             <Input
@@ -178,7 +178,7 @@ const AddAccommodationForm = ({form, submitForm, setTitle, title, address, setAd
                             />
                         </div>
                         <div className="mb-3">
-                            <label htmlFor="thirdImage" className="form-label">
+                            <label htmlFor="thirdImage" className="form-label" id="bold-font">
                                 Third image
                             </label>
                             <Input

@@ -15,7 +15,7 @@ import StatsBar from "../main/StatsBar";
 import InfoIcon from '@material-ui/icons/Info';
 import {ListItem, ListItemAvatar, ListItemText, Paper} from "@material-ui/core";
 import HiredCleaners from "../cleaner/HiredCleaners";
-import "./ProfileStyling.css"
+import "../../styling/ProfileStyling.css"
 
 const ProfileCard = () => {
     const history = useHistory();
