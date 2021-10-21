@@ -59,7 +59,7 @@
 }
 
 #cleaners-container-height {
-    height: 600px
+    min-height: 600px
 }
 
 .cleaner-font {
@@ -77,4 +77,13 @@
 
 .accommodations-section {
     margin-bottom: 150px;
+}
+
+.no-cleaners-header {
+    margin-top: 100px;
+}
+
+.no-cleaner-broom {
+    height: 150px;
+    width: 150px;
 }

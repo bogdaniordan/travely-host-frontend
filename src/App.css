@@ -635,7 +635,8 @@ mark {
 }
 
 #customer-question-container {
-  height: 550px;
+  min-height: 550px;
+  margin-bottom: 100px;
 }
 
 #manage-questions-header {
@@ -648,4 +649,9 @@ mark {
 
 .small-text {
   font-size: 15px !important;
+}
+
+.scrollbar {
+  width: 100%;
+  height: 100%;
 }

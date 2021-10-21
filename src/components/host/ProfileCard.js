@@ -1,19 +1,12 @@
 import React, {useEffect, useState} from 'react';
 import HostService from "../../service/HostService";
 import AuthService from "../../service/AuthService";
-import Avatar from "@material-ui/core/Avatar";
 import CleanerService from "../../service/CleanerService";
-import Link from 'react-router-dom/Link';
-import Modal from "react-modal";
-import {customStyles} from "../../styling/js-styling/ModalStyling";
-import HostCleanersModal from "../cleaner/HostCleanersModal";
-import Tooltip from '@material-ui/core/Tooltip';
 import Button from "@material-ui/core/Button";
 import {useHistory} from "react-router-dom";
 import BadgesBar from "../main/BadgesBar";
 import StatsBar from "../main/StatsBar";
 import InfoIcon from '@material-ui/icons/Info';
-import {ListItem, ListItemAvatar, ListItemText, Paper} from "@material-ui/core";
 import HiredCleaners from "../cleaner/HiredCleaners";
 import "../../styling/ProfileStyling.css"
 

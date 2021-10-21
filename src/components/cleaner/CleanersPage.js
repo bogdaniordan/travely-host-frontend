@@ -8,6 +8,7 @@ import Navbar from "../navigation/Navbar";
 import AuthService from "../../service/AuthService";
 import Footer from "../navigation/Footer";
 import {useStyles} from "../../styling/js-styling/CleanersPageStyling";
+import logo from "../../images/broom.png"
 
 const CleanersPage = () => {
     const classes = useStyles();
@@ -45,74 +46,82 @@ const CleanersPage = () => {
                         <option value="Free">Free</option>
                     </select>
                 </div>
-                <List className={classes.list}>
-                    {
-                        cleaners.length > 0 ? (
-                            cleaners.map(
-                                cleaner => (
-                                    <Paper elevation={2} className={classes.paper}>
-                                        <ListItem alignItems="flex-start">
-                                            <ListItemAvatar>
-                                                <Avatar alt="Remy Sharp" src="http://cdn.onlinewebfonts.com/svg/img_507212.png" />
-                                            </ListItemAvatar>
-                                            <ListItemText
-                                                key={cleaner.id}
-                                                primary={
-                                                    <div className="flexed-container">
-                                                        <p>{cleaner.name}</p>
-                                                        <small className="margined-left">
-                                                            {
-                                                                !cleaner.hired ? (
-                                                                    <Button className={classes.button} onClick={() => hireCleaner(cleaner.id)} variant="contained" color="primary">HIRE</Button>
-                                                                ) : (
-                                                                    cleaner.employer.id === AuthService.getCurrentUser().id && (
-                                                                        <Button className={classes.button} onClick={() => fireCleaner(cleaner.id)} variant="contained" color="secondary">FIRE</Button>
+                {
+                    cleaners.length > 0 ? (
+                        <List className={classes.list}>
+                            {
+                                cleaners.map(
+                                    cleaner => (
+                                        <Paper elevation={2} className={classes.paper}>
+                                            <ListItem alignItems="flex-start">
+                                                <ListItemAvatar>
+                                                    <Avatar alt="Remy Sharp" src="http://cdn.onlinewebfonts.com/svg/img_507212.png" />
+                                                </ListItemAvatar>
+                                                <ListItemText
+                                                    key={cleaner.id}
+                                                    primary={
+                                                        <div className="flexed-container">
+                                                            <p>{cleaner.name}</p>
+                                                            <small className="margined-left">
+                                                                {
+                                                                    !cleaner.hired ? (
+                                                                        <Button className={classes.button} onClick={() => hireCleaner(cleaner.id)} variant="contained" color="primary">HIRE</Button>
+                                                                    ) : (
+                                                                        cleaner.employer.id === AuthService.getCurrentUser().id && (
+                                                                            <Button className={classes.button} onClick={() => fireCleaner(cleaner.id)} variant="contained" color="secondary">FIRE</Button>
+                                                                        )
                                                                     )
+                                                                }
+                                                            </small>
+                                                        </div>
+                                                    }
+                                                    secondary={
+                                                        <React.Fragment>
+                                                            <Typography
+                                                                component="span"
+                                                                variant="body2"
+                                                                className={classes.inline}
+                                                                color="textPrimary"
+                                                            >
+                                                                <small key={cleaner.id}>
+                                                                    {cleaner.experience}
+                                                                </small>
+                                                            </Typography>
+                                                            {" - "}
+                                                            {cleaner.hired ? `hired by ${cleaner.employer.firstName} ${cleaner.employer.lastName}` : "free"}
+                                                            {
+                                                                cleaner.cleaningHistory.length > 0 && (
+                                                                    <div>
+                                                                        <br/>
+                                                                        <strong>Cleaning history</strong>
+                                                                        <div>
+                                                                            {
+                                                                                cleaner.cleaningHistory.map(
+                                                                                    cleanedAccommodation => (<small>{cleanedAccommodation.title}</small>)
+                                                                                )
+                                                                            }
+                                                                        </div>
+
+                                                                    </div>
                                                                 )
                                                             }
-                                                        </small>
-                                                    </div>
-                                                }
-                                                secondary={
-                                                    <React.Fragment>
-                                                        <Typography
-                                                            component="span"
-                                                            variant="body2"
-                                                            className={classes.inline}
-                                                            color="textPrimary"
-                                                        >
-                                                            <small key={cleaner.id}>
-                                                                {cleaner.experience}
-                                                            </small>
-                                                        </Typography>
-                                                        {" - "}
-                                                        {cleaner.hired ? `hired by ${cleaner.employer.firstName} ${cleaner.employer.lastName}` : "free"}
-                                                        {
-                                                            cleaner.cleaningHistory.length > 0 && (
-                                                                <div>
-                                                                    <br/>
-                                                                    <strong>Cleaning history</strong>
-                                                                    <div>
-                                                                        {
-                                                                            cleaner.cleaningHistory.map(
-                                                                                cleanedAccommodation => (<small>{cleanedAccommodation.title}</small>)
-                                                                            )
-                                                                        }
-                                                                    </div>
-
-                                                                </div>
-                                                            )
-                                                        }
-                                                    </React.Fragment>
-                                                }
-                                            />
-                                        </ListItem>
-                                    </Paper>
+                                                        </React.Fragment>
+                                                    }
+                                                />
+                                            </ListItem>
+                                        </Paper>
+                                    )
                                 )
-                            )
-                        ) : (<h5>No results for your search.</h5>)
-                    }
-                </List>
+                            }
+                        </List>
+                    ) : (
+                        <div className="centered-aligned">
+                            <h5 className="no-cleaners-header">No cleaners found for your applied filters.</h5>
+                            <br/>
+                            <img src={logo} className="no-cleaner-broom" alt="broom"/>
+                        </div>
+                    )
+                }
             </div>
             <Footer />
         </div>

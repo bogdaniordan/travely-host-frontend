@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="54af3455-6289-4698-bfb0-824572c3fe26" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/cleaner/HostCleanersModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/cleaner/HostCleanersModal.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/host/ProfileCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/host/ProfileCard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/question/DeleteQuestionModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/question/DeleteQuestionModal.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styling/js-styling/CleanersPageStyling.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/styling/js-styling/CleanersPageStyling.js" afterDir="false" />
-    </list>
+    <list default="true" id="54af3455-6289-4698-bfb0-824572c3fe26" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -38,7 +32,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../joblish-companies-frontend" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -113,6 +107,7 @@
       <workItem from="1634307095777" duration="89000" />
       <workItem from="1634387395745" duration="1554000" />
       <workItem from="1634391694630" duration="1791000" />
+      <workItem from="1634806244917" duration="1352000" />
     </task>
     <servers />
   </component>

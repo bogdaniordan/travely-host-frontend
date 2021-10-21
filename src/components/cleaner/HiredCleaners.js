@@ -4,6 +4,8 @@ import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import {useStyles} from "../../styling/js-styling/CleanersPageStyling"
 import logo from "../../images/broom.png"
+import { Scrollbars } from 'react-custom-scrollbars';
+
 
 const HiredCleaners = ({employedCleaners, fireCleaner}) => {
     const classes = useStyles();
@@ -13,6 +15,7 @@ const HiredCleaners = ({employedCleaners, fireCleaner}) => {
             {
                 employedCleaners.length > 0 ? (
                     <>
+                    <Scrollbars className="scrollbar">
                         <div className="centered-aligned">
                             <h5 className="cleaner-font">Hired cleaners</h5>
                         </div>
@@ -52,6 +55,8 @@ const HiredCleaners = ({employedCleaners, fireCleaner}) => {
                                 )
                             }
                         </div>
+                    </Scrollbars>
+
                     </>
 
                 ) : (
