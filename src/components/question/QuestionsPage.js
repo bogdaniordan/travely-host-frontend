@@ -18,11 +18,11 @@ const QuestionsPage = () => {
     const [questions, setQuestions] = useState([]);
 
     useEffect(() => {
-        QuestionService.getAllQuestions().then(res => setQuestions(res.data))
+        QuestionService.getAllQuestions().then(res => {setQuestions(res.data.reverse())})
     }, []);
 
     const showQuestions = () => {
-        return questions.map((question) => (
+        return questions.map((question) => !question.solved && (
                 <Paper elevation={3} className={classes.paper}>
                 <ListItem alignItems="flex-start">
                     <ListItemAvatar>
@@ -44,7 +44,7 @@ const QuestionsPage = () => {
                                     </small>
                                 </Typography>
                                 {" - "}
-                                {moment(question.date).subtract(1, 'months').format("DD-MM-YYYY")}
+                                {moment(question.date).format("DD-MM-YYYY")}
                             </>
                         }
                     />

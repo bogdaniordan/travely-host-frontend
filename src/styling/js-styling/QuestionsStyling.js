@@ -16,5 +16,16 @@ export const useStyles = makeStyles((theme) => ({
     error: {
         height: "100px",
         width: "100px"
+    },
+    questionContainer: {
+        maxWidth: "70%",
+        textAlign: "center",
+        minHeight: "700px"
+    },
+    backLink: {
+        float: "left"
+    },
+    deleteQuestion: {
+        marginLeft: "10px"
     }
 }));

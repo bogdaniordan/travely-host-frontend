@@ -3,23 +3,19 @@ import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import {required, validPassword, validUsername} from "../../util/Validations";
 import CheckButton from "react-validation/build/button";
-import {useHistory} from "react-router-dom";
+import {Link, useHistory} from "react-router-dom";
 import AuthService from "../../service/AuthService";
 import {useStyles} from "../../styling/js-styling/AuthStyles";
-import Navbar from "../navigation/Navbar";
-import Footer from "../navigation/Footer";
 import {Paper} from "@material-ui/core";
 import LandingPageNavbar from "../navigation/LandingPageNavbar";
 import "../../styling/LoginStyling.css"
 import login_background from "../../images/login_background.jpg"
-import { Link } from "react-router-dom";
 import HouseIcon from '@material-ui/icons/House';
 
 const Login = () => {
@@ -75,7 +71,6 @@ const Login = () => {
                             <div className={classes.paper}>
                                 <Avatar className={classes.avatar}>
                                     <HouseIcon />
-                                    {/*<LockOutlinedIcon />*/}
                                 </Avatar>
                                 <br/>
                                 <Typography component="h1" variant="h5">
@@ -126,12 +121,12 @@ const Login = () => {
                                         <br/>
                                         <br/>
                                         <Grid xs={12}>
-                                            <div className="form-group" style={{marginTop: "20px", marginBottom: "20px"}}>
-                                                <Button type="submit" variant="contained" color="primary" block style={{margin: "10px"}}>Sign in</Button>
+                                            <div className="form-group" id="submit-button-container">
+                                                <Button type="submit" variant="contained" color="primary" block className={classes.submitBtn}>Sign in</Button>
                                             </div>
                                         </Grid>
                                     </Grid>
-                                    <CheckButton style={{ display: "none" }} ref={checkBtn} />
+                                    <CheckButton className={classes.checkBtn} ref={checkBtn} />
                                     <Grid container>
                                         <Grid item xs>
                                             <br/>

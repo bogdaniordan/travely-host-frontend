@@ -23,7 +23,7 @@ export const useStyles = makeStyles((theme) => ({
         borderRadius: "25px",
         position: "absolute",
         width: "600px",
-        height: "650px",
+        overflow: "auto",
         margin: "auto"
     },
     updateContainer: {
@@ -42,7 +42,6 @@ export const useStyles = makeStyles((theme) => ({
     },
     addPaper: {
         margin: "auto",
-        // height: "1100px"
         overflow: "auto"
     },
     addForm: {
@@ -64,5 +63,11 @@ export const useStyles = makeStyles((theme) => ({
     },
     cardActions : {
         justifyContent: "center"
-    }
+    },
+    registerContainer: {
+        marginBottom: "100px"
+    },
+    submitBtn: {
+        margin: "10px",
+    },
 }));

@@ -5,7 +5,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
-import {useHistory} from "react-router-dom";
+import {Link, useHistory} from "react-router-dom";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
 import Form from "react-validation/build/form";
@@ -22,14 +22,20 @@ const Register = () => {
     const form = useRef();
     const checkBtn = useRef();
 
+    const [firstName, setFirstName] = useState();
+    const [lastName, setLastName] = useState();
+    const [email, setEmail] = useState();
+    const [password, setPassword] = useState();
+    const [username, setUsername] = useState();
+
+    const [successful, setSuccessful] = useState(false);
+    const [message, setMessage] = useState("");
+
     const submitForm = e => {
         e.preventDefault();
-
         setMessage("");
         setSuccessful(false);
-
         form.current.validateAll();
-
         if (checkBtn.current.context._errors.length === 0) {
             AuthService.register(firstName, lastName, username, password, email).then(
                 res => {
@@ -46,15 +52,6 @@ const Register = () => {
             )
         }
     }
-
-    const [firstName, setFirstName] = useState();
-    const [lastName, setLastName] = useState();
-    const [email, setEmail] = useState();
-    const [password, setPassword] = useState();
-    const [username, setUsername] = useState();
-
-    const [successful, setSuccessful] = useState(false);
-    const [message, setMessage] = useState("");
 
     const onChangeFirstName = event => {
         setFirstName(event.target.value)
@@ -83,7 +80,7 @@ const Register = () => {
                 <div className="login-image-container">
                     <img src={login_background} alt="Login background"/>
                     <Paper className={classes.register} elevation={3}>
-                    <Container maxWidth="xs" className="sign-up-container">
+                    <Container maxWidth="xs" className={classes.registerContainer}>
                         <CssBaseline />
                         <div className={classes.paper}>
                             <Avatar className={classes.avatar}>
@@ -175,13 +172,19 @@ const Register = () => {
                                     <br/>
                                     <br/>
                                     <Grid xs={12}>
-                                        <div className="form-group" style={{marginTop: "20px", marginBottom: "20px"}}>
-                                            <Button type="submit" variant="contained" color="primary" block style={{margin: "10px"}}>Sign Up</Button>
-                                            <Button variant="contained" color="secondary" block href="/login">Back to login</Button>
+                                        <div className="form-group" id="submit-button-container">
+                                            <Button type="submit" variant="contained" color="primary" block className={classes.submitBtn}>Sign Up</Button>
                                         </div>
                                     </Grid>
                                 </Grid>
-                                <CheckButton style={{ display: "none" }} ref={checkBtn} />
+                                <CheckButton className={classes.checkBtn} ref={checkBtn} />
+                                <Grid container>
+                                    <Grid items xs>
+                                        <Link to="/login" variant="body2">
+                                            Already have an account? Login!
+                                        </Link>
+                                    </Grid>
+                                </Grid>
                             </Form>
                         </div>
                     </Container>
