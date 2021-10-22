@@ -27,5 +27,12 @@ export const useStyles = makeStyles((theme) => ({
     },
     deleteQuestion: {
         marginLeft: "10px"
-    }
+    },
+    yesCancelButton: {
+        marginRight: "5px",
+        padding: "10px"
+    },
+    noCancelButton: {
+        padding: "10px"
+    },
 }));
