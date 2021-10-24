@@ -13,7 +13,7 @@ import moment from "moment";
 import {useHistory} from "react-router-dom";
 import Button from "@material-ui/core/Button";
 import LocationOnIcon from '@material-ui/icons/LocationOn';
-import SortByAlphaIcon from '@material-ui/icons/SortByAlpha';
+import SingleBedIcon from '@material-ui/icons/SingleBed';
 
 const AccommodationCard = ({accommodation, accommodations, setAccommodations}) => {
     const history = useHistory();
@@ -96,7 +96,7 @@ const AccommodationCard = ({accommodation, accommodations, setAccommodations}) =
                     <CleanAccommodation accommodationCanBeCleaned={accommodationCanBeCleaned} employedCleaners={employedCleaners} setCleanerToCleanAccommodation={setCleanerToCleanAccommodation} cleanersCurrentlyCleaningThis={cleanersCurrentlyCleaningThis}/>
                     <div className="postcard__bar"></div>
                     <div className="postcard__preview-txt"><LocationOnIcon /> <strong>{accommodation.location}</strong></div>
-                    <div className="postcard__preview-txt">Type: <strong>{accommodation.placeType}</strong></div>
+                    <div className="postcard__preview-txt"><SingleBedIcon />: <strong>{accommodation.placeType}</strong></div>
                     <br/>
                     {
                         isBookedAtm ? (
@@ -121,7 +121,7 @@ const AccommodationCard = ({accommodation, accommodations, setAccommodations}) =
                     <ul className="postcard__tagbox">
                         {
                             bookings.length > 0 && (
-                                <li className="tag__item play blue" onClick={toggleBookings}><i className="fas fa-clock mr-2"></i>Bookings</li>
+                                <li className="tag__item play blue" onClick={toggleBookings}><i className="fas fa-clock mr-2"></i>{showBookings ? "Hide bookings" : "Bookings"}</li>
                             )
                         }
                         <li className="tag__item play blue" onClick={updateAccommodation}><i className="fas fa-clock mr-2"></i>Update</li>
@@ -145,7 +145,7 @@ const AccommodationCard = ({accommodation, accommodations, setAccommodations}) =
                     bookings.length > 0 && (
                         <div>
                             <div className="center-header">
-                                <h5 className="centered-element">Booking history for {accommodation.title} <Button><SortByAlphaIcon /></Button></h5>
+                                <h5 className="centered-element">Booking history for {accommodation.title}</h5>
                             </div>
                             <br/>
                             <div className="bookings-section">
