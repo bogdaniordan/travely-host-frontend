@@ -1,4 +1,4 @@
-import ExpiredTokenService from "./ExpiredTokenService";
+import ExpiredTokenService from "../ExpiredTokenService";
 
 export default function AuthHeader() {
     const user = JSON.parse(localStorage.getItem('host'));

@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import AuthService from "../../service/AuthService";
+import AuthService from "../../service/auth-helpers/AuthService";
 import Notifications from "./Notifications";
 import simple_logo from "../../images/travely_logo.png";
 

@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import HostService from "../../service/HostService";
-import AuthService from "../../service/AuthService";
+import AuthService from "../../service/auth-helpers/AuthService";
 import CleanerService from "../../service/CleanerService";
 import Button from "@material-ui/core/Button";
 import {useHistory} from "react-router-dom";
@@ -14,15 +14,6 @@ const ProfileCard = () => {
     const history = useHistory();
     const [host, setHost] = useState({});
     const [employedCleaners, setEmployedCleaners] = useState([])
-    // const [modalIsOpen, setIsOpen] = useState(false);
-
-    // const openModal = () => {
-    //     setIsOpen(true);
-    // }
-    //
-    // const closeModal = () => {
-    //     setIsOpen(false);
-    // }
 
     const getCleaners = () => {
         CleanerService.getAllForHost(AuthService.getCurrentUser().id).then(res => setEmployedCleaners(res.data))

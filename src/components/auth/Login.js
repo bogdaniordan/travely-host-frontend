@@ -10,7 +10,7 @@ import Input from "react-validation/build/input";
 import {required, validPassword, validUsername} from "../../util/Validations";
 import CheckButton from "react-validation/build/button";
 import {Link, useHistory} from "react-router-dom";
-import AuthService from "../../service/AuthService";
+import AuthService from "../../service/auth-helpers/AuthService";
 import {useStyles} from "../../styling/js-styling/AuthStyles";
 import {Paper} from "@material-ui/core";
 import LandingPageNavbar from "../navigation/LandingPageNavbar";

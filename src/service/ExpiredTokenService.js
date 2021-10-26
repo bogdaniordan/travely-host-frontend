@@ -1,5 +1,5 @@
 import jwtDecode from "jwt-decode";
-import AuthService from "./AuthService";
+import AuthService from "./auth-helpers/AuthService";
 
 export default function ExpiredTokenService() {
     let token = localStorage.getItem("host");

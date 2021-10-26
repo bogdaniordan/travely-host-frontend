@@ -65,7 +65,7 @@ const UpdateAccommodation = (props) => {
                             })}
                         >
                             <div className="mb-3">
-                                <label htmlFor="title" className="form-label">
+                                <label htmlFor="title" className="form-label" id="bold-font">
                                     Title
                                 </label>
                                 <input
@@ -75,9 +75,9 @@ const UpdateAccommodation = (props) => {
                                     {...register("title", {required: true, minLength: 5})}
                                 />
                             </div>
-                            {errors.title && <span className="error-red">This field needs at least 5 characters.</span>}
+                            {errors.title && <span className="error-red" >This field needs at least 5 characters.</span>}
                             <div className="mb-3">
-                                <label htmlFor="address" className="form-label">
+                                <label htmlFor="address" className="form-label" id="bold-font">
                                     Address
                                 </label>
                                 <input
@@ -89,7 +89,7 @@ const UpdateAccommodation = (props) => {
                             </div>
                             {errors.address && <span className="error-red">This field needs at least 7 characters.</span>}
                             <div className="mb-3">
-                                <label htmlFor="type" className="form-label">
+                                <label htmlFor="type" className="form-label" id="bold-font">
                                     Accommodation type
                                 </label>
                                 <select
@@ -106,7 +106,7 @@ const UpdateAccommodation = (props) => {
                             </div>
                             {errors.placeType && <span className="error-red">Choose a place type.</span>}
                             <div className="mb-3">
-                                <label htmlFor="price" className="form-label">
+                                <label htmlFor="price" className="form-label" id="bold-font">
                                     Price per night
                                 </label>
                                 <input
@@ -122,7 +122,7 @@ const UpdateAccommodation = (props) => {
                                 {
                                     currentFacilities.length > 0 && (
                                         <div>
-                                            <label className="form-label">Facilities for this accommodation</label>
+                                            <label className="form-label" id="bold-font">Facilities for this accommodation</label>
                                             <ul className="nav">
                                                 {currentFacilities.map(facility => (
                                                     <li className="active">
@@ -146,7 +146,7 @@ const UpdateAccommodation = (props) => {
                                 {
                                     remainingFacilities.length > 0 && (
                                         <div>
-                                            <label className="form-label">Add facilities</label>
+                                            <label className="form-label" id="bold-font">Add facilities</label>
                                             <ul className="nav">
                                                 {remainingFacilities.map(facility => (
                                                     <li className="active">

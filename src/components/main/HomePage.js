@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import Navbar from "../navigation/Navbar";
 import AccommodationService from "../../service/AccommodationService";
-import AuthService from "../../service/AuthService";
+import AuthService from "../../service/auth-helpers/AuthService";
 import AccommodationCard from "../accommodations/AccommodationCard";
 import ProfileCard from "../host/ProfileCard";
 import Button from "@material-ui/core/Button";

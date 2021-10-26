@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {useHistory} from "react-router-dom";
 import {useForm} from "react-hook-form";
 import HostService from "../../service/HostService";
-import AuthService from "../../service/AuthService";
+import AuthService from "../../service/auth-helpers/AuthService";
 import Footer from "../navigation/Footer";
 import Button from "@material-ui/core/Button";
 import Navbar from "../navigation/Navbar";

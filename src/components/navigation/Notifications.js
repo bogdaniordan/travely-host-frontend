@@ -6,7 +6,7 @@ import Link from "react-router-dom/Link";
 import {makeStyles} from "@material-ui/core/styles";
 import QuestionService from "../../service/QuestionService";
 import BookingService from "../../service/BookingService";
-import AuthService from "../../service/AuthService";
+import AuthService from "../../service/auth-helpers/AuthService";
 import moment from "moment";
 
 const useStyles = makeStyles((theme) => ({

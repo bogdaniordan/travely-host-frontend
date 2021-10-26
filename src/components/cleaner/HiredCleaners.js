@@ -15,50 +15,48 @@ const HiredCleaners = ({employedCleaners, fireCleaner}) => {
             {
                 employedCleaners.length > 0 ? (
                     <>
-                    <Scrollbars className="scrollbar">
-                        <div className="centered-aligned">
-                            <h5 className="cleaner-font">Hired cleaners</h5>
-                        </div>
-                        <div className="contained">
-                            {
-                                employedCleaners.map(
-                                    cleaner => (
-                                        <Paper elevation={2} className={classes.cleanerCard}>
-                                            <ListItem>
-                                                <ListItemAvatar>
-                                                    <Avatar alt="Remy Sharp" src="http://cdn.onlinewebfonts.com/svg/img_507212.png" />
-                                                </ListItemAvatar>
-                                                <ListItemText
-                                                    key={cleaner.id}
-                                                    primary={
-                                                        <>
-                                                            <p>{cleaner.name}   <Button className={classes.fireCleaner} onClick={() => fireCleaner(cleaner.id)} variant="contained" color="secondary">Fire</Button></p>
-                                                        </>
-                                                    }
-                                                    secondary={
-                                                        <>
-                                                            <p>{cleaner.experience.toLowerCase()}</p>
-                                                            {
-                                                                cleaner.currentCleaningJob ? (
-                                                                    <small className="small-text">Currently cleaning {cleaner.currentCleaningJob.title}</small>
-                                                                ) : (
-                                                                    <small className="small-text">Available for cleaning</small>
-                                                                )
-                                                            }
-                                                        </>
-                                                    }
-                                                />
-                                            </ListItem>
-                                        </Paper>
+                        <Scrollbars className="scrollbar">
+                            <div className="centered-aligned">
+                                <h5 className="cleaner-font">Hired cleaners</h5>
+                            </div>
+                            <div className="contained">
+                                {
+                                    employedCleaners.map(
+                                        cleaner => (
+                                            <Paper elevation={2} className={classes.cleanerCard}>
+                                                <ListItem>
+                                                    <ListItemAvatar>
+                                                        <Avatar alt="Remy Sharp" src="http://cdn.onlinewebfonts.com/svg/img_507212.png" />
+                                                    </ListItemAvatar>
+                                                    <ListItemText
+                                                        key={cleaner.id}
+                                                        primary={
+                                                            <>
+                                                                <p>{cleaner.name}   <Button className={classes.fireCleaner} onClick={() => fireCleaner(cleaner.id)} variant="contained" color="secondary">Fire</Button></p>
+                                                            </>
+                                                        }
+                                                        secondary={
+                                                            <>
+                                                                <p>{cleaner.experience.toLowerCase()}</p>
+                                                                {
+                                                                    cleaner.currentCleaningJob ? (
+                                                                        <small className="small-text">Currently cleaning {cleaner.currentCleaningJob.title}</small>
+                                                                    ) : (
+                                                                        <small className="small-text">Available for cleaning</small>
+                                                                    )
+                                                                }
+                                                            </>
+                                                        }
+                                                    />
+                                                </ListItem>
+                                            </Paper>
 
+                                        )
                                     )
-                                )
-                            }
-                        </div>
-                    </Scrollbars>
-
+                                }
+                            </div>
+                        </Scrollbars>
                     </>
-
                 ) : (
                     <>
                         <div className="centered-aligned">

@@ -5,7 +5,7 @@ import CleanerService from "../../service/CleanerService";
 import Typography from "@material-ui/core/Typography"
 import Button from "@material-ui/core/Button";
 import Navbar from "../navigation/Navbar";
-import AuthService from "../../service/AuthService";
+import AuthService from "../../service/auth-helpers/AuthService";
 import Footer from "../navigation/Footer";
 import {useStyles} from "../../styling/js-styling/CleanersPageStyling";
 import logo from "../../images/broom.png"
@@ -89,22 +89,22 @@ const CleanersPage = () => {
                                                             </Typography>
                                                             {" - "}
                                                             {cleaner.hired ? `hired by ${cleaner.employer.firstName} ${cleaner.employer.lastName}` : "free"}
-                                                            {
-                                                                cleaner.cleaningHistory.length > 0 && (
-                                                                    <div>
-                                                                        <br/>
-                                                                        <strong>Cleaning history</strong>
-                                                                        <div>
-                                                                            {
-                                                                                cleaner.cleaningHistory.map(
-                                                                                    cleanedAccommodation => (<small>{cleanedAccommodation.title}</small>)
-                                                                                )
-                                                                            }
-                                                                        </div>
+                                                            {/*{*/}
+                                                            {/*    cleaner.cleaningHistory.length > 0 && (*/}
+                                                            {/*        <div>*/}
+                                                            {/*            <br/>*/}
+                                                            {/*            <strong>Cleaning history</strong>*/}
+                                                            {/*            <div>*/}
+                                                            {/*                {*/}
+                                                            {/*                    cleaner.cleaningHistory.map(*/}
+                                                            {/*                        cleanedAccommodation => (<small>{cleanedAccommodation.title}</small>)*/}
+                                                            {/*                    )*/}
+                                                            {/*                }*/}
+                                                            {/*            </div>*/}
 
-                                                                    </div>
-                                                                )
-                                                            }
+                                                            {/*        </div>*/}
+                                                            {/*    )*/}
+                                                            {/*}*/}
                                                         </React.Fragment>
                                                     }
                                                 />

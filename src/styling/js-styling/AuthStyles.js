@@ -28,11 +28,12 @@ export const useStyles = makeStyles((theme) => ({
     },
     updateContainer: {
         height: "100%",
-        margin: "auto"
+        margin: "auto",
+        marginBottom: "100px"
     },
     updatePaper: {
         margin: "auto",
-        height: "900px"
+        overflow: "auto"
     },
     updateBtn: {
         float: "left"

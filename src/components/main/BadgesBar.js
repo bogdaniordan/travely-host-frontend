@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import HostService from "../../service/HostService";
-import AuthService from "../../service/AuthService";
+import AuthService from "../../service/auth-helpers/AuthService";
 import Avatar from "@material-ui/core/Avatar";
 import {Tooltip} from "@material-ui/core";
 

@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Login from "../auth/Login";
 import HomePage from "./HomePage";
 import AddAccommodation from "../accommodations/AddAccommodation";
-import AuthService from "../../service/AuthService";
+import AuthService from "../../service/auth-helpers/AuthService";
 import QuestionsPage from "../question/QuestionsPage";
 import QuestionPage from "../question/QuestionPage";
 import CleanersPage from "../cleaner/CleanersPage";

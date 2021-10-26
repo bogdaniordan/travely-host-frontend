@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useRef} from 'react';
-import AuthService from "../../service/AuthService";
+import AuthService from "../../service/auth-helpers/AuthService";
 import {useHistory} from "react-router-dom";
 import Navbar from "../navigation/Navbar";
 import AccommodationService from "../../service/AccommodationService";

@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import BookingService from "../../service/BookingService";
-import AuthService from "../../service/AuthService";
+import AuthService from "../../service/auth-helpers/AuthService";
 import AccommodationService from "../../service/AccommodationService";
 import TestimonialService from "../../service/TestimonialService";
 import RecommendationService from "../../service/RecommendationService";

@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import "../../styling/AccommodationCardStyling.scss";
 import BookingService from "../../service/BookingService";
 import CleanerService from "../../service/CleanerService";
-import AuthService from "../../service/AuthService";
+import AuthService from "../../service/auth-helpers/AuthService";
 import AccommodationRating from "../testimonials/AccommodationRating";
 import CleanAccommodation from "../cleaner/CleanAccommodation";
 import {Collapse} from "@material-ui/core";
@@ -92,7 +92,6 @@ const AccommodationCard = ({accommodation, accommodations, setAccommodations}) =
                 <div className="postcard__text t-dark">
                     {/*<h1 className="postcard__title blue" style={{marginLeft: "10px"}}><a href="#">{accommodation.title}</a></h1>*/}
                     <h4 className="centered-element">{accommodation.title}</h4>
-
                     <CleanAccommodation accommodationCanBeCleaned={accommodationCanBeCleaned} employedCleaners={employedCleaners} setCleanerToCleanAccommodation={setCleanerToCleanAccommodation} cleanersCurrentlyCleaningThis={cleanersCurrentlyCleaningThis}/>
                     <div className="postcard__bar"></div>
                     <div className="postcard__preview-txt"><LocationOnIcon /> <strong>{accommodation.location}</strong></div>
