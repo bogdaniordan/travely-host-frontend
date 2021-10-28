@@ -23,35 +23,35 @@ const QuestionsPage = () => {
 
     const showQuestions = () => {
         return questions.map((question) => !question.solved && (
-                <Paper elevation={3} className={classes.paper}>
-                <ListItem alignItems="flex-start">
-                    <ListItemAvatar>
-                        <Avatar alt="Remy Sharp" src={`http://localhost:8080/customers/image/${question.customer.id}/download` ? `http://localhost:8080/customers/image/${question.customer.id}/download` : "https://w7.pngwing.com/pngs/831/88/png-transparent-user-profile-computer-icons-user-interface-mystique-miscellaneous-user-interface-design-smile.png"} />
-                    </ListItemAvatar>
-                    <ListItemText
-                        key={question.id}
-                        primary={<Link to={`/question/${question.id}`}>{question.text}</Link>}
-                        secondary={
-                            <>
-                                <Typography
-                                    component="span"
-                                    variant="body2"
-                                    className={classes.inline}
-                                    color="textPrimary"
-                                >
-                                    <small key={question.id} id="question-text">
-                                        {question.customer.firstName} {question.customer.lastName}
-                                    </small>
-                                </Typography>
-                                {" - "}
-                                {moment(question.date).format("DD-MM-YYYY")}
-                            </>
-                        }
-                    />
-                    {question.response && <Button variant="contained" disabled>ANSWERED</Button>}
-                </ListItem>
-                </Paper>
-                )
+            <Paper elevation={3} className={classes.paper}>
+            <ListItem alignItems="flex-start">
+                <ListItemAvatar>
+                    <Avatar alt="Remy Sharp" src={`http://localhost:8080/customers/image/${question.customer.id}/download` ? `http://localhost:8080/customers/image/${question.customer.id}/download` : "https://w7.pngwing.com/pngs/831/88/png-transparent-user-profile-computer-icons-user-interface-mystique-miscellaneous-user-interface-design-smile.png"} />
+                </ListItemAvatar>
+                <ListItemText
+                    key={question.id}
+                    primary={<Link to={`/question/${question.id}`}>{question.text}</Link>}
+                    secondary={
+                        <>
+                            <Typography
+                                component="span"
+                                variant="body2"
+                                className={classes.inline}
+                                color="textPrimary"
+                            >
+                                <small key={question.id} id="question-text">
+                                    {question.customer.firstName} {question.customer.lastName}
+                                </small>
+                            </Typography>
+                            {" - "}
+                            {moment(question.date).format("DD-MM-YYYY")}
+                        </>
+                    }
+                />
+                {question.response && <Button variant="contained" className={classes.answeredButton} disabled>ANSWERED</Button>}
+            </ListItem>
+            </Paper>
+            )
         );
     }
 
@@ -62,7 +62,7 @@ const QuestionsPage = () => {
                 {questions.filter(question => !question.solved).length > 0 ?(
                     <div>
                         <div className="login-body-container">
-                            <QuestionAnswerIcon color="primary" style={{height: "150px", width: "150px"}}/>
+                            <QuestionAnswerIcon color="primary" className={classes.questionsIcon}/>
                             <h4 className="centered-element" id="manage-questions-header">Manage questions from your tenants</h4>
                         </div>
                         <List className={classes.root}>

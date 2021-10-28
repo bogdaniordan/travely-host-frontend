@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, {useState} from "react";
 import AuthService from "../../service/auth-helpers/AuthService";
 import Notifications from "./Notifications";
 import simple_logo from "../../images/travely_logo.png";
@@ -15,7 +15,7 @@ const Navbar = ({title, subtitle}) => {
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="Eighth navbar example">
                 <div className="container">
                     <a href="/">
-                        <img src={simple_logo} style={{width: "110px", height: "100px"}} alt="logo"/>
+                        <img src={simple_logo} id="logo-image" alt="logo"/>
                     </a>
                     {/*<a className="navbar-brand" href="/" style={{color: "#aaaccc"}}>Travely</a>*/}
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -25,28 +25,28 @@ const Navbar = ({title, subtitle}) => {
                     </button>
                     <div className="collapse navbar-collapse" id="navbarsExample07">
                         {currentUser ? (
-                            <ul className="navbar-nav me-auto mb-2 mb-lg-0" style={{width: "100%"}}>
+                            <ul className="navbar-nav me-auto mb-2 mb-lg-0" id="nav-bar-buttons-container">
                                 <li className="nav-item">
-                                    <a className="nav-link active" style={{color: "#aaaccc"}} aria-current="page" href="/questions">Questions</a>
+                                    <a className="nav-link active" id="navbar-icons" aria-current="page" href="/questions">Questions</a>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link active" style={{color: "#aaaccc"}} aria-current="page" href="/cleaners">Cleaners</a>
+                                    <a className="nav-link active" id="navbar-icons" aria-current="page" href="/cleaners">Cleaners</a>
                                 </li>
                                 <li className="nav-item">
                                     <Notifications />
                                 </li>
                                 <li className="nav-item" style={{width: "75%"}}></li>
                                 <li className="nav-item">
-                                    <a className="nav-link active" style={{color: "#aaaccc"}} aria-current="page" href="/login" onClick={logout}>Logout</a>
+                                    <a className="nav-link active" id="navbar-icons" aria-current="page" href="/login" onClick={logout}>Logout</a>
                                 </li>
                             </ul>
                         ) : (
                             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                                 <li className="nav-item">
-                                    <a className="nav-link active" style={{color: "#aaaccc"}} aria-current="page" href="/login">Login</a>
+                                    <a className="nav-link active" id="navbar-icons" aria-current="page" href="/login">Login</a>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link active" style={{color: "#aaaccc"}} aria-current="page" href="/register">Register</a>
+                                    <a className="nav-link active" id="navbar-icons" aria-current="page" href="/register">Register</a>
                                 </li>
                             </ul>
                         )}

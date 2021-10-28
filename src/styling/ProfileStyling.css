@@ -23,6 +23,7 @@
 }
 
 #bold-font {
+    margin-top: 10px;
     font-weight: bold;
 }
 
@@ -30,3 +31,21 @@
     margin-top: 20px;
     margin-bottom: 20px;
 }
+
+#logo-image {
+    width: 110px;
+    height: 100px;
+}
+
+#nav-bar-buttons-container {
+    width: 100%;
+}
+
+#navbar-icons {
+    color: #aaaccc;
+}
+
+.cleaner-experience {
+    font-size: 15px !important;
+}
+

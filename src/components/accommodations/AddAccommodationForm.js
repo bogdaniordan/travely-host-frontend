@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import {required, validLength, validPrice} from "../../util/Validations";
@@ -68,7 +68,6 @@ const AddAccommodationForm = ({form, submitForm, setTitle, title, address, setAd
                                 <option value="London">London</option>
                                 <option value="Boston">Boston</option>
                                 <option value="Mumbai">Mumbai</option>
-                                <option value="New York">New York</option>
                                 <option value="Toronto">Toronto</option>
                                 <option value="Paris">Paris</option>
                             </Select>

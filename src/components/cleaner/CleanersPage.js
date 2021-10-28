@@ -83,12 +83,12 @@ const CleanersPage = () => {
                                                                 className={classes.inline}
                                                                 color="textPrimary"
                                                             >
-                                                                <small key={cleaner.id}>
+                                                                <small className="cleaner-experience" key={cleaner.id}>
                                                                     {cleaner.experience}
                                                                 </small>
                                                             </Typography>
                                                             {" - "}
-                                                            {cleaner.hired ? `hired by ${cleaner.employer.firstName} ${cleaner.employer.lastName}` : "free"}
+                                                            {cleaner.hired ? <span>hired by {cleaner.employer.firstName} {cleaner.employer.lastName}</span> : <span>free</span>}
                                                             {/*{*/}
                                                             {/*    cleaner.cleaningHistory.length > 0 && (*/}
                                                             {/*        <div>*/}

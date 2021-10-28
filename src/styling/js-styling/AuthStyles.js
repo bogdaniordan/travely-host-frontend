@@ -15,7 +15,7 @@ export const useStyles = makeStyles((theme) => ({
         borderRadius: "25px",
         position: "absolute",
         width: "550px",
-        minHeight: "600px",
+        // minHeight: "600px",
         margin: "auto",
         overflow: "auto"
     },
@@ -71,4 +71,7 @@ export const useStyles = makeStyles((theme) => ({
     submitBtn: {
         margin: "10px",
     },
+    loginContainer : {
+        marginBottom: "80px"
+    }
 }));

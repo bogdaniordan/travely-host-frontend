@@ -35,4 +35,11 @@ export const useStyles = makeStyles((theme) => ({
     noCancelButton: {
         padding: "10px"
     },
+    questionsIcon: {
+        height: "150px !important",
+        width: "150px !important"
+    },
+    answeredButton: {
+        marginTop: "9px"
+    }
 }));
