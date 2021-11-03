@@ -40,7 +40,7 @@ const ProfileCard = () => {
                         </div>
                         <div className="col-lg-6" id="profile-bar">
                             <div className="about-text go-to">
-                                <h3 className="dark-color">Bogdan Iordan <Button color="primary" variant="contained" onClick={() => history.push("/update-host")}>Update profile</Button></h3>
+                                <h3 className="dark-color">{host.firstName} {host.lastName} <Button color="primary" variant="contained" onClick={() => history.push("/update-host")}>Update profile</Button></h3>
                                 {!host.phoneNumber && <small className="small-text"><InfoIcon style={{color: "orange"}} /> Please update your profile with all the required details.</small>}
                                 <div className="row about-list">
                                     <div className="col-md-6">

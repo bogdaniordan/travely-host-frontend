@@ -1,15 +1,13 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {Card, CardMedia} from "@material-ui/core";
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import Avatar from "@material-ui/core/Avatar";
 import BookingService from "../../service/BookingService";
 import moment from "moment";
 import {useStyles} from "../../styling/js-styling/AuthStyles";
-import DateRangeIcon from '@material-ui/icons/DateRange';
 import {getBookingDuration} from "../../util/BookingDuration";
 
 const BookingCard = ({booking, setBookings, bookings}) => {
@@ -25,15 +23,10 @@ const BookingCard = ({booking, setBookings, bookings}) => {
                 <CardMedia
                     component="img"
                     height="140"
-                    image={`http://localhost:8080/customers/image/${booking.customer.id}/download`}
+                    image={booking.customer.provider !== "local" ? booking.customer.picture : `http://localhost:8080/customers/image/${booking.customer.id}/download`}
                     alt="green iguana"
                 />
                 <CardContent>
-                    {/*<div className="booking-avatar-container">*/}
-                    {/*    <Avatar*/}
-                    {/*        src={`http://localhost:8080/customers/image/${booking.customer.id}/download`} className={classes.bookingAvatar}/>*/}
-                    {/*</div>*/}
-                    {/*<br/>*/}
                     <Typography gutterBottom variant="h6" component="h6">
                         <div className="center-header">
                             {

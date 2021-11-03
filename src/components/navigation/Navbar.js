@@ -17,7 +17,6 @@ const Navbar = ({title, subtitle}) => {
                     <a href="/">
                         <img src={simple_logo} id="logo-image" alt="logo"/>
                     </a>
-                    {/*<a className="navbar-brand" href="/" style={{color: "#aaaccc"}}>Travely</a>*/}
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
                             data-bs-target="#navbarsExample07" aria-controls="navbarsExample07" aria-expanded="false"
                             aria-label="Toggle navigation">

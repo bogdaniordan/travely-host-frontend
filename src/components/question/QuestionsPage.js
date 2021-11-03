@@ -26,7 +26,9 @@ const QuestionsPage = () => {
             <Paper elevation={3} className={classes.paper}>
             <ListItem alignItems="flex-start">
                 <ListItemAvatar>
-                    <Avatar alt="Remy Sharp" src={`http://localhost:8080/customers/image/${question.customer.id}/download` ? `http://localhost:8080/customers/image/${question.customer.id}/download` : "https://w7.pngwing.com/pngs/831/88/png-transparent-user-profile-computer-icons-user-interface-mystique-miscellaneous-user-interface-design-smile.png"} />
+                    <Avatar alt="Remy Sharp"
+                            src={question.customer.provider !== "local" ? question.customer.picture :
+                                `http://localhost:8080/customers/image/${question.customer.id}/download` ? `http://localhost:8080/customers/image/${question.customer.id}/download` : "https://w7.pngwing.com/pngs/831/88/png-transparent-user-profile-computer-icons-user-interface-mystique-miscellaneous-user-interface-design-smile.png"} />
                 </ListItemAvatar>
                 <ListItemText
                     key={question.id}

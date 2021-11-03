@@ -82,7 +82,7 @@ const Notifications = () => {
                         {questions.filter(question => !question.seen).length > 0
                             ? questions.map((q) =>
                                 !q.seen && (
-                                    <div style={{display: "flex"}}>
+                                    <div className="flexed-container">
                                         <p>
                                             <Link
                                                 to={`/question/${q.id}`}
@@ -91,7 +91,6 @@ const Notifications = () => {
                                             </Link>
                                         </p>
                                         <small>{`- ${q.author}`}</small>
-                                        {/*<br />*/}
                                     </div>
                                 )
                             )

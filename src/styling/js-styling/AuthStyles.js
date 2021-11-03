@@ -43,7 +43,8 @@ export const useStyles = makeStyles((theme) => ({
     },
     addPaper: {
         margin: "auto",
-        overflow: "auto"
+        overflow: "auto",
+        marginBottom: "140px"
     },
     addForm: {
         width: "80%",
@@ -73,5 +74,5 @@ export const useStyles = makeStyles((theme) => ({
     },
     loginContainer : {
         marginBottom: "80px"
-    }
+    },
 }));

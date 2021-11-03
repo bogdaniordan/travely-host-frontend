@@ -41,5 +41,9 @@ export const useStyles = makeStyles((theme) => ({
     },
     answeredButton: {
         marginTop: "9px"
+    },
+    deleteForever: {
+        width: "50px !important",
+        height: "50px !important"
     }
 }));

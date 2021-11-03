@@ -1,7 +1,6 @@
 import React, {useRef, useState} from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
-import CssBaseline from '@material-ui/core/CssBaseline';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
@@ -81,7 +80,6 @@ const Register = () => {
                     <img src={login_background} alt="Login background"/>
                     <Paper className={classes.register} elevation={3}>
                     <Container maxWidth="xs" className={classes.registerContainer}>
-                        <CssBaseline />
                         <div className={classes.paper}>
                             <Avatar className={classes.avatar}>
                                 <LockOutlinedIcon />

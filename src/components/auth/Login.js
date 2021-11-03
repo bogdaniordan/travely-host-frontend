@@ -67,7 +67,6 @@ const Login = () => {
                     <img src={login_background} alt="Login background"/>
                     <Paper className={classes.container} elevation={3}>
                         <Container maxWidth="xs" className={classes.loginContainer}>
-                            <CssBaseline />
                             <div className={classes.paper}>
                                 <Avatar className={classes.avatar}>
                                     <HouseIcon />
