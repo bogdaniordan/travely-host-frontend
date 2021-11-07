@@ -24,34 +24,34 @@ const QuestionsPage = () => {
     const showQuestions = () => {
         return questions.map((question) => !question.solved && (
             <Paper elevation={3} className={classes.paper}>
-            <ListItem alignItems="flex-start">
-                <ListItemAvatar>
-                    <Avatar alt="Remy Sharp"
-                            src={question.customer.provider !== "local" ? question.customer.picture :
-                                `http://localhost:8080/customers/image/${question.customer.id}/download` ? `http://localhost:8080/customers/image/${question.customer.id}/download` : "https://w7.pngwing.com/pngs/831/88/png-transparent-user-profile-computer-icons-user-interface-mystique-miscellaneous-user-interface-design-smile.png"} />
-                </ListItemAvatar>
-                <ListItemText
-                    key={question.id}
-                    primary={<Link to={`/question/${question.id}`}>{question.text}</Link>}
-                    secondary={
-                        <>
-                            <Typography
-                                component="span"
-                                variant="body2"
-                                className={classes.inline}
-                                color="textPrimary"
-                            >
-                                <small key={question.id} id="question-text">
-                                    {question.customer.firstName} {question.customer.lastName}
-                                </small>
-                            </Typography>
-                            {" - "}
-                            {moment(question.date).format("DD-MM-YYYY")}
-                        </>
-                    }
-                />
-                {question.response && <Button variant="contained" className={classes.answeredButton} disabled>ANSWERED</Button>}
-            </ListItem>
+                <ListItem alignItems="flex-start">
+                    <ListItemAvatar>
+                        <Avatar alt="Remy Sharp"
+                                src={question.customer.provider !== "local" ? question.customer.picture :
+                                    `http://localhost:8080/customers/image/${question.customer.id}/download` ? `http://localhost:8080/customers/image/${question.customer.id}/download` : "https://w7.pngwing.com/pngs/831/88/png-transparent-user-profile-computer-icons-user-interface-mystique-miscellaneous-user-interface-design-smile.png"} />
+                    </ListItemAvatar>
+                    <ListItemText
+                        key={question.id}
+                        primary={<Link to={`/question/${question.id}`}>{question.text}</Link>}
+                        secondary={
+                            <>
+                                <Typography
+                                    component="span"
+                                    variant="body2"
+                                    className={classes.inline}
+                                    color="textPrimary"
+                                >
+                                    <small key={question.id} id="question-text">
+                                        {question.customer.firstName} {question.customer.lastName}
+                                    </small>
+                                </Typography>
+                                {" - "}
+                                {moment(question.date).format("DD-MM-YYYY")}
+                            </>
+                        }
+                    />
+                    {question.response && <Button variant="contained" className={classes.answeredButton} disabled>ANSWERED</Button>}
+                </ListItem>
             </Paper>
             )
         );

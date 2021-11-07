@@ -1,4 +1,4 @@
-export const  customStyles = {
+export const customStyles = {
     content: {
         top: '50%',
         left: '50%',

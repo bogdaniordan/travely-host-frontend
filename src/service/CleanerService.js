@@ -35,6 +35,10 @@ class CleanerService {
     accommodationIsCleanedBy(accommodationId) {
         return axios.get(`${CLEANER_SERVICE_API_URL}/accommodation-is-cleaned-by/${accommodationId}`, {headers: AuthHeader()});
     }
+
+    setAccommodationToCleaned(accommodationId) {
+        return axios.get(`${CLEANER_SERVICE_API_URL}/set-to-cleaned/${accommodationId}`, {headers: AuthHeader()})
+    }
 }
 
 export default new CleanerService;

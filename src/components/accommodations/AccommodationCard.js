@@ -25,8 +25,12 @@ const AccommodationCard = ({accommodation, accommodations, setAccommodations}) =
     const [isBookedAtm, setIsBookedAtm] = useState(false);
     const [hasFutureBookings, setHasFutureBookings] = useState(false);
     const [closestFutureBooking, setClosestFutureBooking] = useState({});
+    const [isClean, setIsClean] = useState(accommodation.cleaningStatus === "CLEAN")
 
     useEffect(() => {
+        if (!isClean) {
+            CleanerService.setAccommodationToCleaned(accommodation.id).then(res => setIsClean(res.data))
+        }
         getCurrentCleanersOfThisAccommodations();
         CleanerService.accommodationCanBeCleaned(accommodation.id).then(res => setAccommodationCanBeCleaned(res.data))
         CleanerService.getAllForHost(AuthService.getCurrentUser().id).then(res => setEmployedCleaners(res.data));
@@ -88,9 +92,7 @@ const AccommodationCard = ({accommodation, accommodations, setAccommodations}) =
     return (
         <div>
             <article className="postcard light blue">
-
                 <div className="postcard__text t-dark">
-                    {/*<h1 className="postcard__title blue" style={{marginLeft: "10px"}}><a href="#">{accommodation.title}</a></h1>*/}
                     <h4 className="centered-element">{accommodation.title}</h4>
                     <CleanAccommodation accommodationCanBeCleaned={accommodationCanBeCleaned} employedCleaners={employedCleaners} setCleanerToCleanAccommodation={setCleanerToCleanAccommodation} cleanersCurrentlyCleaningThis={cleanersCurrentlyCleaningThis}/>
                     <div className="postcard__bar"></div>
@@ -131,7 +133,7 @@ const AccommodationCard = ({accommodation, accommodations, setAccommodations}) =
                         }
                     </ul>
                     <div className="postcard__preview-txt" id="cleaning-icon-container">
-                        <Avatar src={accommodation.cleaningStatus === "CLEAN" ? `https://cdn-icons-png.flaticon.com/512/995/995053.png` : `https://icon-library.com/images/dirty-icon/dirty-icon-4.jpg`}/>
+                        <Avatar src={isClean ? `https://cdn-icons-png.flaticon.com/512/995/995053.png` : `https://icon-library.com/images/dirty-icon/dirty-icon-4.jpg`}/>
                     </div>
                     <AccommodationRating accommodationId={accommodation.id}/>
                 </div>

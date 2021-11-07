@@ -73,18 +73,6 @@ const ProfileCard = () => {
                                         <div id="profile-empty-container" className="media">
 
                                         </div>
-                                        {/*<div className="media">*/}
-                                        {/*    <label>Hired cleaners</label>*/}
-                                        {/*    <div>*/}
-                                        {/*        {*/}
-                                        {/*            employedCleaners.length > 0 ? (*/}
-                                        {/*                <Button variant="contained" color="primary" onClick={openModal}>View</Button>*/}
-                                        {/*            ) : (*/}
-                                        {/*                <p>No employed cleaners</p>*/}
-                                        {/*            )*/}
-                                        {/*        }*/}
-                                        {/*    </div>*/}
-                                        {/*</div>*/}
                                     </div>
                                 </div>
                             </div>
@@ -102,18 +90,6 @@ const ProfileCard = () => {
                     <br/>
                 </div>
             </section>
-            {/*<Modal*/}
-            {/*    isOpen={modalIsOpen}*/}
-            {/*    onRequestClose={closeModal}*/}
-            {/*    style={customStyles}*/}
-            {/*>*/}
-            {/*    <HostCleanersModal*/}
-            {/*        closeModal={closeModal}*/}
-            {/*        fireCleaner={fireCleaner}*/}
-            {/*        employedCleaners={employedCleaners}*/}
-            {/*    />*/}
-            {/*</Modal>*/}
-
         </>
     );
 };

@@ -65,7 +65,7 @@ const QuestionPage = (props) => {
                         <br/>
                         <div className="question-box">
                         <div className="card-body">
-                            <ContactSupportIcon color="primary" style={{height: "120px", width: "120px", marginBottom: "20px"}}/>
+                            <ContactSupportIcon color="primary" className={classes.contactIcon} />
                             <h4 className="title"><strong>{question.text}</strong></h4>
                             <br/>
                             <p className="subtitle">From: <strong>{question.author}</strong></p>
@@ -131,31 +131,10 @@ const QuestionPage = (props) => {
                                             onClick={markAsSolved}
                                         /></h5>
                                         <br/>
-                                        <p><InfoIcon style={{color: "orange"}}/> If you mark it as solved, you won't be able to see the question again.</p>
+                                        <p><InfoIcon className={classes.infoIcon} /> If you mark it as solved, you won't be able to see the question again.</p>
                                     </div>
-
                                 )
                             }
-                            {/*<h5>Mark as solved {" "}*/}
-                            {/*{question.solved ? (*/}
-                            {/*    // <input*/}
-                            {/*    //     type="checkbox"*/}
-                            {/*    //     name="solved"*/}
-                            {/*    //     id="solved"*/}
-                            {/*    //     checked*/}
-                            {/*    //     onClick={markAsSolved}*/}
-                            {/*    // />*/}
-
-                            {/*) : (*/}
-                            {/*    <input*/}
-                            {/*        type="checkbox"*/}
-                            {/*        name="not solved"*/}
-                            {/*        id="not solved"*/}
-                            {/*        onClick={markAsSolved}*/}
-                            {/*    />*/}
-                            {/*)}*/}
-                            {/*</h5>*/}
-
                         </div>
                         </div>
                     </Container>

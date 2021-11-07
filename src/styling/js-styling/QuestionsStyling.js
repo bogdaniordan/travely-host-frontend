@@ -45,5 +45,13 @@ export const useStyles = makeStyles((theme) => ({
     deleteForever: {
         width: "50px !important",
         height: "50px !important"
+    },
+    contactIcon: {
+        height: "120px !important",
+        width: "120px !important",
+        marginBottom: "20px !important"
+    },
+    infoIcon: {
+        color: "orange"
     }
 }));
