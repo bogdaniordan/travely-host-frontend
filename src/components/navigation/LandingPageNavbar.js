@@ -1,5 +1,4 @@
 import React from "react";
-import {useHistory} from "react-router-dom";
 import simple_logo from "../../images/travely_logo.png";
 
 
